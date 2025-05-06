@@ -7,7 +7,7 @@ We partner with a spectrum of producers—from reclusive oenologists and multige
 
 At Baydar & Baydar, we view wine as more than a beverage—it is an art form. In the same way Caravaggio’s Bacchus immortalizes indulgence and beauty, the wines we import are vessels of cultural memory, bearing traces of myth, artistry, and centuries-old enological wisdom. Each bottle embodies the interplay of soil, climate, tradition, and vision—an object of taste and meaning.
 
-We serve a refined clientele—luxury hotels, haute cuisine establishments, private collectors, and cultural tastemakers—who seek not just exceptional wines, but the stories behind them. With every vintage, we offer more than excellence; we offer narrative, nuance, and a sense of place`,
+We serve a refined clientele—luxury hotels, haute cuisine establishments, private collectors, and cultural tastemakers—who seek not just exceptional wines, but the stories behind them. With every vintage, we offer more than excellence; we offer narrative, nuance, and a sense of place.`,
   mission1: "",
   mission2: "",
   mission3: "",
