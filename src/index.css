@@ -1,0 +1,10 @@
+@import "tailwindcss";  /* no more @tailwind directives in v4 :contentReference[oaicite:0]{index=0} */
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;700&display=swap');
+
+/* 2. Optional base-layer overrides */
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-800;
+    font-family: 'Abhaya Libre', serif;
+  }
+}
