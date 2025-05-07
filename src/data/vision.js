@@ -1,4 +1,4 @@
-export const about = {
+export const vision = {
   history: `Baydar & Baydar is a distinguished importer of premium wines and spirits, founded in 2023 with a singular mission: to curate and deliver expressions of authenticity, heritage, and artistry from the heart of Italy to discerning palates.
 
 Our portfolio is a tribute to Italy’s twenty regions—a journey through terroirs shaped by time, tradition, and temperament. From the sun-drenched coasts of Sicily to the alpine slopes of Valle d'Aosta, every wine we select carries the signature of its land and the soul of its maker.

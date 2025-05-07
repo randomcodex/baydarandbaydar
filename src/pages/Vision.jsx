@@ -1,8 +1,8 @@
-import { about } from "../data/about";
+import { vision } from "../data/vision";
 import mapImage from "../assets/images/map.jpg";
 import baccoImage from "../assets/images/bacco.jpg";
 
-export default function About() {
+export default function Vision() {
   return (
     <div
       className="container mx-auto py-16 px-4 sm:px-6 max-w-4xl"
@@ -19,24 +19,24 @@ export default function About() {
         style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }}
       >
         <div className="space-y-4">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-gray-800 mb-2 tracking-tight">
-            {about.companyName}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[#051905] mb-2 tracking-tight">
+            {vision.companyName}
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 leading-relaxed">
-            {about.history}
+          <p className="text-lg sm:text-xl md:text-2xl text-[#051905] leading-relaxed">
+            {vision.history}
           </p>
-          <p className="text-md sm:text-lg text-gray-700 italic mt-2">
-            {about.mission1}
+          <p className="text-md sm:text-lg text-[#051905] italic mt-2">
+            {vision.mission1}
           </p>
-          <p className="text-md sm:text-lg text-gray-700 italic mt-2">
-            {about.mission2}
+          <p className="text-md sm:text-lg text-[#051905] italic mt-2">
+            {vision.mission2}
           </p>
-          <p className="text-md sm:text-lg text-gray-700 italic mt-2">
-            {about.mission3}
+          <p className="text-md sm:text-lg text-[#051905] italic mt-2">
+            {vision.mission3}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mt-8">
-          {about.images.map((img, idx) => (
+          {vision.images.map((img, idx) => (
             <img
               key={idx}
               src={img.src}
