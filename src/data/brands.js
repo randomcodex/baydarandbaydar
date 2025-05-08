@@ -1,6 +1,6 @@
 import image1 from '../assets/brands/mastroberardino.PNG'; 
 import image2 from '../assets/brands/colsandago.PNG'; 
-import image3 from '../assets/brands/latogata.PNG';
+import image3 from '../assets/brands/latogata.png';
 import image4 from '../assets/brands/vignedileo.PNG';
 
 export const brands = [
