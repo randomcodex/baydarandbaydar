@@ -18,8 +18,9 @@ export default defineConfig({
   server: {
     historyApiFallback: true, // Ensures SPA fallback to index.html
   },
-  // Hook to copy sitemap.xml to dist directory after build
+  // Hook to copy sitemap.xml and create 404.html in dist directory after build
   buildEnd() {
     copyFileSync(resolve(__dirname, 'sitemap.xml'), resolve(__dirname, 'dist', 'sitemap.xml'));
+    copyFileSync(resolve(__dirname, 'dist', 'index.html'), resolve(__dirname, 'dist', '404.html'));
   },
 });
