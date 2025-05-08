@@ -19,7 +19,6 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 bg-[#051905] text-white py-6 px-6 text-lg sm:text-xl relative z-50">
       <div className="container mx-auto flex items-center justify-between px-4 sm:px-6">
-        <Link to="/" className="text-lg sm:text-2xl font-serif text-[#ffe19b] sm:hidden w-full text-left">Baydar & Baydar</Link>
         <button
           className="sm:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
           onClick={handleMenuToggle}
