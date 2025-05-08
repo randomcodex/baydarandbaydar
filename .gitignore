@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Deployment directory for GitHub Pages
+gh-pages
+
 # Editor directories and files
 .vscode/*
 .vscode
