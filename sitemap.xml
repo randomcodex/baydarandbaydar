@@ -1,27 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.baydarandbaydar.com/</loc>
     <lastmod>2025-05-08</lastmod>
+    <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://www.baydarandbaydar.com/#/</loc>
+    <loc>https://www.baydarandbaydar.com/portfolio</loc>
     <lastmod>2025-05-08</lastmod>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.baydarandbaydar.com/#/home</loc>
+    <loc>https://www.baydarandbaydar.com/vision</loc>
     <lastmod>2025-05-08</lastmod>
+    <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://www.baydarandbaydar.com/#/igm</loc>
+    <loc>https://www.baydarandbaydar.com/igm</loc>
     <lastmod>2025-05-08</lastmod>
-  </url>
-  <url>
-    <loc>https://www.baydarandbaydar.com/#/portfolio</loc>
-    <lastmod>2025-05-08</lastmod>
-  </url>
-  <url>
-    <loc>https://www.baydarandbaydar.com/#/vision</loc>
-    <lastmod>2025-05-08</lastmod>
+    <priority>0.80</priority>
   </url>
 </urlset>
