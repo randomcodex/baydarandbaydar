@@ -1,12 +1,70 @@
-# React + Vite
+# Baydar & Baydar Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+This repository contains the source code for the Baydar & Baydar website, showcasing the company's portfolio, vision, and services. The website is built using modern web technologies and follows best practices for responsive design and accessibility.
 
-Currently, two official plugins are available:
+## Project Structure
+```
+src/
+├── assets/          # Static assets like images and logos
+├── components/      # Reusable UI components (e.g., Navbar, Footer)
+├── data/            # Static data files (e.g., vision.js, brands.js)
+├── pages/           # Page components (e.g., Home, Vision, Portfolio)
+├── App.jsx          # Main application component
+├── main.jsx         # Entry point for the React app
+├── index.css        # Global CSS styles
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
+- **Responsive Design**: Optimized for all screen sizes using Tailwind CSS.
+- **Dynamic Content**: Uses React components and static data files for easy updates.
+- **Custom Domain**: Hosted on GitHub Pages with a custom domain.
+- **SEO Optimized**: Includes sitemap, robots.txt, and meta tags.
 
-## Expanding the ESLint configuration
+## Component Documentation
+### Footer
+- **Purpose**: Displays copyright information and designer credit.
+- **Responsive Design**: Adjusts text size and layout for different screen sizes.
+- **Best Practices**:
+  - Uses semantic HTML.
+  - Includes rel="noopener noreferrer" for external links.
+  - Maintains consistent color scheme.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Navbar
+- **Purpose**: Provides site navigation with a mobile-friendly hamburger menu.
+- **Responsive Design**: Adapts to screen size with a collapsible menu on smaller screens.
+- **Best Practices**:
+  - Uses accessible navigation links.
+  - Closes the mobile menu when a link is clicked.
+
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/baydarandbaydar.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd baydarandbaydar
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Deployment
+The website is deployed using GitHub Actions and hosted on GitHub Pages. To deploy manually:
+1. Build the project:
+   ```bash
+   npm run build
+   ```
+2. Push the `dist` folder to the `gh-pages` branch.
+
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
