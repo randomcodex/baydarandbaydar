@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://randomcodex.github.io/baydarandbaydar",
+  "homepage": "https://www.baydarandbaydar.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
