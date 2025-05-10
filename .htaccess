@@ -1,0 +1,5 @@
+RewriteEngine On
+# Redirect www to non-www + force HTTPS
+RewriteCond %{HTTP_HOST} ^www\.baydarandbaydar\.com [NC,OR]
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://baydarandbaydar.com/$1 [L,R=301]

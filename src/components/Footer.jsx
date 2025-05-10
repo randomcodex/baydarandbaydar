@@ -33,7 +33,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="hover:text-white transition-colors duration-200"
             >
-              Developed by Toyo Engineering Ltd.
+              Powered by Toyo Engineering Ltd.
             </a>
           </span>
         </div>
