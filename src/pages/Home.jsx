@@ -31,11 +31,10 @@ import landingImageWebP from '../assets/images/landing.webp';
  * Import and include this component in the main application or route to display the landing page.
  */
 
+// Home page component for Baydar & Baydar
+// Renders the landing page with a background image and welcome message
 export default function Home() {
-  /**
-   * State:
-   * - imageLoaded (boolean): Tracks whether the background image has been loaded.
-   */
+  // State to track whether the background image has been loaded
   const [imageLoaded, setImageLoaded] = useState(false);
 
   /**

@@ -5,6 +5,8 @@ import emailIcon from '../assets/images/emailsvgrepo.svg';
 import whatsappIcon from '../assets/images/whatsappsvgrepo.svg';
 import linkedinIcon from '../assets/images/linkedinsvgrepo.svg';
 
+// Navbar component for Baydar & Baydar
+// Provides site navigation with a mobile-friendly hamburger menu
 export default function Navbar() {
   // State for mobile menu toggle
   const [menuOpen, setMenuOpen] = useState(false);

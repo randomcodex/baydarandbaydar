@@ -17,6 +17,8 @@
 
 import logo from '../assets/images/logoigm.png';
 
+// IGM page component for Baydar & Baydar
+// Displays information about the Istituto Grandi Marchi partnership
 export default function IGM() {
   return (
     /* 

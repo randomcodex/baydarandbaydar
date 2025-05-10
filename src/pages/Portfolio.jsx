@@ -23,6 +23,9 @@
 import { brands } from '../data/brands.js';
 import baccanalImage from '../assets/images/baccanal.jpg';
 
+// Portfolio page component for Baydar & Baydar
+// Displays a grid of brand portfolios with logos and descriptions
+
 export default function Portfolio() {
   return (
     /* 

@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://www.baydarandbaydar.com/sitemap.xml
+Sitemap: https://baydarandbaydar.com/sitemap.xml

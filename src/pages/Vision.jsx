@@ -23,6 +23,8 @@ import { vision } from "../data/vision";
 import mapImage from "../assets/images/map.jpg";
 import baccoImage from "../assets/images/bacco.jpg";
 
+// Vision page component for Baydar & Baydar
+// Displays the company's vision, mission, and historical background
 export default function Vision() {
   return (
     /* 

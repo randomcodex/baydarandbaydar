@@ -4,6 +4,10 @@
  * Displays copyright information and designer credit at the bottom of every page.
  * Features responsive text sizing and layout adjustments for different screen sizes.
  */
+
+// Footer component for Baydar & Baydar
+// Displays copyright information and designer credit
+
 export default function Footer() {
     return (
       /* Main footer container with background color and responsive padding */

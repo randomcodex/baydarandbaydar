@@ -56,13 +56,29 @@
       "name": "Baydar & Baydar",
       "url": "https://baydarandbaydar.com/",
       "logo": "https://baydarandbaydar.com/src/assets/images/logo.PNG",
-      "description": "Baydar & Baydar is a leading TRNC-based import-export company specializing in premium wine distribution, global trade solutions, and tailored B2B sourcing across international markets.",
+      "description": "Baydar & Baydar is a premium alcoholic beverage import company specializing in high-quality wines and spirits, primarily sourced from Italy.",
       "sameAs": [
         "https://www.facebook.com/baydarandbaydar",
         "https://www.twitter.com/baydarandbaydar",
         "https://www.linkedin.com/company/baydarandbaydar",
         "https://www.pinterest.com/baydarandbaydar"
-      ]
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+905338692852",
+        "contactType": "Customer Service",
+        "areaServed": "TRNC",
+        "availableLanguage": ["English", "Turkish"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Yukarı Gi̇rne Değirmentaşı Mahallesi, Sakarya Sokak, Sakarya Apartmanı, No:4, Dr:1",
+        "addressLocality": "Gi̇rne",
+        "addressRegion": "Kuzey Kıbrıs Türk Cumhuri̇yeti̇",
+        "postalCode": "",
+        "addressCountry": "CY"
+      },
+      "foundingDate": "2023"
     }
     </script>
 
@@ -73,6 +89,14 @@
   </head>
   <body>
     <div id="root"></div>
+    <script type="text/javascript">
+      (function() {
+        var redirect = new URLSearchParams(window.location.search).get('redirect');
+        if (redirect) {
+          window.history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
     <script type="module" src="./src/main.jsx"></script>
   </body>
 </html>
