@@ -13,7 +13,7 @@ export default function Footer() {
         <div className="w-full flex flex-col items-center">
           {/* Copyright text with dynamic year - responsive font sizing */}
           <span className="text-xs sm:text-sm">
-            Baydar & Baydar Co. Ltd. © Copyright {new Date().getFullYear()} - All Rights Reserved. 
+           © {new Date().getFullYear()} Baydar & Baydar. All rights reserved.
           </span>
           <span className="mt-0">
           </span>
@@ -29,7 +29,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="hover:text-white transition-colors duration-200"
             >
-              Designed by Toyo Engineering Ltd.
+              Developed by Toyo Engineering Ltd.
             </a>
           </span>
         </div>
