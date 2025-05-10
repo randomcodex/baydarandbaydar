@@ -28,7 +28,7 @@ export default defineConfig({
 
   server: {
     // Enables SPA fallback for development server
-    historyApiFallback: true,
+    historyApiFallback: true, // Ensures SPA fallback to index.html in development and production
   },
 
   buildEnd() {
