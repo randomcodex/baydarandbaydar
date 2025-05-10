@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Redirecting...</title>
   <script type="text/javascript">
-    // Redirect to index.html preserving the path
-    var path = window.location.pathname;
-    var search = window.location.search;
-    var hash = window.location.hash;
-    window.location.replace('/index.html?redirect=' + encodeURIComponent(path + search + hash));
+    // Redirect to index.html preserving the path, query, and hash
+    try {
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      window.location.replace('/index.html?redirect=' + encodeURIComponent(path + search + hash));
+    } catch (error) {
+      console.error('Redirect failed:', error);
+    }
   </script>
 </head>
 <body>
+  <!-- Fallback message for users with JavaScript disabled -->
+  <noscript>
+    <p>This site requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+  </noscript>
 </body>
 </html>
