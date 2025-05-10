@@ -62,28 +62,3 @@ The website is deployed using GitHub Actions and hosted on GitHub Pages. To depl
    npm run build
    ```
 2. Push the `dist` folder to the `gh-pages` branch.
-
-## Automated Updates to README
-
-### Auto-Generated Commit Logs
-This project uses a Git hook to automatically append a description of changes made to the codebase, along with the date and time, to this README file. This ensures that the documentation remains up-to-date with minimal manual effort.
-
-### Example Log Format
-- **Date**: YYYY-MM-DD HH:mm:ss
-- **Description**: Brief summary of the changes made.
-
-### How It Works
-1. A Git hook appends a log entry to the README file with the date, time, and a brief description of the changes.
-
-### Benefits
-- Ensures consistent and up-to-date documentation.
-- Reduces the manual effort required to maintain the README file.
-- Provides a clear history of changes for contributors and maintainers.
-
-## Contributing
-Contributions are welcome! Please fork the repository and submit a pull request.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
-\n- **Date**: 2025-05-10 19:51:42\n  **Description**: added canonical metatag
-\n- **Date**: 2025-05-10 19:51:58\n  **Description**: Update README.md
