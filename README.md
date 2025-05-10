@@ -1,7 +1,7 @@
 # Baydar & Baydar Website
 
 ## Project Overview
-This repository contains the source code for the Baydar & Baydar website, showcasing the company's portfolio, vision, and services. The website is built using modern web technologies and follows best practices for responsive design and accessibility.
+The Baydar & Baydar website showcases the company's portfolio, vision, and services. Built with modern web technologies, it emphasizes responsive design, accessibility, and dynamic content management.
 
 ## Project Structure
 ```
@@ -17,9 +17,10 @@ src/
 
 ## Key Features
 - **Responsive Design**: Optimized for all screen sizes using Tailwind CSS.
-- **Dynamic Content**: Uses React components and static data files for easy updates.
+- **Dynamic Content**: React components and static data files enable easy updates.
 - **Custom Domain**: Hosted on GitHub Pages with a custom domain.
-- **SEO Optimized**: Includes sitemap, robots.txt, and meta tags.
+- **SEO Optimized**: Includes robots.txt and meta tags for search engine visibility.
+- **Client-Side Routing**: Uses `HashRouter` for seamless navigation without server-side fallback mechanisms.
 
 ## Component Documentation
 ### Footer
@@ -27,7 +28,7 @@ src/
 - **Responsive Design**: Adjusts text size and layout for different screen sizes.
 - **Best Practices**:
   - Uses semantic HTML.
-  - Includes rel="noopener noreferrer" for external links.
+  - Includes `rel="noopener noreferrer"` for external links.
   - Maintains consistent color scheme.
 
 ### Navbar
@@ -62,3 +63,14 @@ The website is deployed using GitHub Actions and hosted on GitHub Pages. To depl
    npm run build
    ```
 2. Push the `dist` folder to the `gh-pages` branch.
+
+## Recent Updates
+- **Routing Update**: Transitioned to `HashRouter` for client-side routing, removing the need for server-side fallback mechanisms like `404.html`.
+- **Sitemap Removal**: Removed sitemap generation and related configurations.
+- **Dependency Management**: Addressed vulnerabilities and updated PostCSS plugins for compatibility.
+
+## Testing
+Ensure all routes work correctly with `HashRouter` by:
+1. Running the development server locally.
+2. Testing navigation between pages.
+3. Verifying that no fallback mechanisms are required.

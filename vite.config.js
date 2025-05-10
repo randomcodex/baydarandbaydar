@@ -4,7 +4,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import { copyFileSync } from 'fs';
 
 export default defineConfig({
   // Base public path for the project
@@ -26,15 +25,7 @@ export default defineConfig({
     emptyOutDir: true,
   },
 
-  server: {
-    // Enables SPA fallback for development server
-    historyApiFallback: true, // Ensures SPA fallback to index.html in development and production
-  },
+  server: {},
 
-  buildEnd() {
-    // Copies sitemap.xml to the dist directory
-    copyFileSync(resolve(__dirname, 'sitemap.xml'), resolve(__dirname, 'dist', 'sitemap.xml'));
-    // Creates a 404.html file as a copy of index.html
-    copyFileSync(resolve(__dirname, 'dist', 'index.html'), resolve(__dirname, 'dist', '404.html'));
-  },
+  buildEnd() {},
 });
