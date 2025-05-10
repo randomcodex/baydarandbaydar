@@ -85,3 +85,4 @@ Contributions are welcome! Please fork the repository and submit a pull request.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
+\n- **Date**: 2025-05-10 19:51:42\n  **Description**: added canonical metatag
