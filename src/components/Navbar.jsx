@@ -156,7 +156,7 @@ export default function Navbar() {
             link="mailto:baydarandbaydar@gmail.com" 
           />
           {/* Meta menu */}
-          <div className="relative flex items-center">
+          <div className="relative flex items-center hidden lg:flex">
             <img
               src={metaIcon}
               alt="Meta Icon"
