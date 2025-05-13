@@ -1,7 +1,7 @@
 # Baydar & Baydar Website
 
 ## Project Overview
-The Baydar & Baydar website showcases the company's portfolio, vision, and services. Built with modern web technologies, it emphasizes responsive design, accessibility, and dynamic content management.
+The Baydar & Baydar website is a modern, responsive platform designed to showcase the company's portfolio, vision, and services. Built with React and Tailwind CSS, the website emphasizes accessibility, dynamic content, and a seamless user experience.
 
 ## Project Structure
 ```
@@ -20,7 +20,8 @@ src/
 - **Dynamic Content**: React components and static data files enable easy updates.
 - **Custom Domain**: Hosted on GitHub Pages with a custom domain.
 - **SEO Optimized**: Includes robots.txt and meta tags for search engine visibility.
-- **Client-Side Routing**: Uses `HashRouter` for seamless navigation without server-side fallback mechanisms.
+- **Client-Side Routing**: Uses `BrowserRouter` for seamless navigation with proper server-side fallback mechanisms.
+- **Sitemap**: Includes a `sitemap.xml` file for search engine indexing, referenced in `index.html`.
 
 ## Component Documentation
 ### Footer
@@ -33,6 +34,10 @@ src/
 
 ### Navbar
 - **Purpose**: Provides site navigation with a mobile-friendly hamburger menu.
+- **Features**:
+  - Meta menu with dropdown behavior for social media links.
+  - Smooth animations for menu transitions.
+  - Social media icons with hover effects and external links.
 - **Responsive Design**: Adapts to screen size with a collapsible menu on smaller screens.
 - **Best Practices**:
   - Uses accessible navigation links.
@@ -64,13 +69,8 @@ The website is deployed using GitHub Actions and hosted on GitHub Pages. To depl
    ```
 2. Push the `dist` folder to the `gh-pages` branch.
 
-## Recent Updates
-- **Routing Update**: Transitioned to `HashRouter` for client-side routing, removing the need for server-side fallback mechanisms like `404.html`.
-- **Sitemap Removal**: Removed sitemap generation and related configurations.
-- **Dependency Management**: Addressed vulnerabilities and updated PostCSS plugins for compatibility.
-
 ## Testing
-Ensure all routes work correctly with `HashRouter` by:
+Ensure all routes work correctly with `BrowserRouter` by:
 1. Running the development server locally.
 2. Testing navigation between pages.
-3. Verifying that no fallback mechanisms are required.
+3. Verifying that proper server-side fallback mechanisms are in place.

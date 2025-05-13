@@ -1,26 +1,24 @@
 /**
- * Portfolio Component
+ * Updated Portfolio Component
  * 
- * Displays a grid of brand portfolios with:
- * - Full-screen background image with overlay effect
- * - Responsive card layout (1-column mobile, 2-column desktop)
- * - Brand logos with consistent aspect ratios
- * - Descriptive text and website links
- * - Hover effects and smooth transitions
- * 
- * Data Source:
- * - Imports brand data from ../data/brands.js
- * - Uses background image from ../assets/images/
- * 
- * Design Features:
- * - Mobile-first responsive design
- * - Background blend mode for improved readability
- * - Consistent brand color scheme
- * - Careful opacity balancing
- * - Interactive hover states
+ * Features:
+ * - Displays a grid of brand and equipment portfolios with:
+ *   - Full-screen background image with overlay effect.
+ *   - Responsive card layout (1-column mobile, 2-column desktop).
+ *   - Brand logos and descriptions with consistent aspect ratios.
+ *   - Interactive hover effects and smooth transitions.
+ * - Cards:
+ *   - Use flex-row layout for all screen sizes.
+ *   - Auto-adjust height to fit content.
+ *   - Include left-aligned images and text.
+ * - Design:
+ *   - Mobile-first responsive design.
+ *   - Background blend mode for improved readability.
+ *   - Consistent brand color scheme.
+ *   - Stylish dividers with solid color or gradient effects.
  */
 
-import { brands } from '../data/brands.js';
+import { brands, equipment } from '../data/brands';
 import baccanalImage from '../assets/images/baccanal.jpg';
 
 // Portfolio page component for Baydar & Baydar
@@ -65,7 +63,14 @@ export default function Portfolio() {
           {/* Title can be added here when needed */}
         </h1>
 
-        {/*
+        <div className="w-full flex items-center justify-center my-8">
+          <div className="flex-grow h-0.5 bg-[#ffe19b]"></div>
+          <span className="mx-4 text-[#ffe19b] text-lg sm:text-xl font-serif">Wineries</span>
+          <div className="flex-grow h-0.5 bg-[#ffe19b]"></div>
+        </div>
+        {/* Added a stylish border with title above the brands section */}
+
+        {/* 
           Brand Portfolio Grid
           - 1 column on mobile, 2 columns on desktop (md:)
           - Responsive gap spacing
@@ -74,66 +79,123 @@ export default function Portfolio() {
             * Name and description
             * Website link
         */}
-        <div className="grid gap-6 sm:gap-10 grid-cols-1 md:grid-cols-2">
-          {brands.map((brand) => (
+        <div className="grid gap-12 sm:gap-16 grid-cols-1 md:grid-cols-2 brand-section">
+          {brands.sort((a, b) => a.name.localeCompare(b.name)).map((brand) => (
             /* 
               Brand Card
               - Semi-transparent white background (bg-opacity-50)
-              - Golden border (border-[#ffe19b])
-              - Flex layout (column on mobile, row on desktop)
+              - Fixed border color (#ffe19b)
+              - Flex layout (row on all screen sizes)
               - Hover scale effect
               - Overflow hidden for contained rounded corners
               - Clickable card to open website
             */
             <div 
               key={brand.id}
-              className="bg-white bg-opacity-50 rounded-lg p-3 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300 border-4 border-[#ffe19b] rounded-xl w-full max-w-4xl mx-auto overflow-hidden cursor-pointer"
+              className="bg-white bg-opacity-50 p-4 flex flex-row items-start hover:scale-105 transition-transform duration-300 border-4 border-[#ffe19b] w-full max-w-1xl mx-auto cursor-pointer rounded-none"
               onClick={() => window.open(brand.website, '_blank', 'noopener noreferrer')}
             >
               {/* 
                 Brand Logo
                 - Fixed aspect ratio (square)
                 - Responsive sizing
-                - Centered on mobile, left-aligned on desktop
+                - Left-aligned on all screen sizes
                 - Contained within bounds (object-contain)
               */}
               <img 
                 src={brand.logo} 
                 alt={`${brand.name} logo`} 
-                className="w-36 h-24 sm:w-80 sm:h-36 mb-3 md:mb-0 md:mr-6 object-contain aspect-square rounded" 
+                className="w-36 h-24 sm:w-80 sm:h-36 mb-3 object-contain aspect-square rounded self-start" 
               />
 
-              {/*
+              {/* 
                 Brand Info Container
                 - Takes remaining space (flex-1)
-                - Center-aligned on mobile, left on desktop
+                - Left-aligned
                 - Text wrapping (break-words)
               */}
-              <div className="flex-1 flex flex-col items-center text-center md:items-start md:text-left break-words">
+              <div 
+                className="flex-1 flex flex-col items-start text-left break-words"
+                style={{
+                  fontSize: 'clamp(0.8rem, 2.5vw, 1rem)', // Auto-adjustable font size for text
+                  lineHeight: '1.2', // Maintain readability
+                }}
+              >
                 {/* 
                   Brand Name
                   - Dark green text (#051905)
                   - Responsive font sizing
                   - Tight line height
                 */}
-                <h2 className="text-xl sm:text-2xl font-serif text-[#051905] mb-2 max-w-full leading-tight break-words">
+                <h2 className="text-lg sm:text-xl font-serif text-[#051905] mb-2 max-w-full leading-tight break-words">
                   {brand.name}
                 </h2>
 
-                {/*
+                {/* 
                   Brand Description
                   - Dark green text
                   - Relaxed line height
                   - Responsive font sizing
                 */}
-                <p className="mb-3 text-[#051905] text-base sm:text-lg max-w-full leading-relaxed break-words">
+                <p className="text-sm sm:text-base text-[#051905] leading-relaxed break-words">
                   {brand.description}
                 </p>
               </div>
             </div>
           ))}
         </div>
+
+        <div className="w-full flex items-center justify-center my-8">
+          <div className="flex-grow h-0.5 bg-[#ffe19b]"></div>
+          <span className="mx-4 text-[#ffe19b] text-lg sm:text-xl font-serif">Dispensing & Preservation</span>
+          <div className="flex-grow h-0.5 bg-[#ffe19b]"></div>
+        </div>
+        {/* Added a stylish border with title above the equipment section */}
+        <div className="grid gap-12 sm:gap-16 grid-cols-1 md:grid-cols-2 equipment-section">
+          {equipment.map((item) => (
+            <div 
+              key={item.id}
+              className="
+                bg-white bg-opacity-50 
+                p-4 
+                flex flex-row 
+                items-start 
+                hover:scale-105 
+                transition-transform duration-300 
+                border-4 border-[#ffe19b] 
+                w-full max-w-1xl mx-auto 
+                cursor-pointer 
+                rounded-none 
+                min-h-fit
+              "
+              onClick={() => window.open(item.website, '_blank', 'noopener noreferrer')}
+            >
+              <img 
+                src={item.logo} 
+                alt={`${item.name} logo`} 
+                className="w-36 h-24 sm:w-80 sm:h-36 mb-3 object-contain aspect-square rounded self-start" 
+              />
+              <div 
+                className="flex-1 flex flex-col items-start text-left break-words"
+                style={{
+                  fontSize: 'clamp(0.8rem, 2.5vw, 1rem)', // Auto-adjustable font size for text
+                  lineHeight: '1.2', // Maintain readability
+                }}
+              >
+                <h2 className="text-lg sm:text-xl font-serif text-[#051905] mb-2 max-w-full leading-tight break-words">
+                  {item.name}
+                </h2>
+                <p className="text-sm sm:text-base text-[#051905] leading-relaxed break-words">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16"></div> {/* Increased margin for more distance */}
       </div>
     </div>
   );
 }
+

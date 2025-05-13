@@ -5,6 +5,12 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://baydarandbaydar.com/$1 [L,R=301]
 
 # Ensure no additional redirects are present
-# This rule prevents unnecessary redirects or loops
 RewriteCond %{REQUEST_URI} !^/$
 RewriteRule ^home$ / [L,R=301]
+
+# Canonical URL enforcement
+RewriteCond %{REQUEST_URI} !^/index\.html$
+RewriteRule ^index\.html$ / [L,R=301]
+
+# Ensure sitemap is accessible
+RewriteRule ^sitemap\.xml$ /public/sitemap.xml [L]

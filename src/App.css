@@ -61,8 +61,7 @@
 /* CSS Variables */
 :root {
   --nav-bg: #051905;
-  --gold-primary: #f6d484;
-  --gold-secondary: #ffe19b;
+  --gold-primary: #ffe19b;
   --text-white: #ffffff;
   --transition-speed: 200ms;
   --scale-factor: 1.1; 
@@ -155,7 +154,7 @@
 
 .nav-button:focus-visible,
 .nav-link:focus-visible {
-  outline: 2px solid var(--gold-secondary);
+  outline: 2px solid var(--gold-primary);
   outline-offset: 4px;
   border-radius: 2px;
 }

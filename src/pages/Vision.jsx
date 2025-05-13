@@ -19,6 +19,7 @@
  * - Smooth shadow and border effects
  */
 
+import { useState } from "react";
 import { vision } from "../data/vision";
 import mapImage from "../assets/images/map.jpg";
 import baccoImage from "../assets/images/bacco.jpg";
@@ -53,7 +54,7 @@ export default function Vision() {
       <div className="container mx-auto py-16 px-4 sm:px-6 max-w-4xl">
         <div
           className="bg-white rounded-2xl shadow-xl p-4 sm:p-10 space-y-8 border border-gray-100"
-          style={{ backgroundColor: "rgba(255, 255, 255, 0.8)" }} // 80% opacity white
+          style={{ backgroundColor: "rgba(255, 255, 255, 0.75)" }} // 75% opacity white
         >
           {/* 
             Text Content Section
@@ -61,12 +62,20 @@ export default function Vision() {
             - Carefully spaced elements
             - Brand color text
           */}
-          <section className="max-w-4xl mx-auto px-6 py-12 text-gray-800 font-serif text-[#0a2e0a]">
-            <h2 className="text-4xl font-bold mb-6 border-b-2 border-gray-400 pb-2" style={{ color: '#051905', borderColor: '#a39d7e' }}>Our Mission</h2>
+          <section className="max-w-4xl mx-auto px-10 py-6 text-gray-800 font-serif text-[#0a2e0a]">
+            <h2 className="text-4xl font-bold mb-10 pb-0" style={{ color: '#051905' }}>Our Mission</h2>
 
-            <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
+            <div className="w-full flex items-center justify-center my-10">
+              <div className="flex-grow border-t border-[#ffe19b]"></div>
+            </div>
+
+            <p className="mb-10" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
               At <strong>Baydar &amp; Baydar</strong>, we believe that great wine is not just produced — it is discovered, understood, and shared with reverence. Our mission is to seek out Italy’s most exceptional wines — bottles shaped by land, legacy, and the quiet mastery of dedicated artisans. We partner with producers who work not for scale, but for purity and depth: limited-production wines rooted in history and terroir, expressing the very soul of their region. Each selection in our portfolio is the result of thoughtful curation — an invitation to experience a deeper narrative of Italian viticulture, one bottle at a time. Whether born of ancient volcanic soils or alpine breezes, our wines are chosen for those who seek not only taste, but truth.
             </p>
+
+            <div className="w-full flex items-center justify-center my-10">
+              <div className="flex-grow border-t border-[#ffe19b]"></div>
+            </div>
 
             <h3 className="text-2xl font-semibold mb-2" style={{ color: '#051905' }}>A Journey Through Italy</h3>
             <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
@@ -126,7 +135,8 @@ export default function Vision() {
             <img
               src={mapImage}
               alt="Company location map"
-              className="w-full h-auto rounded-xl shadow-lg border border-gray-200"
+              className="rounded-xl shadow-2xl border border-gray-300 cursor-pointer transition-transform duration-500 w-full h-auto hover:scale-105"
+              onClick={() => window.open(mapImage, '_blank')}
             />
           </div>
         </div>

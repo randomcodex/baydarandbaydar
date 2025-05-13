@@ -36,6 +36,9 @@ export default function IGM() {
         - Max-width constrained by container
       */}
       <div className="container mx-auto space-y-8 sm:space-y-12">
+        {/* Top Gradient Glow Line */}
+        <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b]"></div>
+
         {/* 
           Main Heading
           - Responsive font sizing (4xl mobile, 5xl desktop)
@@ -72,6 +75,9 @@ export default function IGM() {
             Visit Website
           </a>
         </div>
+
+        {/* Bottom Gradient Glow Line */}
+        <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b]"></div>
       </div>
     </div>
   );

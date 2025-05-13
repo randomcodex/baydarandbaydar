@@ -25,7 +25,17 @@ export default defineConfig({
     emptyOutDir: true,
   },
 
-  server: {},
+  server: {
+    // Enable hot module replacement
+    hmr: true,
+    // Open the browser automatically when the server starts
+    open: true,
+    // Ensures proper routing for BrowserRouter
+    historyApiFallback: true,
+  },
 
-  buildEnd() {},
+  // Added optimization options for better performance
+  optimizeDeps: {
+    include: ['react', 'react-dom'],
+  },
 });
