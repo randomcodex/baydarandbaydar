@@ -1,18 +1,30 @@
 @import "tailwindcss";  /* no more @tailwind directives in v4 :contentReference[oaicite:0]{index=0} */
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;700&display=swap');
 
+@font-face {
+  font-family: 'Abhaya Libre';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/src/assets/fonts/Abhaya_Libre/AbhayaLibre-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  font-style: normal;
+  font-weight: 700;
+  src: url('/src/assets/fonts/Abhaya_Libre/AbhayaLibre-Bold.ttf') format('truetype');
+}
+
 /* 2. Optional base-layer overrides */
 @layer base {
   body {
-    @apply bg-gray-50 text-gray-800;
+    background-color: #f9fafb; /* bg-gray-50 */
+    color: #1f2937; /* text-gray-800 */
     font-family: 'Abhaya Libre', serif;
   }
 }
 
 @media screen and (max-width: 1024px) and (orientation: landscape) {
-  .logo-fixed-landscape {
-  }
-
   .hamburger-menu {
     display: block;
     position: fixed;
