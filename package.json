@@ -10,8 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "# Removed deploy script as GitHub Actions handles deployment",
-    "generate-sitemap": "node generate-sitemap.js"
+    "deploy": "# Removed deploy script as GitHub Actions handles deployment"
   },
   "dependencies": {
     "@amcharts/amcharts5": "^5.12.2",
