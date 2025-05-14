@@ -12,7 +12,7 @@ src/
 ├── pages/           # Page components (e.g., Home, Vision, Portfolio)
 ├── App.jsx          # Main application component
 ├── main.jsx         # Entry point for the React app
-├── index.css        # Global CSS styles
+├── global.css        # Global CSS styles
 ```
 
 ## Key Features
