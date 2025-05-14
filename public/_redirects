@@ -1,0 +1,13 @@
+# Redirect www to non-www and force HTTPS
+https://www.baydarandbaydar.com/* https://baydarandbaydar.com/:splat 301!
+http://baydarandbaydar.com/* https://baydarandbaydar.com/:splat 301!
+
+# Canonical URL enforcement
+/index.html / 301!
+/home / 301!
+
+# Ensure sitemap is accessible
+/sitemap.xml /public/sitemap.xml 200
+
+# SPA fallback
+/* /index.html 200
