@@ -7,7 +7,7 @@ http://baydarandbaydar.com/* https://baydarandbaydar.com/:splat 301!
 /home / 301!
 
 # Ensure sitemap is accessible
-/sitemap.xml /public/sitemap.xml 200
+/sitemap.xml /sitemap.xml 200
 
 # SPA fallback
 /* /index.html 200
