@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://baydarandbaydar.com/</loc>
-    <lastmod>2025-05-13</lastmod>
-    <priority>1.0</priority>
+    <lastmod>2025-05-14T15:31:29.696Z</lastmod>
+    <priority>1</priority>
+    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://baydarandbaydar.com/vision</loc>
-    <lastmod>2025-05-13</lastmod>
+    <lastmod>2025-05-14T15:31:29.697Z</lastmod>
     <priority>0.8</priority>
+    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://baydarandbaydar.com/brands</loc>
-    <lastmod>2025-05-13</lastmod>
+    <lastmod>2025-05-14T15:31:29.697Z</lastmod>
     <priority>0.8</priority>
+    <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>https://baydarandbaydar.com/igm</loc>
-    <lastmod>2025-05-13</lastmod>
+    <lastmod>2025-05-14T15:31:29.697Z</lastmod>
     <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
   </url>
 </urlset>

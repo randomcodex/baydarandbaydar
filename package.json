@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "# Removed deploy script as GitHub Actions handles deployment"
+    "deploy": "# Removed deploy script as GitHub Actions handles deployment",
+    "generate-sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
     "@amcharts/amcharts5": "^5.12.2",
@@ -22,11 +23,13 @@
     "framer-motion": "^12.11.0",
     "gsap": "^3.13.0",
     "lottie-react": "^2.4.1",
+    "node-fetch": "^3.3.2",
     "prettier": "^3.5.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.0",
-    "react-svg": "^16.3.0"
+    "react-svg": "^16.3.0",
+    "xmlbuilder2": "^3.1.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
