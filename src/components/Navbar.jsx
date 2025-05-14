@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/images/logotransparent.png';
 import emailIcon from '../assets/images/emailsvgrepo.svg';
 import whatsappIcon from '../assets/images/whatsappsvgrepo.svg';
@@ -37,13 +37,51 @@ const SocialIcon = ({ src, alt, link, onClick }) => (
 const menuVariants = {
   open: {
     opacity: 1,
+    height: "auto",
     scale: 1,
-    transition: { duration: 0.3, ease: 'easeInOut' },
+    transition: {
+      height: { duration: 0.5, ease: [0.04, 0.62, 0.23, 0.98] },
+      opacity: { duration: 0.4 },
+      scale: { duration: 0.4, ease: "easeOut" },
+      when: "beforeChildren",
+      staggerChildren: 0.12,
+    },
   },
   closed: {
     opacity: 0,
+    height: 0,
     scale: 0.95,
-    transition: { duration: 0.3, ease: 'easeInOut' },
+    transition: {
+      height: { duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] },
+      opacity: { duration: 0.35 },
+      scale: { duration: 0.3, ease: "easeIn" },
+      when: "afterChildren",
+      staggerChildren: 0.07,
+      staggerDirection: -1,
+    },
+  },
+};
+
+// Animation variants for individual menu items
+const itemVariants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+      y: { type: "spring", stiffness: 300, damping: 20 },
+    },
+  },
+  closed: {
+    opacity: 0,
+    y: -16,
+    scale: 0.9,
+    transition: {
+      duration: 0.3,
+      ease: "easeIn",
+    },
   },
 };
 
@@ -55,9 +93,15 @@ export default function Navbar() {
   });
   // State for logo click animation
   const [logoClicked, setLogoClicked] = useState(false);
-
   // Update handleMenuToggle to close both menus when a navlink is clicked
-  const handleMenuToggle = useCallback((menu) => {
+  // Added event parameter to prevent default behavior and stop scrolling to top
+  const handleMenuToggle = useCallback((menu, event) => {
+    // Prevent default browser behavior that might cause scrolling
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    
     setMenuState((prev) => {
       const newState = { hamburgerOpen: false, metaMenuOpen: false };
       return { ...newState, [menu]: !prev[menu] };
@@ -152,10 +196,9 @@ export default function Navbar() {
             src={emailIcon} 
             alt="Email Icon" 
             link="mailto:baydarandbaydar@gmail.com" 
-          />
-          <button
+          />          <button
             className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
-            onClick={() => handleMenuToggle('hamburgerOpen')}
+            onClick={(e) => handleMenuToggle('hamburgerOpen', e)}
             aria-label="Toggle menu"
           >
             {/* Animated hamburger icon lines */}
@@ -166,26 +209,33 @@ export default function Navbar() {
         </div>
 
         {/* Desktop navigation links (hidden on mobile) */}
-        <div className="hidden lg:flex items-center w-full">
-          <div className="flex-1 flex justify-center space-x-6">
-            <NavLink 
+        <div className="hidden lg:flex items-center w-full">          <div className="flex-1 flex justify-center space-x-6">            <NavLink 
               to="/portfolio" 
               className={({ isActive }) => navLinkClass(isActive)} 
-              onClick={() => setMenuState({ hamburgerOpen: false, metaMenuOpen: false })}
+              onClick={() => {
+                // Explicitly scroll to top when navigating
+                window.scrollTo(0, 0);
+              }}
             >
               Portfolio
             </NavLink>
             <NavLink 
               to="/vision" 
               className={({ isActive }) => navLinkClass(isActive)} 
-              onClick={() => setMenuState({ hamburgerOpen: false, metaMenuOpen: false })}
+              onClick={() => {
+                // Explicitly scroll to top when navigating
+                window.scrollTo(0, 0);
+              }}
             >
               Vision
             </NavLink>
             <NavLink 
               to="/igm" 
               className={({ isActive }) => navLinkClass(isActive)} 
-              onClick={() => setMenuState({ hamburgerOpen: false, metaMenuOpen: false })}
+              onClick={() => {
+                // Explicitly scroll to top when navigating
+                window.scrollTo(0, 0);
+              }}
             >
               IGM
             </NavLink>
@@ -223,45 +273,137 @@ export default function Navbar() {
             />
           </div>
         </div>
+      </div>      {/* Hamburger menu dropdown with enhanced animations */}
+      <div className="lg:hidden overflow-hidden absolute w-full left-0 right-0">
+        <AnimatePresence mode="sync">
+          {menuState.hamburgerOpen && (
+            <motion.div
+              className="flex flex-col items-center mt-2 bg-[#051905] rounded-md shadow-lg overflow-hidden origin-top"
+              variants={menuVariants}
+              initial="closed"
+              animate="open"
+              exit="closed"
+              onClick={(e) => e.stopPropagation()} // Prevent click inside menu from closing it
+              layout
+            >              {/* Top glowing divider with enhanced animation */}
+              <motion.div 
+                variants={itemVariants}
+                className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] mb-2"
+                animate={{ 
+                  boxShadow: ["0 0 4px rgba(255, 225, 155, 0.5)", "0 0 8px rgba(255, 225, 155, 0.8)", "0 0 4px rgba(255, 225, 155, 0.5)"],
+                  transition: { 
+                    repeat: Infinity, 
+                    duration: 1.5,
+                    ease: "easeInOut" 
+                  } 
+                }}
+              ></motion.div>
+              
+              {/* Portfolio link with animation */}              <motion.div 
+                variants={itemVariants} 
+                className="w-full flex justify-center py-1"
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <NavLink 
+                  to="/portfolio" 
+                  className={({ isActive }) => navLinkClass(isActive)} 
+                  onClick={(e) => {
+                    // Close the menu
+                    setMenuState({ hamburgerOpen: false, metaMenuOpen: false });
+                    // Scroll to top after navigation
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  Portfolio
+                </NavLink>
+              </motion.div>
+                {/* Divider with enhanced animation */}
+              <motion.div 
+                variants={itemVariants}
+                className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] my-2"
+                animate={{ 
+                  boxShadow: ["0 0 4px rgba(255, 225, 155, 0.5)", "0 0 8px rgba(255, 225, 155, 0.8)", "0 0 4px rgba(255, 225, 155, 0.5)"],
+                  transition: { 
+                    repeat: Infinity, 
+                    duration: 1.5,
+                    ease: "easeInOut",
+                    delay: 0.2 // slight delay for staggered effect between dividers
+                  } 
+                }}
+              ></motion.div>
+              
+              {/* Vision link with animation */}              <motion.div 
+                variants={itemVariants} 
+                className="w-full flex justify-center py-1"
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <NavLink
+                  to="/vision"
+                  className={({ isActive }) => navLinkClass(isActive)} 
+                  onClick={(e) => {
+                    // Close the menu
+                    setMenuState({ hamburgerOpen: false, metaMenuOpen: false });
+                    // Scroll to top after navigation
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  Vision
+                </NavLink>
+              </motion.div>
+                {/* Divider with enhanced animation */}
+              <motion.div 
+                variants={itemVariants}
+                className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] my-2"
+                animate={{ 
+                  boxShadow: ["0 0 4px rgba(255, 225, 155, 0.5)", "0 0 8px rgba(255, 225, 155, 0.8)", "0 0 4px rgba(255, 225, 155, 0.5)"],
+                  transition: { 
+                    repeat: Infinity, 
+                    duration: 1.5,
+                    ease: "easeInOut",
+                    delay: 0.4 // increased delay for staggered effect
+                  } 
+                }}
+              ></motion.div>
+              
+              {/* IGM link with animation */}              <motion.div 
+                variants={itemVariants} 
+                className="w-full flex justify-center py-1"
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <NavLink
+                  to="/igm"
+                  className={({ isActive }) => navLinkClass(isActive)}
+                  onClick={(e) => {
+                    // Close the menu
+                    setMenuState({ hamburgerOpen: false, metaMenuOpen: false });
+                    // Scroll to top after navigation
+                    window.scrollTo(0, 0);
+                  }}
+                >
+                  IGM
+                </NavLink>
+              </motion.div>
+                {/* Bottom glowing divider with enhanced animation */}
+              <motion.div 
+                variants={itemVariants}
+                className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] mt-2 mb-2"
+                animate={{ 
+                  boxShadow: ["0 0 4px rgba(255, 225, 155, 0.5)", "0 0 8px rgba(255, 225, 155, 0.8)", "0 0 4px rgba(255, 225, 155, 0.5)"],
+                  transition: { 
+                    repeat: Infinity, 
+                    duration: 1.5,
+                    ease: "easeInOut",
+                    delay: 0.6 // highest delay for the last divider in the sequence
+                  } 
+                }}
+              ></motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-
-      {/* Hamburger menu dropdown */}
-      {menuState.hamburgerOpen && (
-        <motion.div
-          className="lg:hidden flex flex-col items-center space-y-2 mt-2 bg-[#051905] py-0 rounded-md shadow-lg"
-          variants={menuVariants}
-          initial="closed"
-          animate={menuState.hamburgerOpen ? 'open' : 'closed'}
-          exit="closed"
-          onClick={(e) => e.stopPropagation()} // Prevent click inside menu from closing it
-        >
-          <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] mb-2"></div>
-          <NavLink 
-            to="/portfolio" 
-            className={({ isActive }) => navLinkClass(isActive)} 
-            onClick={() => setMenuState({ hamburgerOpen: false, metaMenuOpen: false })}
-          >
-            Portfolio
-          </NavLink>
-          <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] mb-2"></div>
-          <NavLink
-            to="/vision"
-            className={({ isActive }) => navLinkClass(isActive)} 
-            onClick={() => setMenuState({ hamburgerOpen: false, metaMenuOpen: false })}
-          >
-            Vision
-          </NavLink>
-          <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] mb-2"></div>
-          <NavLink
-            to="/igm"
-            className={({ isActive }) => navLinkClass(isActive)}
-            onClick={() => setMenuState({ hamburgerOpen: false, metaMenuOpen: false })}
-          >
-            IGM
-          </NavLink>
-          <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] mb-2"></div>
-        </motion.div>
-      )}
     </nav>
   );
 }
