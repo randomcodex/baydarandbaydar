@@ -27,7 +27,7 @@ export default function App() {
             {/* Route for the vision page */}
             <Route path="/vision" element={<Vision />} />
             {/* Route for the portfolio page */}
-            <Route path="/brands" element={<Portfolio />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             {/* Route for the IGM page */}
             <Route path="/igm" element={<IGM />} />
             {/* Route for the portfolio page */}
