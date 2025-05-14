@@ -19,7 +19,7 @@
  */
 
 import { brands, equipment } from '../data/brands';
-import baccanalImage from '../assets/images/baccanal.jpg';
+import baccanalImage from '../assets/images/baccanal.webp';
 
 // Portfolio page component for Baydar & Baydar
 // Displays a grid of brand portfolios with logos and descriptions

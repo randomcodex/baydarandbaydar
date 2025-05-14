@@ -21,8 +21,8 @@
 
 import { useState } from "react";
 import { vision } from "../data/vision";
-import mapImage from "../assets/images/map.jpg";
-import baccoImage from "../assets/images/bacco.jpg";
+import mapImage from "../assets/images/map.webp";
+import baccoImage from "../assets/images/bacco.webp";
 
 // Vision page component for Baydar & Baydar
 // Displays the company's vision, mission, and historical background
@@ -69,13 +69,9 @@ export default function Vision() {
               <div className="flex-grow border-t border-[#ffe19b]"></div>
             </div>
 
-            <p className="mb-10" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
+            <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
               At <strong>Baydar &amp; Baydar</strong>, we believe that great wine is not just produced — it is discovered, understood, and shared with reverence. Our mission is to seek out Italy’s most exceptional wines — bottles shaped by land, legacy, and the quiet mastery of dedicated artisans. We partner with producers who work not for scale, but for purity and depth: limited-production wines rooted in history and terroir, expressing the very soul of their region. Each selection in our portfolio is the result of thoughtful curation — an invitation to experience a deeper narrative of Italian viticulture, one bottle at a time. Whether born of ancient volcanic soils or alpine breezes, our wines are chosen for those who seek not only taste, but truth.
             </p>
-
-            <div className="w-full flex items-center justify-center my-10">
-              <div className="flex-grow border-t border-[#ffe19b]"></div>
-            </div>
 
             <h3 className="text-2xl font-semibold mb-2" style={{ color: '#051905' }}>A Journey Through Italy</h3>
             <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
@@ -132,12 +128,13 @@ export default function Vision() {
             - Consistent styling with other images
           */}
           <div className="mt-8">
-            <img
-              src={mapImage}
-              alt="Company location map"
-              className="rounded-xl shadow-2xl border border-gray-300 cursor-pointer transition-transform duration-500 w-full h-auto hover:scale-105"
-              onClick={() => window.open(mapImage, '_blank')}
-            />
+            <a href={mapImage} target="_blank" rel="noopener noreferrer">
+              <img
+                src={mapImage}
+                alt="Company location map"
+                className="w-full h-auto rounded-xl shadow-lg border border-gray-200 hover:shadow-2xl hover:scale-102 transition-transform duration-500"
+              />
+            </a>
           </div>
         </div>
       </div>

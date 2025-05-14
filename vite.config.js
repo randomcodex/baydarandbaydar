@@ -31,6 +31,11 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
       },
+      treeshake: {
+        moduleSideEffects: false,
+        propertyReadSideEffects: false,
+        tryCatchDeoptimization: false,
+      },
     },
     // Output directory for build files
     outDir: 'dist',

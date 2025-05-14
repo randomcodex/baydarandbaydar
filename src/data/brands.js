@@ -2,7 +2,7 @@ import image1 from '../assets/brands/mastroberardino.PNG';
 import image2 from '../assets/brands/colsandago.PNG'; 
 import image3 from '../assets/brands/latogata.png';
 import image4 from '../assets/brands/vignedileo.PNG';
-import image5 from '../assets/brands/wineemotion.PNG';
+import wineEmotionLogo from '../assets/brands/wineemotion.PNG';
 
 export const brands = [
   {
@@ -43,7 +43,7 @@ export const equipment = [
   {
     id: 'equipment1',
     name: 'Wine Emotion',
-    logo: image5,
+    logo: wineEmotionLogo,
     website: 'https://www.wineemotion.com/wine-dispenser-and-cooler/',
     description:
       'Wine Emotion specializes in wine dispensing and preservation systems, offering innovative solutions for restaurants and wine enthusiasts.',

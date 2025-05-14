@@ -8,14 +8,12 @@ import linkedinIcon from '../assets/images/linkedinsvgrepo.svg';
 import facebookIcon from '../assets/images/facebooksvgrepo.svg';
 import instagramIcon from '../assets/images/instagramsvgrepo.svg';
 import twitterIcon from '../assets/images/twittersvgrepo.svg';
-import metaIcon from '../assets/images/metasvgrepo.svg';
 
 /**
  * Updated Navbar Component
  * 
  * Features:
  * - Provides site navigation with a mobile-friendly hamburger menu.
- * - Includes a Meta menu with dropdown behavior for social media links.
  * - Smooth animations for menu transitions using Framer Motion.
  * - Social media icons with hover effects and external links.
  * - Responsive design adapts to screen size with a collapsible menu on smaller screens.
@@ -101,7 +99,7 @@ export default function Navbar() {
 
   // Dynamic class for navigation links (applies active state styling)
   const navLinkClass = (isActive) =>
-    `${isActive ? 'text-[#ffe19b]' : 'text-white'} transition-transform duration-200 ease-in-out transform hover:scale-110 hover:underline underline-offset-4 hover:text-[#ffe19b]`;
+    `${isActive ? 'text-[#ffe19b] font-bold' : 'text-white font-bold'} transition-transform duration-200 ease-in-out transform hover:scale-110 hover:underline underline-offset-4 hover:text-[#ffe19b]`;
 
   // Static class for non-NavLink elements (WhatsApp, Email)
   const staticLinkClass =
@@ -124,13 +122,13 @@ export default function Navbar() {
               <img
                 src={logo}
                 alt="Company Logo"
-                className={`absolute top-1 w-full h-full object-contain transition-transform duration-250 ease-in-out
-                  scale-[135%]
-                  hover:scale-[150%]
-                  active:scale-[150%]
-                  lg:scale-[150%]
-                  lg:hover:scale-[175%]
-                  ${logoClicked ? 'scale-[150%]' : ''}
+                className={`absolute top w-full h-full object-contain transition-transform duration-500 ease-in-out
+                  scale-[150%]
+                  hover:scale-[165%]
+                  active:scale-[165%]
+                  lg:scale-[170%]
+                  lg:hover:scale-[190%]
+                  ${logoClicked ? 'scale-[165%]' : ''}
                   cursor-pointer` // Added cursor-pointer for hover effect on logo
                 }
               />
@@ -155,43 +153,6 @@ export default function Navbar() {
             alt="Email Icon" 
             link="mailto:baydarandbaydar@gmail.com" 
           />
-          {/* Meta menu */}
-          <div className="relative flex items-center hidden lg:flex">
-            <img
-              src={metaIcon}
-              alt="Meta Icon"
-              className="w-6 h-6 cursor-pointer hover:scale-110 transition-transform"
-              onClick={() => handleMenuToggle('metaMenuOpen')}
-            />
-            <motion.div
-              className={`absolute left-0 top-8 flex flex-col space-y-2 bg-[#051905] p-2 rounded-md shadow-md backdrop-blur-md transition-all duration-300 ease-in-out ${
-                menuState.metaMenuOpen ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'
-              }`}
-              variants={menuVariants}
-              initial="closed"
-              animate={menuState.metaMenuOpen ? 'open' : 'closed'}
-              onClick={(e) => e.stopPropagation()} // Prevent click inside menu from closing it
-            >
-              <SocialIcon 
-                src={facebookIcon} 
-                alt="Facebook Icon" 
-                link="https://www.facebook.com/people/Baydar-Baydar/61565184459208/" 
-                onClick={() => handleMenuToggle('metaMenuOpen')} 
-              />
-              <SocialIcon 
-                src={instagramIcon} 
-                alt="Instagram Icon" 
-                link="https://www.instagram.com/baydarandbaydar" 
-                onClick={() => handleMenuToggle('metaMenuOpen')} 
-              />
-              <SocialIcon 
-                src={twitterIcon} 
-                alt="Twitter Icon" 
-                link="https://twitter.com/baydarandbaydar" 
-                onClick={() => handleMenuToggle('metaMenuOpen')} 
-              />
-            </motion.div>
-          </div>
           <button
             className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none"
             onClick={() => handleMenuToggle('hamburgerOpen')}
