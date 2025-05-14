@@ -4,6 +4,19 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
+import { createServer } from 'http';
+
+// Middleware to set cache headers for static assets
+const setCacheHeaders = (req, res, next) => {
+  const cacheableExtensions = ['.webp', '.png', '.ttf', '.js', '.css'];
+  const url = req.url;
+
+  if (cacheableExtensions.some(ext => url.endsWith(ext))) {
+    res.setHeader('Cache-Control', 'max-age=31536000, immutable');
+  }
+
+  next();
+};
 
 export default defineConfig({
   // Base public path for the project
@@ -32,6 +45,10 @@ export default defineConfig({
     open: true,
     // Ensures proper routing for BrowserRouter
     historyApiFallback: true,
+    setupMiddlewares: (middlewares, server) => {
+      middlewares.use(setCacheHeaders);
+      return middlewares;
+    },
   },
 
   // Added optimization options for better performance
