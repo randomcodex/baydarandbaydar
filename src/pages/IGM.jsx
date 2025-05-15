@@ -27,17 +27,15 @@ export default function IGM() {
       - Dark green brand background (#051505)
       - Responsive padding (larger on desktop)
       - Gold text color (#ffe19b)
-    */
-    <div className="min-h-screen w-full bg-[#051505] py-8 sm:py-12 px-4 sm:px-6 text-[#ffe19b]">
+    */    <div className="min-h-screen w-full bg-[#051505] py-8 sm:py-12 px-4 sm:px-6 text-[#ffe19b]">
       {/*
         Content Container
         - Centered with automatic margins
         - Responsive vertical spacing
         - Max-width constrained by container
-      */}
-      <div className="container mx-auto space-y-8 sm:space-y-12">
-        {/* Top Gradient Glow Line */}
-        <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b]"></div>
+        - Group hover for enhanced glow effects      */}      <div className="container mx-auto space-y-8 sm:space-y-12 group">
+        {/* Top Gradient Glow Line with subtle effect */}
+        <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] shadow-[0_0_8px_1px_rgba(255,225,155,0.4)] animate-pulse transition-all duration-300 group-hover:shadow-[0_0_12px_2px_rgba(255,225,155,0.5)] group-hover:h-0.5"></div>
 
         {/* 
           Main Heading
@@ -57,27 +55,24 @@ export default function IGM() {
         */}
         <p className="text-center text-lg sm:text-xl">
           At Baydar & Baydar, we embrace the spirit of Istituto Grandi Marchi—united in our devotion to heritage, craftsmanship, and the timeless poetry of Italian wine.
-        </p>
-
-        {/* Logo Display */}
-        <div className="flex flex-col justify-center items-center space-y-4">
-          <img 
-            src={logo} 
-            alt="Istituto Grandi Marchi Official Logo" 
-            className="w-80 h-auto"
-          />
+        </p>        {/* Logo Display with integrated link */}
+        <div className="flex flex-col justify-center items-center space-y-4 relative">
+          {/* Radial glow effect that appears on group hover */}
+          <div className="absolute inset-0 bg-radial-gradient rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-700 blur-xl" 
+               style={{background: 'radial-gradient(circle, rgba(255,225,155,0.3) 0%, rgba(5,21,5,0) 70%)'}}></div>
           <a
             href="https://www.istitutograndimarchi.it/"
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#ffe19b] text-[#051505] px-8 py-1 rounded-md text-lg font-semibold hover:bg-[#e6c477] transition-colors"
           >
-            Visit Website
+            <img 
+              src={logo} 
+              alt="Istituto Grandi Marchi Official Logo" 
+              className="w-80 h-auto relative transition-all duration-300 group-hover:scale-105"
+            />
           </a>
-        </div>
-
-        {/* Bottom Gradient Glow Line */}
-        <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b]"></div>
+        </div>        {/* Bottom Gradient Glow Line with subtle effect */}
+        <div className="w-full h-0.5 bg-gradient-to-r from-[#ffe19b] via-[#ffffff] to-[#ffe19b] shadow-[0_0_8px_1px_rgba(255,225,155,0.4)] animate-pulse transition-all duration-300 group-hover:shadow-[0_0_12px_2px_rgba(255,225,155,0.5)] group-hover:h-0.5"></div>
       </div>
     </div>
   );
