@@ -1,16 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/images/logotransparent.png';
-import emailIcon from '../assets/images/emailsvgrepo.svg';
-import whatsappIcon from '../assets/images/whatsappsvgrepo.svg';
-import linkedinIcon from '../assets/images/linkedinsvgrepo.svg';
-import facebookIcon from '../assets/images/facebooksvgrepo.svg';
-import instagramIcon from '../assets/images/instagramsvgrepo.svg';
-import twitterIcon from '../assets/images/twittersvgrepo.svg';
+import logo from '../assets/images/header/logohome.png';
+import emailIcon from '../assets/images/header/emailsvgrepo.svg';
+import whatsappIcon from '../assets/images/header/whatsappsvgrepo.svg';
+import linkedinIcon from '../assets/images/header/linkedinsvgrepo.svg';
+import facebookIcon from '../assets/images/header/facebooksvgrepo.svg';
+import instagramIcon from '../assets/images/header/instagramsvgrepo.svg';
+import twitterIcon from '../assets/images/header/twittersvgrepo.svg';
 
 /**
- * Updated Navbar Component
+ * Updated Header Component
  * 
  * Features:
  * - Provides site navigation with a mobile-friendly hamburger menu.
@@ -85,7 +85,7 @@ const itemVariants = {
   },
 };
 
-export default function Navbar() {
+function Header() {
   // State to manage both menus
   const [menuState, setMenuState] = useState({
     hamburgerOpen: false,
@@ -158,8 +158,12 @@ export default function Navbar() {
         <div className="flex items-center">
           <Link 
             to="/" 
-            className="focus:outline-none"
-            onClick={handleLogoClick}
+            className="focus:outline-none" 
+            aria-label="Home Button" // Added accessible label
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setMenuState({ hamburgerOpen: false, metaMenuOpen: false }); // Close the menu
+            }}
           >
             <div className="h-12 w-24 relative group cursor-pointer lg:cursor-default">
               {/* Logo image with hover/click animations */}
@@ -212,30 +216,21 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center w-full">          <div className="flex-1 flex justify-center space-x-6">            <NavLink 
               to="/portfolio" 
               className={({ isActive }) => navLinkClass(isActive)} 
-              onClick={() => {
-                // Explicitly scroll to top when navigating
-                window.scrollTo(0, 0);
-              }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               Portfolio
             </NavLink>
             <NavLink 
               to="/vision" 
               className={({ isActive }) => navLinkClass(isActive)} 
-              onClick={() => {
-                // Explicitly scroll to top when navigating
-                window.scrollTo(0, 0);
-              }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               Vision
             </NavLink>
             <NavLink 
               to="/igm" 
               className={({ isActive }) => navLinkClass(isActive)} 
-              onClick={() => {
-                // Explicitly scroll to top when navigating
-                window.scrollTo(0, 0);
-              }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               IGM
             </NavLink>
@@ -312,7 +307,7 @@ export default function Navbar() {
                     // Close the menu
                     setMenuState({ hamburgerOpen: false, metaMenuOpen: false });
                     // Scroll to top after navigation
-                    window.scrollTo(0, 0);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                 >
                   Portfolio
@@ -346,7 +341,7 @@ export default function Navbar() {
                     // Close the menu
                     setMenuState({ hamburgerOpen: false, metaMenuOpen: false });
                     // Scroll to top after navigation
-                    window.scrollTo(0, 0);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                 >
                   Vision
@@ -380,7 +375,7 @@ export default function Navbar() {
                     // Close the menu
                     setMenuState({ hamburgerOpen: false, metaMenuOpen: false });
                     // Scroll to top after navigation
-                    window.scrollTo(0, 0);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
                 >
                   IGM
@@ -403,7 +398,9 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
-    </nav>
+      </div>    </nav>
   );
 }
+
+// Export the Header component as default
+export default Header;

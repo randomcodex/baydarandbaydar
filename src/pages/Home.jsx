@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import landingImageWebP from '../assets/images/landing.webp';
+import landingImageWebP from '../assets/images/home/bghome.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 

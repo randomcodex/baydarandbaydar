@@ -15,7 +15,7 @@
  * - Secure external link implementation
  */
 
-import logo from '../assets/images/logoigm.png';
+import logo from '../assets/images/igm/logoigm.png';
 
 // IGM page component for Baydar & Baydar
 // Displays information about the Istituto Grandi Marchi partnership

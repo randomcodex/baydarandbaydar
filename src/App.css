@@ -68,7 +68,7 @@
   --mobile-scale-factor: 1.15; 
 }
 
-/* Navbar Styles */
+/* Header Styles */
 .nav-link-transition {
   transition: 
     transform var(--transition-speed) ease-in-out,

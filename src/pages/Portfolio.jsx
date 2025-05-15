@@ -18,8 +18,8 @@
  *   - Stylish dividers with solid color or gradient effects.
  */
 
-import { brands, equipment } from '../data/brands';
-import baccanalImage from '../assets/images/baccanal.webp';
+import { brands, equipment } from '../data/portfolio';
+import baccanalImage from '../assets/images/portfolio/bgportfolio.webp';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
@@ -47,8 +47,7 @@ export default function Portfolio() {
         * Dark overlay (rgba(0,0,0,0.3))
         * overlay blend mode
       - Light gray fallback background
-    */
-    <div
+    */    <div
       className="min-h-screen w-full bg-gray-100 py-8 sm:py-12 px-2 sm:px-0"
       style={{
         backgroundImage: `url(${baccanalImage})`,
@@ -84,41 +83,25 @@ export default function Portfolio() {
 
         {/* 
           Brand Portfolio Grid
-          - 1 column on mobile, 2 columns on desktop (md:)
+          - 1 column on mobile, 2 columns on desktop (lg:)
           - Responsive gap spacing
           - Each card contains:
             * Brand logo
             * Name and description
             * Website link
-        */}
-        <div className="grid gap-12 sm:gap-16 grid-cols-1 md:grid-cols-2 brand-section" data-aos="fade-up">
+        */}        <div className="grid gap-12 sm:gap-16 grid-cols-1 lg:grid-cols-2 brand-section" data-aos="fade-up">
           {brands.sort((a, b) => a.name.localeCompare(b.name)).map((brand) => (
-            /* 
-              Brand Card
-              - Semi-transparent white background (bg-opacity-50)
-              - Fixed border color (#ffe19b)
-              - Flex layout (row on all screen sizes)
-              - Hover scale effect
-              - Overflow hidden for contained rounded corners
-              - Clickable card to open website
-            */
             <div 
               key={brand.id}
-              className="bg-white bg-opacity-50 p-4 flex flex-row items-start hover:scale-105 transition-transform duration-300 border-4 border-[#ffe19b] w-full max-w-1xl mx-auto cursor-pointer rounded-none"
+              className="portfolio-box"
               onClick={() => window.open(brand.website, '_blank', 'noopener noreferrer')}
               data-aos="fade-up"
             >
-              {/* 
-                Brand Logo
-                - Fixed aspect ratio (square)
-                - Responsive sizing
-                - Left-aligned on all screen sizes
-                - Contained within bounds (object-contain)
-              */}
+              {/* Brand Logo - Using global img styling from global.css */}
               <img 
                 src={brand.logo} 
                 alt={`${brand.name} logo`} 
-                className="w-36 h-24 sm:w-80 sm:h-36 mb-3 object-contain aspect-square rounded self-start" 
+                className="img"
                 data-aos="zoom-in"
               />
 
@@ -130,10 +113,6 @@ export default function Portfolio() {
               */}
               <div 
                 className="flex-1 flex flex-col items-start text-left break-words"
-                style={{
-                  fontSize: 'clamp(0.8rem, 2.5vw, 1rem)', // Auto-adjustable font size for text
-                  lineHeight: '1.2', // Maintain readability
-                }}
                 data-aos="fade-up"
               >
                 {/* 
@@ -165,39 +144,22 @@ export default function Portfolio() {
           <span className="mx-4 text-[#ffe19b] text-lg sm:text-xl font-serif">Dispensing & Preservation</span>
           <div className="flex-grow h-0.5 bg-[#ffe19b]"></div>
         </div>
-        {/* Added a stylish border with title above the equipment section */}
-        <div className="grid gap-12 sm:gap-16 grid-cols-1 md:grid-cols-2 equipment-section" data-aos="fade-up">
+        {/* Added a stylish border with title above the equipment section */}        <div className="grid gap-12 sm:gap-16 grid-cols-1 lg:grid-cols-2 equipment-section" data-aos="fade-up">
           {equipment.map((item) => (
             <div 
               key={item.id}
-              className="
-                bg-white bg-opacity-50 
-                p-4 
-                flex flex-row 
-                items-start 
-                hover:scale-105 
-                transition-transform duration-300 
-                border-4 border-[#ffe19b] 
-                w-full max-w-1xl mx-auto 
-                cursor-pointer 
-                rounded-none 
-                min-h-fit
-              "
+              className="portfolio-box"
               onClick={() => window.open(item.website, '_blank', 'noopener noreferrer')}
               data-aos="fade-up"
             >
               <img 
                 src={item.logo} 
                 alt={`${item.name} logo`} 
-                className="w-36 h-24 sm:w-80 sm:h-36 mb-3 object-contain aspect-square rounded self-start" 
+                className="img"
                 data-aos="zoom-in"
               />
               <div 
                 className="flex-1 flex flex-col items-start text-left break-words"
-                style={{
-                  fontSize: 'clamp(0.8rem, 2.5vw, 1rem)', // Auto-adjustable font size for text
-                  lineHeight: '1.2', // Maintain readability
-                }}
                 data-aos="fade-up"
               >
                 <h2 className="text-lg sm:text-xl font-serif text-[#051905] mb-2 max-w-full leading-tight break-words">

@@ -17,7 +17,7 @@
  */
 
 import { useState, useEffect, useRef } from "react";
-import baccoImage from "../assets/images/bacco.webp";
+import baccoImage from "../assets/images/vision/bgvision.webp";
 
 // Vision page component for Baydar & Baydar
 // Displays the company's vision, mission, and historical background with enhanced visuals
@@ -164,45 +164,7 @@ const Vision = () => {
               </div>
             </div>
           </section>
-        </div>
-      </div>
-      
-      {/* Add custom styles for animations */}
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-fade-in {
-          animation: fadeIn 0.8s ease forwards;
-        }
-        
-        .animate-on-scroll {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-
-        .gradient-span {
-          position: absolute;
-          bottom: -4px; /* Adjusted distance to match the "Our Mission" span */
-          left: 0;
-          right: 0;
-          height: 2px; /* Ensured consistent thickness */
-          background: linear-gradient(to right, #ffe19b, #ffffff, #ffe19b);
-          box-shadow: 0 0 8px 1px rgba(255, 225, 155, 0.4);
-          animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-          0%, 100% {
-            box-shadow: 0 0 8px 1px rgba(255, 225, 155, 0.4);
-          }
-          50% {
-            box-shadow: 0 0 12px 2px rgba(255, 225, 155, 0.6);
-          }
-        }
-      `}</style>
+        </div>      </div>
     </div>
   );
 };
