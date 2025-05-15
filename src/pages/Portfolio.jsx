@@ -20,11 +20,23 @@
 
 import { brands, equipment } from '../data/brands';
 import baccanalImage from '../assets/images/baccanal.webp';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 // Portfolio page component for Baydar & Baydar
 // Displays a grid of brand portfolios with logos and descriptions
 
 export default function Portfolio() {
+  // Initialize AOS for scroll animations
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      easing: 'ease-in-out', // Easing function for animations
+      once: true, // Whether animation should happen only once
+    });
+  }, []);
+
   return (
     /* 
       Main Container
@@ -79,7 +91,7 @@ export default function Portfolio() {
             * Name and description
             * Website link
         */}
-        <div className="grid gap-12 sm:gap-16 grid-cols-1 md:grid-cols-2 brand-section">
+        <div className="grid gap-12 sm:gap-16 grid-cols-1 md:grid-cols-2 brand-section" data-aos="fade-up">
           {brands.sort((a, b) => a.name.localeCompare(b.name)).map((brand) => (
             /* 
               Brand Card
@@ -94,6 +106,7 @@ export default function Portfolio() {
               key={brand.id}
               className="bg-white bg-opacity-50 p-4 flex flex-row items-start hover:scale-105 transition-transform duration-300 border-4 border-[#ffe19b] w-full max-w-1xl mx-auto cursor-pointer rounded-none"
               onClick={() => window.open(brand.website, '_blank', 'noopener noreferrer')}
+              data-aos="fade-up"
             >
               {/* 
                 Brand Logo
@@ -106,6 +119,7 @@ export default function Portfolio() {
                 src={brand.logo} 
                 alt={`${brand.name} logo`} 
                 className="w-36 h-24 sm:w-80 sm:h-36 mb-3 object-contain aspect-square rounded self-start" 
+                data-aos="zoom-in"
               />
 
               {/* 
@@ -120,6 +134,7 @@ export default function Portfolio() {
                   fontSize: 'clamp(0.8rem, 2.5vw, 1rem)', // Auto-adjustable font size for text
                   lineHeight: '1.2', // Maintain readability
                 }}
+                data-aos="fade-up"
               >
                 {/* 
                   Brand Name
@@ -151,7 +166,7 @@ export default function Portfolio() {
           <div className="flex-grow h-0.5 bg-[#ffe19b]"></div>
         </div>
         {/* Added a stylish border with title above the equipment section */}
-        <div className="grid gap-12 sm:gap-16 grid-cols-1 md:grid-cols-2 equipment-section">
+        <div className="grid gap-12 sm:gap-16 grid-cols-1 md:grid-cols-2 equipment-section" data-aos="fade-up">
           {equipment.map((item) => (
             <div 
               key={item.id}
@@ -169,11 +184,13 @@ export default function Portfolio() {
                 min-h-fit
               "
               onClick={() => window.open(item.website, '_blank', 'noopener noreferrer')}
+              data-aos="fade-up"
             >
               <img 
                 src={item.logo} 
                 alt={`${item.name} logo`} 
                 className="w-36 h-24 sm:w-80 sm:h-36 mb-3 object-contain aspect-square rounded self-start" 
+                data-aos="zoom-in"
               />
               <div 
                 className="flex-1 flex flex-col items-start text-left break-words"
@@ -181,6 +198,7 @@ export default function Portfolio() {
                   fontSize: 'clamp(0.8rem, 2.5vw, 1rem)', // Auto-adjustable font size for text
                   lineHeight: '1.2', // Maintain readability
                 }}
+                data-aos="fade-up"
               >
                 <h2 className="text-lg sm:text-xl font-serif text-[#051905] mb-2 max-w-full leading-tight break-words">
                   {item.name}

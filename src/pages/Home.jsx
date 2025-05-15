@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import landingImageWebP from '../assets/images/landing.webp';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 /**
  * Home Component
@@ -13,6 +15,7 @@ import landingImageWebP from '../assets/images/landing.webp';
  * - Smooth opacity transition when the image is loaded.
  * - Responsive design with centered content.
  * - Accessible with ARIA labels for better usability.
+ * - Animated scroll effects using AOS (Animate On Scroll) library.
  * 
  * Props:
  * None
@@ -23,6 +26,7 @@ import landingImageWebP from '../assets/images/landing.webp';
  * Dependencies:
  * - React (useState, useEffect)
  * - react-router-dom (Link)
+ * - AOS (Animate On Scroll)
  * 
  * Assets:
  * - landingImageWebP: The WebP version of the landing page background image.
@@ -61,6 +65,15 @@ export default function Home() {
     };
   }, []);
 
+  // Initialize AOS for scroll animations
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in milliseconds
+      easing: 'ease-in-out', // Easing function for animations
+      once: true, // Whether animation should happen only once
+    });
+  }, []);
+
   return (
     <>
       <section
@@ -78,17 +91,26 @@ export default function Home() {
         role="region"
       >
         {imageLoaded && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/20 animate-fade-in">
-            <h1 className="text-4xl font-bold text-[#ffe19b] mb-2 text-center px-4 drop-shadow-lg">
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center bg-black/20"
+          >
+            <h1
+              className="text-4xl font-bold text-[#ffe19b] mb-2 text-center px-4 drop-shadow-lg"
+              data-aos="zoom-in"
+            >
               Welcome to Baydar & Baydar 
             </h1>
-            <p className="text-xl text-[#ffe19b]/90 mb-8 text-center px-4 max-w-md drop-shadow-md">
+            <p
+              className="text-xl text-[#ffe19b]/90 mb-8 text-center px-4 max-w-md drop-shadow-md"
+              data-aos="fade-up"
+            >
               Sourcing exquisite tastes for the discerning palate. <br />
             </p>
             <Link
               to="/portfolio"
               className="px-6 py-2 bg-[#ffe19b] text-[#051905] rounded-lg hover:bg-[#ffe19b]/90 transition-colors duration-300 font-medium drop-shadow"
               aria-label="View our wine portfolio"
+              data-aos="fade-up"
             >
               Visit our Portfolio
             </Link>

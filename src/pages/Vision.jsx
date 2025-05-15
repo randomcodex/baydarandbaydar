@@ -2,142 +2,209 @@
  * Vision Component
  * 
  * Displays the company's vision, mission, and historical background with:
- * - Full-screen background image with overlay
- * - Responsive content container with semi-transparent background
- * - Structured presentation of vision statements
- * - Image gallery of related visuals
- * - Embedded map image
+ * - Full-screen background image with parallax effect
+ * - Responsive content container with elegant glass-morphism styling
+ * - Structured presentation of vision statements with animated reveals
  * 
  * Data Source:
- * - Imports content from ../data/vision.js
  * - Uses images from ../assets/images/
  * 
  * Design Features:
  * - Mobile-first responsive layout
- * - Carefully balanced opacity for readability
- * - Consistent color scheme with brand guidelines
- * - Smooth shadow and border effects
+ * - Glass-morphism effect for modern aesthetics
+ * - Consistent brand color scheme with elegant accents
+ * - Micro-animations for engaging user experience
  */
 
-import { useState } from "react";
-import { vision } from "../data/vision";
-import mapImage from "../assets/images/map.webp";
+import { useState, useEffect, useRef } from "react";
 import baccoImage from "../assets/images/bacco.webp";
 
 // Vision page component for Baydar & Baydar
-// Displays the company's vision, mission, and historical background
-export default function Vision() {
+// Displays the company's vision, mission, and historical background with enhanced visuals
+const Vision = () => {
+  const contentRef = useRef(null);
+
+  // Animate sections on scroll into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-fade-in");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const sections = document.querySelectorAll(".animate-on-scroll");
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
+
   return (
     /* 
       Main Container
-      - Full viewport height (min-h-screen)
-      - Brand background color fallback
-      - Background image with controlled opacity
+      - Full viewport height with overflow handling
+      - Layered background with controlled opacity
     */
     <div
-      className="min-h-screen w-full"
+      className="min-h-screen w-full relative bg-cover bg-center"
       style={{
         backgroundColor: "#051505", // Dark green background fallback
         backgroundImage: `url(${baccoImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        opacity: 0.9, // Slightly reduced opacity for better text contrast
+        opacity: 0.85, // Slightly reduced opacity for better text contrast
       }}
     >
+      {/* Overlay with gradient for better readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(5,21,5,0.7)]"></div>
+
       {/*
-        Content Container
+        Content Container with Glass-morphism Effect
         - Centered with max-width for optimal readability
-        - Responsive padding
-        - Semi-transparent white background
-        - Subtle shadow and border effects
+        - Responsive padding with elegant glass styling
+        - Elevated with subtle shadow effects
       */}
-      <div className="container mx-auto py-16 px-4 sm:px-6 max-w-4xl">
+      <div className="container relative z-10 mx-auto py-20 px-4 sm:px-6 max-w-4xl overflow-hidden">
         <div
-          className="bg-white rounded-2xl shadow-xl p-4 sm:p-10 space-y-8 border border-gray-100"
-          style={{ backgroundColor: "rgba(255, 255, 255, 0.75)" }} // 75% opacity white
+          ref={contentRef}
+          className="rounded-2xl shadow-2xl p-6 sm:p-12 space-y-10 border border-[rgba(255,255,255,0.2)] bg-white/75"
         >
           {/* 
-            Text Content Section
-            - Responsive typography scaling
-            - Carefully spaced elements
-            - Brand color text
+            Text Content Section with Animated Reveal
+            - Elegant typography with varied font weights
+            - Animated entrance effects
+            - Enhanced visual hierarchy
           */}
-          <section className="max-w-4xl mx-auto px-10 py-6 text-gray-800 font-serif text-[#0a2e0a]">
-            <h2 className="text-4xl font-bold mb-10 pb-0" style={{ color: '#051905' }}>Our Mission</h2>
+          <section className="max-w-4xl mx-auto px-6 sm:px-10 py-8 text-gray-800 font-serif text-[#0a2e0a] animate-on-scroll">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-10 pb-0 tracking-tight text-[#051905]">
+              <span className="relative">
+                Our Mission
+                <span className="gradient-span"></span>
+              </span>
+            </h2>
+            
+            {/* Main paragraph with subtle animation and enhanced typography */}
+            <p className="mb-8 text-lg leading-relaxed text-[rgba(5,25,5,0.85)] animate-on-scroll">
+              At <strong className="text-[#051905]">Baydar &amp; Baydar</strong>, we believe that great wine is not just produced — it is discovered, understood, and shared with reverence. Our mission is to seek out Italy's most exceptional wines — bottles shaped by land, legacy, and the quiet mastery of dedicated artisans. We partner with producers who work not for scale, but for purity and depth: limited-production wines rooted in history and terroir, expressing the very soul of their region. Each selection in our portfolio is the result of thoughtful curation — an invitation to experience a deeper narrative of Italian viticulture, one bottle at a time. Whether born of ancient volcanic soils or alpine breezes, our wines are chosen for those who seek not only taste, but truth.
+            </p>
 
-            <div className="w-full flex items-center justify-center my-10">
-              <div className="flex-grow border-t border-[#ffe19b]"></div>
+            {/* Enhanced section styling */}
+            <div className="space-y-8 mt-12 animate-on-scroll">
+              <div className="animate-on-scroll">
+                <h3 className="text-2xl font-semibold mb-3 relative text-[#051905]">
+                  <span className="relative">
+                    A Journey Through Italy
+                    <span className="gradient-span"></span>
+                  </span>
+                </h3>
+                <p className="mb-0 text-[rgba(5,25,5,0.85)]">
+                  Our portfolio celebrates the vast diversity of Italy's twenty wine regions—from the sunlit coasts of Sicily to the alpine peaks of Valle d'Aosta. Each bottle is a faithful expression of its origin, shaped by soil, climate, and centuries of tradition.
+                  We showcase the elegance of Piedmont's Barolo, the charm of Veneto's Prosecco, the soul of Tuscany's Sangiovese, and the volcanic depth of Campania's ancient grapes. These wines are more than regional—each one carries the voice of its land and the vision of its maker.
+                </p>
+              </div>
+
+              <div className="animate-on-scroll">
+                <h3 className="text-2xl font-semibold mb-3 relative text-[#051905]">
+                  <span className="relative">
+                    Artisans, Not Factories
+                    <span className="gradient-span"></span>
+                  </span>
+                </h3>
+                <p className="mb-0 text-[rgba(5,25,5,0.85)]">
+                  We partner exclusively with visionary producers—reclusive oenologists, multigenerational family estates, and world-renowned names. Regardless of scale, what unites them is a shared philosophy: respect for nature, excellence in craft, and a passion for storytelling through wine.
+                </p>
+              </div>
+
+              <div className="flex flex-col md:flex-row gap-6 animate-on-scroll">
+                <div className="flex-1 animate-on-scroll">
+                  <h3 className="text-2xl font-semibold mb-3 relative text-[#051905]">
+                    <span className="relative">
+                      Wine as Cultural Memory
+                      <span className="gradient-span"></span>
+                    </span>
+                  </h3>
+                  <p className="mb-0 text-[rgba(5,25,5,0.85)]">
+                    At Baydar &amp; Baydar, we believe wine is more than a beverage—it is an art form. Like Caravaggio's <em>Bacchus</em>, each bottle holds a mirror to beauty, indulgence, and history. These are vessels of cultural memory, infused with myth, artistry, and centuries of enological wisdom.
+                  </p>
+                </div>
+                <div className="flex-1 animate-on-scroll">
+                  <h3 className="text-2xl font-semibold mb-3 relative text-[#051905]">
+                    <span className="relative">
+                      Serving the Refined
+                      <span className="gradient-span"></span>
+                    </span>
+                  </h3>
+                  <p className="mb-0 text-[rgba(5,25,5,0.85)]">
+                    Our clients include luxury hotels, haute cuisine establishments, private collectors, and cultural tastemakers—those who seek not only exceptional wines, but also the stories behind them.
+                  </p>
+                </div>
+              </div>
+
+              <div className="animate-on-scroll">
+                <h3 className="text-2xl font-semibold mb-3 relative text-[#051905]">
+                  <span className="relative">
+                    Excellence with Every Vintage
+                    <span className="gradient-span"></span>
+                  </span>
+                </h3>
+                <p className="mb-0 text-[rgba(5,25,5,0.85)]">
+                  With every wine we import, we offer more than quality. We offer nuance, narrative, and a true sense of place.
+                </p>
+              </div>
             </div>
-
-            <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
-              At <strong>Baydar &amp; Baydar</strong>, we believe that great wine is not just produced — it is discovered, understood, and shared with reverence. Our mission is to seek out Italy’s most exceptional wines — bottles shaped by land, legacy, and the quiet mastery of dedicated artisans. We partner with producers who work not for scale, but for purity and depth: limited-production wines rooted in history and terroir, expressing the very soul of their region. Each selection in our portfolio is the result of thoughtful curation — an invitation to experience a deeper narrative of Italian viticulture, one bottle at a time. Whether born of ancient volcanic soils or alpine breezes, our wines are chosen for those who seek not only taste, but truth.
-            </p>
-
-            <h3 className="text-2xl font-semibold mb-2" style={{ color: '#051905' }}>A Journey Through Italy</h3>
-            <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
-              Our portfolio celebrates the vast diversity of Italy’s twenty wine regions—from the sunlit coasts of Sicily to the alpine peaks of Valle d'Aosta. Each bottle is a faithful expression of its origin, shaped by soil, climate, and centuries of tradition.
-              We showcase the elegance of Piedmont’s Barolo, the charm of Veneto’s Prosecco, the soul of Tuscany’s Sangiovese, and the volcanic depth of Campania’s ancient grapes. These wines are more than regional—each one carries the voice of its land and the vision of its maker.
-            </p>
-
-            <h3 className="text-2xl font-semibold mb-2" style={{ color: '#051905' }}>Artisans, Not Factories</h3>
-            <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
-              We partner exclusively with visionary producers—reclusive oenologists, multigenerational family estates, and world-renowned names. Regardless of scale, what unites them is a shared philosophy: respect for nature, excellence in craft, and a passion for storytelling through wine.
-            </p>
-
-            <h3 className="text-2xl font-semibold mb-2" style={{ color: '#051905' }}>Wine as Cultural Memory</h3>
-            <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
-              At Baydar &amp; Baydar, we believe wine is more than a beverage—it is an art form. Like Caravaggio’s <em>Bacchus</em>, each bottle holds a mirror to beauty, indulgence, and history. These are vessels of cultural memory, infused with myth, artistry, and centuries of enological wisdom.
-            </p>
-
-            <h3 className="text-2xl font-semibold mb-2" style={{ color: '#051905' }}>Serving the Refined</h3>
-            <p className="mb-6" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
-              Our clients include luxury hotels, haute cuisine establishments, private collectors, and cultural tastemakers—those who seek not only exceptional wines, but also the stories behind them.
-            </p>
-
-            <h3 className="text-2xl font-semibold mb-2" style={{ color: '#051905' }}>Excellence with Every Vintage</h3>
-            <p className="mb-12" style={{ color: 'rgba(5, 25, 5, 0.85)' }}>
-              With every wine we import, we offer more than quality. We offer nuance, narrative, and a true sense of place.
-            </p>
-
-            <div className="text-right mt-10">
-              <p className="text-2xl font-semibold" style={{ color: '#051905' }}>- Barış Baydar -</p>
-              <p className="text-lg italic" style={{ color: 'rgba(5, 25, 5, 0.65)' }}>Director, Baydar &amp; Baydar</p>
+            {/* Signature section with elegant styling */}
+            <div className="text-right mt-16 animate-on-scroll">
+              <div className="inline-block relative">
+                <p className="text-2xl font-semibold relative text-[#051905]">- Barış Baydar -</p>
+                <p className="text-lg italic text-[rgba(5,25,5,0.65)]">Director, Baydar &amp; Baydar</p>
+              </div>
             </div>
           </section>
-
-          {/*
-            Image Gallery Grid
-            - Responsive 1-column (mobile) to 2-column (desktop) layout
-            - Consistent image sizing
-            - Decorative borders and shadows
-          */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 mt-8">
-            {vision.images.map((img, idx) => (
-              <img
-                key={idx}
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-48 sm:h-72 object-cover rounded-xl shadow-lg border border-gray-200"
-              />
-            ))}
-          </div>
-
-          {/*
-            Map Section
-            - Full-width display
-            - Consistent styling with other images
-          */}
-          <div className="mt-8">
-            <a href={mapImage} target="_blank" rel="noopener noreferrer">
-              <img
-                src={mapImage}
-                alt="Company location map"
-                className="w-full h-auto rounded-xl shadow-lg border border-gray-200 hover:shadow-2xl hover:scale-102 transition-transform duration-500"
-              />
-            </a>
-          </div>
         </div>
       </div>
+      
+      {/* Add custom styles for animations */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+          animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        .gradient-span {
+          position: absolute;
+          bottom: -4px; /* Adjusted distance to match the "Our Mission" span */
+          left: 0;
+          right: 0;
+          height: 2px; /* Ensured consistent thickness */
+          background: linear-gradient(to right, #ffe19b, #ffffff, #ffe19b);
+          box-shadow: 0 0 8px 1px rgba(255, 225, 155, 0.4);
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            box-shadow: 0 0 8px 1px rgba(255, 225, 155, 0.4);
+          }
+          50% {
+            box-shadow: 0 0 12px 2px rgba(255, 225, 155, 0.6);
+          }
+        }
+      `}</style>
     </div>
   );
-}
+};
+
+export default Vision;

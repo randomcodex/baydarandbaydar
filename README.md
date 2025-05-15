@@ -8,16 +8,16 @@ The Baydar & Baydar website is a modern, responsive platform designed to showcas
 src/
 ├── assets/          # Static assets like images and logos
 ├── components/      # Reusable UI components (e.g., Navbar, Footer)
-├── data/            # Static data files (e.g., vision.js, brands.js)
+├── data/            # Static data files (e.g., brands.js)
 ├── pages/           # Page components (e.g., Home, Vision, Portfolio)
 ├── App.jsx          # Main application component
 ├── main.jsx         # Entry point for the React app
-├── global.css        # Global CSS styles
+├── global.css       # Global CSS styles
 ```
 
 ## Key Features
 - **Responsive Design**: Optimized for all screen sizes using Tailwind CSS.
-- **Dynamic Content**: React components and static data files enable easy updates.
+- **Dynamic Content**: React components enable easy updates.
 - **Custom Domain**: Hosted on GitHub Pages with a custom domain.
 - **SEO Optimized**: Includes robots.txt and meta tags for search engine visibility.
 - **Client-Side Routing**: Uses `BrowserRouter` for seamless navigation with proper server-side fallback mechanisms.

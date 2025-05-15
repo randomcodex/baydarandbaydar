@@ -58,7 +58,7 @@ export default function IGM() {
         </p>        {/* Logo Display with integrated link */}
         <div className="flex flex-col justify-center items-center space-y-4 relative">
           {/* Radial glow effect that appears on group hover */}
-          <div className="absolute inset-0 bg-radial-gradient rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-700 blur-xl" 
+          <div className="absolute inset-0 bg-radial-gradient rounded-full opacity-30 sm:opacity-0 sm:group-hover:opacity-30 transition-opacity duration-700 blur-xl" 
                style={{background: 'radial-gradient(circle, rgba(255,225,155,0.3) 0%, rgba(5,21,5,0) 70%)'}}></div>
           <a
             href="https://www.istitutograndimarchi.it/"
