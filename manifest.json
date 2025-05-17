@@ -1,0 +1,46 @@
+{
+  "name": "Baydar & Baydar",
+  "short_name": "Baydar & Baydar",
+  "description": "Sourcing exquisite tastes for the discerning palate.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4a90e2",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48 64x64",
+      "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Home",
+      "short_name": "Home",
+      "description": "Welcome to Baydar & Baydar.",
+      "url": "/home",
+      "icons": [{ "src": "/favicon.ico", "sizes": "16x16" }]
+    },
+    {
+      "name": "Portfolio",
+      "short_name": "Portfolio",
+      "description": "View our portfolio",
+      "url": "/portfolio",
+      "icons": [{ "src": "/favicon.ico", "sizes": "16x16" }]
+    },
+    {
+      "name": "Vision",
+      "short_name": "Vision",
+      "description": "Our Mission",
+      "url": "/vision",
+      "icons": [{ "src": "/favicon.ico", "sizes": "16x16" }]
+    }
+  ],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "categories": ["business", "food & beverage"],
+  "display_override": ["standalone", "browser"],
+  "prefer_related_applications": false
+}

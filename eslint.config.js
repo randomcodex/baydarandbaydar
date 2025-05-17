@@ -1,48 +1,66 @@
-// ESLint configuration for Baydar & Baydar project
-// Includes rules for React, hooks, accessibility, and Prettier integration
-
 import js from '@eslint/js';
 import globals from 'globals';
+import reactPlugin from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
-import jsxA11y from 'eslint-plugin-jsx-a11y'; // Accessibility plugin
-import prettier from 'eslint-plugin-prettier'; // Prettier plugin
-import prettierConfig from 'eslint-config-prettier'; // Prettier config
+import jsxA11y from 'eslint-plugin-jsx-a11y';
+import prettier from 'eslint-plugin-prettier';
+import prettierConfig from 'eslint-config-prettier';
 
 export default [
-  // Ignore the dist directory
-  { ignores: ['dist'] },
+  { 
+    ignores: ['dist', 'build', 'node_modules', '.publish', '.gh-pages-cache'] 
+  },
+  prettierConfig,
   {
-    // Apply rules to JavaScript and JSX files
-    files: ['**/*.{js,jsx}'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+      ecmaVersion: 'latest',
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
       parserOptions: {
-        ecmaVersion: 'latest',
         ecmaFeatures: { jsx: true },
         sourceType: 'module',
       },
     },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
     plugins: {
-      'react-hooks': reactHooks, // React hooks rules
-      'react-refresh': reactRefresh, // React refresh rules
-      'jsx-a11y': jsxA11y, // Accessibility rules
-      'prettier': prettier, // Prettier integration
+      'react': reactPlugin,
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+      'jsx-a11y': jsxA11y,
+      'prettier': prettier,
     },
     rules: {
-      // Recommended rules from ESLint, React hooks, and accessibility plugins
+      // Base recommendations
       ...js.configs.recommended.rules,
+      
+      // React related rules
+      ...reactPlugin.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
-
-      // Custom rules
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }], // Ignore constants
+      
+      // React refresh for faster development
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
-      'prettier/prettier': 'error', // Enforce Prettier formatting
+      
+      // Code quality rules
+      'no-unused-vars': ['error', { 
+        varsIgnorePattern: '^[A-Z_]',
+        argsIgnorePattern: '^_' 
+      }],
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      
+      // Prettier integration
+      'prettier/prettier': 'error',
     },
   },
 ];

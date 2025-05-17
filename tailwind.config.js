@@ -1,16 +1,27 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class',
   content: [
     "./index.html",
-    "./src/**/*.{js,jsx}"
+    "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
     extend: {
       colors: {
-        burgundy: "#5A1A01",
-        ivory:   "#F8F5F0",
-        gold:    "#C5A880",
+        burgundy: {
+          DEFAULT: "#5A1A01",
+          light: "#7A2A11",
+          dark: "#4A0A00"
+        },
+        ivory: {
+          DEFAULT: "#F8F5F0",
+          light: "#FFFCF7",
+          dark: "#F0EDE5"
+        },
+        gold: {
+          DEFAULT: "#C5A880",
+          light: "#D5B890",
+          dark: "#B59870"
+        },
       },
       keyframes: {
         'fade-in': {
@@ -23,12 +34,22 @@ module.exports = {
             transform: 'translateY(0) scale(1)',
           },
         },
+        'slide-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(-20px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateX(0)',
+          },
+        }
       },
       animation: {
         'fade-in': 'fade-in 0.3s ease-out forwards',
+        'slide-in': 'slide-in 0.4s ease-out forwards',
       },
     },
-    // Use Tailwind's default breakpoints, or extend only what you need
     screens: {
       sm: '640px',
       md: '768px',
@@ -38,4 +59,12 @@ module.exports = {
     },
   },
   plugins: [],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
+  corePlugins: {
+    textOpacity: false,
+    backgroundOpacity: false,
+    borderOpacity: false,
+  }
 }

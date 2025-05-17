@@ -1,20 +1,16 @@
-// PostCSS configuration for Baydar & Baydar project
-// Configures plugins for Tailwind CSS, autoprefixing, and modern CSS features
-
 module.exports = {
   plugins: {
-    // Tailwind CSS plugin for utility-first CSS framework
     '@tailwindcss/postcss': {},
-
-    // Autoprefixer plugin to add vendor prefixes for better browser compatibility
     autoprefixer: {},
-
-    // PostCSS Preset Env plugin to enable modern CSS features with fallbacks
     'postcss-preset-env': {
-      stage: 1, // Enables modern CSS features
+      stage: 1,
       features: {
-        'nesting-rules': true, // Enables CSS nesting
+        'nesting-rules': true,
       },
+      browsers: 'last 2 versions',
     },
+    ...(process.env.NODE_ENV === 'production' 
+      ? { cssnano: { preset: 'default' } } 
+      : {})
   },
 };

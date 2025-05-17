@@ -3,7 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://baydarandbaydar.com",  "scripts": {
+  "homepage": "https://baydarandbaydar.com",
+  "scripts": {
     "dev": "vite",
     "build": "vite build && echo 'node_modules/' > dist/.gitignore",
     "lint": "eslint .",
@@ -32,7 +33,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
-    "@tailwindcss/postcss": "^4.1.6",
+    "@tailwindcss/postcss": "^4.1.7",
     "@tailwindcss/vite": "^4.1.4",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
@@ -48,6 +49,7 @@
     "tailwindcss": "^4.1.6",
     "tailwindcss-cli": "^0.1.2",
     "vite": "^6.3.5",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-svgr": "^4.3.0"
   }
 }

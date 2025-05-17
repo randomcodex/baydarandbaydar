@@ -4,29 +4,56 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
+        env:
+          NODE_ENV: production
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Optimize output
+        run: |
+          echo "Optimizing build output..."
+          find dist -name "*.map" -type f -delete || echo "No sourcemaps to remove"
+          touch dist/.nojekyll
+          echo "Build size:" > dist/build-stats.txt
+          du -sh dist/ >> dist/build-stats.txt
+          echo "File count:" >> dist/build-stats.txt
+          find dist -type f | wc -l >> dist/build-stats.txt
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           cname: baydarandbaydar.com
-          exclude_assets: 'node_modules/**'
+          exclude_assets: ''
           force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy to GitHub Pages [skip ci]'
+          full_commit_message: 'Deploy to GitHub Pages from ${{ github.sha }} [skip ci]'
