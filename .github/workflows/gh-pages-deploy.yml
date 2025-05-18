@@ -55,5 +55,5 @@ jobs:
           force_orphan: true
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Deploy to GitHub Pages [skip ci]'
-          full_commit_message: 'Deploy to GitHub Pages from ${{ github.sha }} [skip ci]'
+          commit_message: 'Deploy to GitHub Pages'
+          full_commit_message: 'Deploy to GitHub Pages from ${{ github.sha }}'
