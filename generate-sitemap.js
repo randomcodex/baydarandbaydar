@@ -4,6 +4,7 @@ import { create } from 'xmlbuilder2';
 import fetch from 'node-fetch';
 import zlib from 'zlib';
 import { promisify } from 'util';
+import { pipeline } from 'stream/promises';
 
 const config = {
   baseUrl: 'https://baydarandbaydar.com',
@@ -25,22 +26,28 @@ const config = {
 
 const pingSearchEngines = async () => {
   if (!config.notifySearchEngines) return;
-  
+
   const sitemapUrl = `${config.baseUrl}/sitemap.xml`;
   const pingUrls = config.searchEngines.map(engine => `${engine}${encodeURIComponent(sitemapUrl)}`);
-  
+
   try {
-    const results = await Promise.allSettled(
-      pingUrls.map(url => fetch(url, { method: 'GET' }))
-    );
-    
+    const results = [];
+    for (const url of pingUrls) {
+      try {
+        const response = await fetch(url, { method: 'GET' });
+        results.push({ status: 'fulfilled', value: response });
+      } catch (error) {
+        results.push({ status: 'rejected', reason: error });
+      }
+    }
+
     const succeeded = results.filter(r => r.status === 'fulfilled').length;
     console.log(`✅ ${succeeded}/${pingUrls.length} search engines notified successfully.`);
-    
+
     results
       .filter(r => r.status === 'rejected')
       .forEach((result, i) => {
-        console.warn(`⚠️ Failed to notify search engine (${pingUrls[i]}):`, result.reason);
+        console.warn(`⚠️ Failed to notify search engine:`, result.reason);
       });
   } catch (error) {
     console.error('❌ Error notifying search engines:', error);
@@ -66,17 +73,22 @@ const generateSitemapContent = () => {
 
 const generateSitemap = async () => {
   try {
-    const xml = generateSitemapContent();
     const outputDir = path.dirname(config.outputPath);
-    
+
     if (!fs.existsSync(outputDir)) {
       fs.mkdirSync(outputDir, { recursive: true });
     }
 
+    const xml = generateSitemapContent();
+
     if (config.compressOutput) {
-      const gzip = promisify(zlib.gzip);
-      const compressed = await gzip(Buffer.from(xml, 'utf8'));
-      fs.writeFileSync(`${config.outputPath}.gz`, compressed);
+      const source = fs.createReadStream(config.outputPath);
+      const gzip = zlib.createGzip();
+      const destination = fs.createWriteStream(`${config.outputPath}.gz`);
+
+      fs.writeFileSync(config.outputPath, xml, 'utf8');
+
+      await pipeline(source, gzip, destination);
       console.log(`✅ Sitemap generated and compressed successfully at ${config.outputPath}.gz`);
     } else {
       fs.writeFileSync(config.outputPath, xml, 'utf8');
