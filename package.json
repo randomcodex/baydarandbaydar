@@ -6,7 +6,7 @@
   "homepage": "https://baydarandbaydar.com",
   "scripts": {
     "dev": "vite --port 5731",
-    "build": "vite build && echo 'node_modules/' > dist/.gitignore",
+    "build": "set NODE_OPTIONS=--max-old-space-size=4096 && vite build && echo 'node_modules/' > dist/.gitignore",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
