@@ -1,8 +1,6 @@
-# Baydar and Baydar
+# Baydar & Baydar
 
 A modern, React-based web application built with Vite and TailwindCSS, featuring optimized performance and responsive design.
-
-![Baydar and Baydar](./public/logo.png)
 
 ## Table of Contents
 
@@ -159,4 +157,4 @@ The project implements several performance optimizations:
 
 ## License
 
-[Copyright 2025 Baydar & Baydar. All rights reserved.]
+Copyright 2025 Baydar & Baydar. All rights reserved.
