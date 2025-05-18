@@ -18,7 +18,7 @@ export default function BrandCard({ item }) {
         data-aos="fade-up"
       >
         <h2 
-          className="text-lg sm:text-xl font-serif mb-2 max-w-full leading-tight break-words"
+          className="text-lg sm:text-xl font-serif mb-2 max-w-full leading-tight break-words line-clamp-1"
           style={{ color: darkGreen }}
         >
           {item.name}

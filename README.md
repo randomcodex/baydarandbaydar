@@ -98,7 +98,7 @@ The application follows a modular component structure:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/baydarandbaydar.git
+git clone https://github.com/randomcodex/baydarandbaydar.git
 
 # Navigate to the project directory
 cd baydarandbaydar

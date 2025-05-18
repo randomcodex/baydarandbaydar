@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { LOGO } from '../../layout/Header/index';
+import logoHome from '../../../assets/images/header/logohome.png';
 
 function Logo({ setMenuState }) {
   const [logoClicked, setLogoClicked] = useState(false);
@@ -26,10 +26,9 @@ function Logo({ setMenuState }) {
           window.scrollTo({ top: 0, behavior: 'smooth' });
           setMenuState({ hamburgerOpen: false, metaMenuOpen: false });
         }}
-      >
-        <div className="h-12 w-24 relative group cursor-pointer lg:cursor-default">
+      >        <div className="h-12 w-24 relative group cursor-pointer lg:cursor-default">
           <img
-            src={LOGO}
+            src={logoHome}
             alt="Company Logo"
             className={`absolute top w-full h-full object-contain transition-transform duration-500 ease-in-out
               scale-[150%]

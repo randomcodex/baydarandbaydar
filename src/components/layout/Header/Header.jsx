@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { NAV_LINKS, SOCIAL_LINKS } from './index';
-import Logo from '../../navigation/Logo/Logo';
-import DesktopNavigation from '../../navigation/DesktopNavigation/DesktopNavigation';
+import Logo from '../../navigation/Logo';
+import DesktopNavigation from '../../navigation/DesktopNavigation';
 import SocialIconsGroup from '../../ui/SocialMedia/SocialIconsGroup';
 import MobileMenu from '../../navigation/MobileMenu';
 
@@ -36,7 +36,6 @@ function Header() {
       document.removeEventListener('click', handleClickOutside);
     };
   }, []);
-
   const handleEmailClick = useCallback(() => {
     window.location.href = 'mailto:baydarandbaydar@gmail.com';
   }, []);
@@ -45,8 +44,7 @@ function Header() {
     `${isActive ? 'text-[#ffe19b] font-bold' : 'text-white font-bold'} transition-transform duration-200 ease-in-out transform hover:scale-110 hover:underline underline-offset-4 hover:text-[#ffe19b]`;
 
   return (
-    <nav className="sticky top-0 bg-[#051905] text-white py-3 px-5 text-lg sm:text-xl z-50">      
-      <div className="container mx-auto flex items-center justify-between px-3 sm:px-5">
+    <nav className="sticky top-0 bg-[#051905] text-white py-3 px-5 text-lg sm:text-xl z-50">      <div className="container mx-auto flex items-center justify-between px-3 sm:px-5">
         <Logo setMenuState={setMenuState} />
 
         <MobileMenu 

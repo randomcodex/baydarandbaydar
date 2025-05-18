@@ -1,8 +1,7 @@
 import { igmContent } from './index';
 import { igmStyles } from './styles';
 import logo from '../../assets/images/igm/logoigm.png';
-import { PageContainer, GradientLine } from '../../components';
-import { LogoSection } from '../../components';
+import { PageContainer, GradientLine, LogoSection } from '../../components';
 
 export default function IGM() {
   const { colors } = igmStyles;

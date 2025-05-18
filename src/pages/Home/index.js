@@ -7,9 +7,9 @@ export const homeData = {
     heading: "Welcome to Baydar & Baydar",
     subheading: "Sourcing exquisite tastes for the discerning palate.",
     ctaButton: {
-      text: "Visit our Portfolio",
+      text: "View Selection",
       link: "/portfolio",
-      ariaLabel: "View our wine portfolio"
+      ariaLabel: "View Selection"
     }
   },
   animation: aosDefaults

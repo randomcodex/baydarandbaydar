@@ -1,4 +1,4 @@
-import { SocialIcon } from '../../../components/ui/SocialMedia';
+import { SocialIcon } from '../../ui/SocialMedia';
 import MobileMenuButton from './MobileMenuButton';
 import MobileMenuDropdown from './MobileMenuDropdown';
 

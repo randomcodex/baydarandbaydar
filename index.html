@@ -25,14 +25,12 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/AppImages/android/android-launchericon-96-96.png">
     <link rel="icon" type="image/png" sizes="144x144" href="/AppImages/android/android-launchericon-144-144.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/AppImages/android/android-launchericon-192-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/AppImages/android/android-launchericon-512-512.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" sizes="512x512" href="/AppImages/android/android-launchericon-512-512.png">    <link rel="manifest" href="/manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Baydar & Baydar">
-    <link rel="preload" href="/src/assets/images/home/bghome.webp" as="image" importance="high">
-    <link rel="preload" href="/src/assets/fonts/Abhaya_Libre/AbhayaLibre-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-    <link rel="preload" href="/src/main.jsx" as="script" crossorigin="anonymous">
+    <meta name="mobile-web-app-capable" content="yes">    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">    <meta name="apple-mobile-web-app-title" content="Baydar & Baydar">
+    <link rel="prefetch" href="/src/assets/images/home/bghome.webp" as="image">
+    <link rel="prefetch" href="/src/assets/fonts/Abhaya_Libre/AbhayaLibre-Bold.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+    <link rel="modulepreload" href="/src/main.jsx" crossorigin="anonymous">
     <meta name="robots" content="index, follow">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     <meta name="googlebot" content="index, follow">
@@ -101,8 +99,7 @@
       "foundingDate": "2023",
       "priceRange": "$$$$"
     }
-    </script>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:;">
+    </script>    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' ws: wss:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data: https:;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
