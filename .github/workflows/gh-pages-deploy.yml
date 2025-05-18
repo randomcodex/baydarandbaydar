@@ -6,9 +6,16 @@ on:
       - main
   workflow_dispatch:
 
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: pages-${{ github.ref }}
-  cancel-in-progress: true
+  group: pages-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
@@ -44,7 +51,15 @@ jobs:
           du -sh dist/ >> dist/build-stats.txt
           echo "File count:" >> dist/build-stats.txt
           find dist -type f | wc -l >> dist/build-stats.txt
+          ls -la dist/ || echo "Failed to list dist directory"
 
+      - name: Debug Deployment
+        run: |
+          echo "GitHub Actor: ${{ github.actor }}"
+          echo "GitHub Repository: ${{ github.repository }}"
+          echo "GitHub Ref: ${{ github.ref }}"
+          echo "Publishing to gh-pages branch"
+          
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
@@ -57,3 +72,6 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           commit_message: 'Deploy to GitHub Pages'
           full_commit_message: 'Deploy to GitHub Pages from ${{ github.sha }}'
+          
+      - name: Deployment Status
+        run: echo "Deployment to GitHub Pages completed"
