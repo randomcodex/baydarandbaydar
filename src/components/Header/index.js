@@ -52,3 +52,4 @@ export const SOCIAL_LINKS = [
 ];
 
 export const LOGO = logoHome;
+export { default } from './Header';

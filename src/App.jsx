@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import Header from './components/layout/Header/Header';
+import Footer from './components/layout/Footer/Footer';
 import Home from './pages/Home/Home.jsx';
-import './index.css';
+import './globals.css';
 
 const Portfolio = lazy(() => import('./pages/Portfolio/Portfolio.jsx'));
 const Vision = lazy(() => import('./pages/Vision/Vision.jsx'));

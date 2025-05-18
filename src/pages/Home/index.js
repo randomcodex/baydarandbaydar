@@ -1,3 +1,4 @@
+import { aosDefaults } from '../../styles/animations';
 import landingImageWebP from '../../assets/images/home/bghome.webp';
 
 export const homeData = {
@@ -11,11 +12,7 @@ export const homeData = {
       ariaLabel: "View our wine portfolio"
     }
   },
-  animation: {
-    duration: 1000,
-    easing: 'ease-in-out',
-    once: true
-  }
+  animation: aosDefaults
 };
 
 export default homeData;

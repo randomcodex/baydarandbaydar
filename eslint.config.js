@@ -38,28 +38,23 @@ export default [
       'prettier': prettier,
     },
     rules: {
-      // Base recommendations
       ...js.configs.recommended.rules,
       
-      // React related rules
       ...reactPlugin.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
       ...jsxA11y.configs.recommended.rules,
       
-      // React refresh for faster development
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
       ],
       
-      // Code quality rules
       'no-unused-vars': ['error', { 
-        varsIgnorePattern: '^[A-Z_]',
+        varsIgnorePattern: '^[A-Z_]', 
         argsIgnorePattern: '^_' 
       }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       
-      // Prettier integration
       'prettier/prettier': 'error',
     },
   },

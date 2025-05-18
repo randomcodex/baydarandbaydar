@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/src/assets/fonts/Abhaya_Libre/AbhayaLibre-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Abhaya Libre';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/src/assets/fonts/Abhaya_Libre/AbhayaLibre-Bold.ttf') format('truetype');
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #f9fafb;
+    color: #1f2937;
+    font-family: 'Abhaya Libre', serif;
+  }
+
+  h1 {
+    font-family: 'Abhaya Libre', serif;
+  }
+}
