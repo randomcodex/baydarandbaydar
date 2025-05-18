@@ -1,6 +1,21 @@
 import { motion } from 'framer-motion';
 import { useIntersectionObserver } from '../../../hooks/useIntersectionObserver';
 
+const defaultAnimationVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 20,
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { 
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1] 
+    }
+  }
+};
+
 const InViewWrapper = ({
   children,
   className = '',
@@ -25,21 +40,6 @@ const InViewWrapper = ({
       {children}
     </MotionTag>
   );
-};
-
-const defaultAnimationVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 20,
-  },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { 
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] 
-    }
-  }
 };
 
 export default InViewWrapper;

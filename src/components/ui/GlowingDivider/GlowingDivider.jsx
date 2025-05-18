@@ -9,10 +9,9 @@ const GlowingDivider = ({ className = '', delay = 0, ...props }) => (
       className="h-px w-full bg-gradient-to-r from-transparent via-[#ffe19b] to-transparent"
       style={{
         boxShadow: '0 0 8px 1px rgba(255, 225, 155, 0.7)',
-      }}
-      animate={{
+      }}      animate={{
         boxShadow: [
-          '0 0 4px rgba(255, 225, 155, 0.)',
+          '0 0 4px rgba(255, 225, 155, 0.5)',
           '0 0 8px rgba(255, 225, 155, 0.8)',
           '0 0 4px rgba(255, 225, 155, 0.5)',
         ],

@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-   
     paths-ignore:
       - '**/*.md'
 
@@ -30,7 +29,7 @@ jobs:
         run: npm ci
 
       - name: Build project
-        run: npm run build
+        run: node --max-old-space-size=4096 ./node_modules/.bin/npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
