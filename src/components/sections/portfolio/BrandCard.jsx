@@ -27,7 +27,7 @@ export default function BrandCard({ item, borderColor, textColor }) {
         
         <div className="flex-1 flex flex-col justify-between h-full">
           <div>
-            <h2 className={`text-lg sm:text-xl font-serif mb-2 leading-tight ${textClass}`}>
+            <h2 className={`text-lg sm:text-xl font-serif mb-2 leading-tight line-clamp-1 ${textClass}`}>
               {item.name}
             </h2>
             <p className={`text-sm sm:text-lg leading-relaxed line-clamp-3 ${textClass}`}>
