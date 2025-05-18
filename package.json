@@ -3,10 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://baydarandbaydar.com",
-  "scripts": {
+  "homepage": "https://baydarandbaydar.com",  "scripts": {
     "dev": "vite --port 5731",
-    "build": "set NODE_OPTIONS=--max-old-space-size=4096 && vite build && echo 'node_modules/' > dist/.gitignore",
+    "build": "vite build && echo 'node_modules/' > dist/.gitignore",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
