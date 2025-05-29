@@ -1,0 +1,250 @@
+// CSS Reset and Base Styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  // Apply consistent text rendering to all elements
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+  font-kerning: auto;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  font-size: var(--font-size-fluid); // Responsive font size using clamp
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-kerning: auto;
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-display: swap;
+}
+
+body {
+  font-family: var(--font-family-secondary);
+  font-size: var(--font-size-base); // Now 1.05rem for better serif readability
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-relaxed); // Now 1.7 for enhanced vertical rhythm
+  letter-spacing: var(--letter-spacing-normal); // Subtle letter spacing for clarity
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  min-height: 100vh;
+  overflow-x: hidden;
+  // Enhanced text rendering for maximum clarity and antialiasing
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+  font-kerning: auto;
+  font-optical-sizing: auto;
+}
+
+// Typography with uniform antialiasing - Enhanced for Abhaya Libre
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @include heading-primary;
+  margin-bottom: var(--spacing-md);
+  color: #111; // Slightly darker for strong contrast
+  letter-spacing: var(--letter-spacing-wide); // Enhanced for headings
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-size: var(--font-size-4xl);
+
+  @include tablet-up {
+    font-size: var(--font-size-5xl);
+  }
+
+  @include large-up {
+    font-size: var(--font-size-6xl);
+  }
+}
+
+h2 {
+  font-size: var(--font-size-3xl);
+
+  @include tablet-up {
+    font-size: var(--font-size-4xl);
+  }
+}
+
+h3 {
+  font-size: var(--font-size-2xl);
+
+  @include tablet-up {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+h4 {
+  font-size: var(--font-size-xl);
+
+  @include tablet-up {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+h5 {
+  font-size: var(--font-size-lg);
+
+  @include tablet-up {
+    font-size: var(--font-size-xl);
+  }
+}
+
+h6 {
+  font-size: var(--font-size-base);
+
+  @include tablet-up {
+    font-size: var(--font-size-lg);
+  }
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+  max-width: var(--max-reading-width); // Keeps lines readable (60ch)
+  @include body-text;
+}
+
+a {
+  color: var(--secondary-dark);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--secondary-light);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}
+
+ul,
+ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+}
+
+li {
+  margin-bottom: var(--spacing-xs);
+}
+
+blockquote {
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-left: 4px solid var(--primary-color);
+  background-color: var(--light-gray);
+  font-style: italic;
+}
+
+// Images and Media
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+svg {
+  fill: currentColor;
+}
+
+// Forms with enhanced text rendering
+button {
+  font-family: inherit;
+  cursor: pointer;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// Enhanced text rendering for common text elements
+p,
+span,
+div,
+label,
+a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// Tables
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-lg);
+}
+
+th,
+td {
+  padding: var(--spacing-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--gray);
+}
+
+th {
+  font-weight: var(--font-weight-semibold);
+  color: var(--dark-gray);
+}
+
+// Accessibility
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Focus styles for keyboard navigation
+*:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+// Skip link for accessibility
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--border-radius-md);
+  z-index: var(--z-modal);
+
+  &:focus {
+    top: 6px;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "configurations": [
+    {
+      "scope": "./",
+      "permissions": {
+        "files": {
+          "read": true,
+          "write": true,
+          "delete": true,
+          "modify": true
+        }
+      }
+    }
+  ]
+}

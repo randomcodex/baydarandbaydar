@@ -1,0 +1,25 @@
+# Netlify Deploy Preview Configuration
+
+# Build command for deploy previews
+[context.deploy-preview]
+  command = "npm run build:netlify"
+
+[context.deploy-preview.environment]
+  VITE_SITE_URL = "$DEPLOY_PRIME_URL"
+  NODE_ENV = "production"
+
+# Branch deploys
+[context.branch-deploy]
+  command = "npm run build:netlify"
+
+[context.branch-deploy.environment]
+  VITE_SITE_URL = "$DEPLOY_PRIME_URL"
+  NODE_ENV = "production"
+
+# Production context
+[context.production]
+  command = "npm run build:netlify"
+
+[context.production.environment]
+  VITE_SITE_URL = "https://baydarandbaydar.com"
+  NODE_ENV = "production"

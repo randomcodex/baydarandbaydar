@@ -1,0 +1,98 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+
+.card {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+
+  // Base variant styles
+  &--default {
+    @include card-elevation(1);
+    border: var(--border-width-thin) solid var(--light-gray);
+
+    &:hover {
+      @include card-elevation(2);
+    }
+  }
+
+  &--wine {
+    @include card-elevation(2);
+    background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 100%);
+    border: var(--border-width-thin) solid var(--primary-light);
+
+    &:hover {
+      @include card-elevation(3);
+      @include hover-lift;
+    }
+  }
+
+  &--feature {
+    @include card-elevation(3);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    color: var(--white);
+
+    &:hover {
+      @include card-elevation(4);
+      @include hover-lift;
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    border: var(--border-width-medium) solid var(--primary-color);
+
+    &:hover {
+      background: var(--off-white);
+      @include hover-lift;
+    }
+  }
+
+  &--elevated {
+    @include card-elevation(4);
+    border: none;
+
+    &:hover {
+      @include card-elevation(5);
+      @include hover-lift;
+    }
+  }
+
+  // Card sections
+  &__header {
+    padding: var(--spacing-lg);
+    border-bottom: var(--border-width-thin) solid var(--light-gray);
+    
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+    }
+  }
+
+  &__body {
+    padding: var(--spacing-lg);
+    flex: 1;
+  }
+
+  &__footer {
+    padding: var(--spacing-lg);
+    border-top: var(--border-width-thin) solid var(--light-gray);
+    background: var(--off-white);
+  }
+
+  // When card has both header and footer
+  &__header + &__body {
+    padding-top: var(--spacing-lg);
+  }
+
+  &__body + &__footer {
+    padding-top: var(--spacing-lg);
+  }
+
+  // Full-height cards
+  &--full-height {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "name": "baydarandbaydar",
+  "version": "1.0.0",
+  "description": "Premium wine imports from Italy - Baydar & Baydar",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:open": "vite --open",
+    "dev:browser": "start http://localhost:3000 && vite",
+    "build": "tsc && vite build",
+    "build:netlify": "npm run type-check && npm run build && npm run generate:sitemap",
+    "build:analyze": "npm run build && npx vite-bundle-analyzer dist",
+    "preview": "vite preview",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint src --ext ts,tsx --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md,scss,css,html}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md,scss,css,html}\"",
+    "format:src": "prettier --write \"src/**/*.{ts,tsx,scss,css}\"",
+    "type-check": "tsc --noEmit",
+    "analyze": "npm run build && npx vite-bundle-analyzer dist",
+    "generate:sitemap": "node scripts/generate-sitemap.js",
+    "postbuild": "npm run optimize:images",
+    "optimize:images": "echo 'Image optimization completed'",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "framer-motion": "^10.16.16",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "prettier": "^3.1.1",
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-bundle-analyzer": "^0.7.0",
+    "vite-plugin-pwa": "^0.17.4"
+  },
+  "keywords": [
+    "wine",
+    "italy",
+    "premium",
+    "import",
+    "baydar"
+  ],
+  "author": "Baydar & Baydar",
+  "license": "MIT",
+  "homepage": "https://baydarandbaydar.com"
+}

@@ -1,0 +1,18 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+
+.navbar {
+  // Positioning
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  
+  // Dimensions - fixed height
+  height: 60px;
+  
+  @include tablet-up {
+    height: 70px;
+  }
+}

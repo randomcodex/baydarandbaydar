@@ -1,0 +1,99 @@
+// Import base styles
+@import "./base/variables";
+@import "./base/mixins";
+@import "./base/reset";
+
+// Import utility styles
+@import "./utils/utilities";
+@import "./utils/text-enhancements";
+@import "./utils/background-utils";
+
+// Import component styles
+@import "./components/loading";
+@import "./components/error-boundary";
+
+// Import Local Fonts
+// Using TTF format for compatibility
+
+@font-face {
+  font-family: "Abhaya Libre";
+  src: url("/assets/fonts/AbhayaLibre-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  // Enhanced font rendering hints
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+}
+
+@font-face {
+  font-family: "Abhaya Libre";
+  src: url("/assets/fonts/AbhayaLibre-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+}
+
+@font-face {
+  font-family: "Abhaya Libre";
+  src: url("/assets/fonts/AbhayaLibre-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+}
+
+@font-face {
+  font-family: "Abhaya Libre";
+  src: url("/assets/fonts/AbhayaLibre-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+}
+
+@font-face {
+  font-family: "Abhaya Libre";
+  src: url("/assets/fonts/AbhayaLibre-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  font-variant-ligatures: common-ligatures;
+}
+
+// Global app styles
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--primary-color); // Using lighter shade (#051505) for main background
+  color: var(--secondary-color);
+}
+
+// Ensure all pages inherit the theme
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary-color) var(--primary-light);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--primary-light);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: var(--border-radius-full);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-dark);
+}

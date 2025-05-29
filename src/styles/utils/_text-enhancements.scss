@@ -1,0 +1,135 @@
+// Text Enhancement Utilities for Abhaya Libre
+
+// Smooth text fade-in animation (Tailwind-like)
+@keyframes textFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Utility classes for text animations
+.text-animate {
+  animation: textFadeIn 0.6s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.text-animate-delay-1 {
+  animation: textFadeIn 0.6s ease-out 0.1s forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.text-animate-delay-2 {
+  animation: textFadeIn 0.6s ease-out 0.2s forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.text-animate-delay-3 {
+  animation: textFadeIn 0.6s ease-out 0.3s forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+// Typography utility classes
+.text-enhanced {
+  @include font-smoothing;
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+.text-reading-width {
+  max-width: var(--max-reading-width);
+}
+
+.text-fluid {
+  font-size: var(--font-size-fluid);
+}
+
+// Enhanced serif text rendering
+.text-serif-enhanced {
+  font-family: var(--font-family-primary);
+  @include font-smoothing;
+  letter-spacing: var(--letter-spacing-normal);
+  line-height: var(--line-height-relaxed);
+  
+  // Avoid transforms that can blur text
+  transform: translateZ(0); // Force hardware acceleration without blur
+  backface-visibility: hidden;
+}
+
+// Improved heading contrast
+.heading-enhanced {
+  color: #111;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  line-height: var(--line-height-tight);
+  @include font-smoothing;
+}
+
+// Responsive text sizes with better serif scaling
+.text-responsive-sm {
+  @include fluid-typography(0.875rem, 1rem);
+}
+
+.text-responsive-base {
+  @include fluid-typography(1rem, 1.125rem);
+}
+
+.text-responsive-lg {
+  @include fluid-typography(1.125rem, 1.25rem);
+}
+
+.text-responsive-xl {
+  @include fluid-typography(1.25rem, 1.5rem);
+}
+
+// Performance optimizations for text
+.text-optimized {
+  // Prevent text from being affected by transforms
+  will-change: auto;
+  
+  // Ensure crisp text rendering
+  image-rendering: -webkit-optimize-contrast;
+  
+  // Better subpixel rendering on supported displays
+  -webkit-font-smoothing: subpixel-antialiased;
+  
+  @supports (-webkit-font-smoothing: antialiased) {
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+// Dark theme text adjustments
+@media (prefers-color-scheme: dark) {
+  .text-auto-contrast {
+    // Slightly lighter weight for dark backgrounds to maintain readability
+    font-weight: calc(var(--font-weight-normal) - 50);
+    letter-spacing: calc(var(--letter-spacing-normal) + 0.005em);
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .text-enhanced,
+  .text-serif-enhanced {
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wide);
+  }
+}
+
+// Reduced motion preferences
+@media (prefers-reduced-motion: reduce) {
+  .text-animate,
+  .text-animate-delay-1,
+  .text-animate-delay-2,
+  .text-animate-delay-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

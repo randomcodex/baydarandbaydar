@@ -1,0 +1,84 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build outputs
+dist/
+build/
+.next/
+.nuxt/
+.vite/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Netlify
+.netlify/
+
+# Generated files
+sitemap.xml
+robots.txt
+
+# Font files (binary)
+*.ttf
+*.woff
+*.woff2
+*.eot
+
+# Image files (binary)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+*.webp
+*.ico
+
+# Video files (binary)
+*.mp4
+*.webm
+*.ogg
+
+# Documentation that should preserve formatting
+CHANGELOG.md
+LICENSE

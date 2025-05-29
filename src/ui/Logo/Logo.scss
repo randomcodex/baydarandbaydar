@@ -1,0 +1,46 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  &__title {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--secondary-color);
+    letter-spacing: 0.5px;
+    margin: 0;
+    
+    @include tablet-up {
+      font-size: var(--font-size-2xl);
+    }
+  }
+
+  &__handshake {
+    font-size: 1.2em;
+    
+    @include tablet-up {
+      font-size: 1.5em;
+    }  }
+}

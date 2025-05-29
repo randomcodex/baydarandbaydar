@@ -1,0 +1,180 @@
+// Footer Component Styles
+// Separated into logical sections for better maintainability
+
+// =============================================================================
+// Layout & Container
+// =============================================================================
+.footer {
+  // Layout
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto;
+  position: relative; // Add this line
+  
+  // Dimensions
+  height: 60px;
+  
+  // Appearance
+  background: var(--primary-dark); // Using darker shade (#051905) for footer contrast
+  border-top: 1px solid var(--primary-color);
+  
+  @include tablet-up {
+    height: 70px;
+  }
+
+  &__container {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // Remove position: relative from here
+    width: 100%;
+    height: 100%;
+  }
+}
+
+// =============================================================================
+// Typography & Text Elements
+// =============================================================================
+.footer {
+  &__copyright {
+    @include small-text;
+    color: var(--secondary-color);
+    font-size: var(--font-size-xs);
+    text-align: center;
+    
+    // Text rendering optimization
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    // Soft shadow for better readability
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 
+                 0 2px 6px rgba(0, 0, 0, 0.15);
+    
+    @include tablet-up {
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  &__powered-by {
+    @include small-text;
+    color: var(--secondary-color);
+    font-size: var(--font-size-xs);
+    
+    // Text rendering optimization
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    // Soft shadow for better readability
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 
+                 0 2px 6px rgba(0, 0, 0, 0.15);
+    
+    @include tablet-up {
+      font-size: var(--font-size-xs);
+    }
+  }
+}
+
+// =============================================================================
+// Positioning & Interactions
+// =============================================================================
+.footer {
+  &__powered-by {
+    // Positioning for bottom right
+    position: absolute;
+    right: var(--spacing-lg); // Use container padding value instead of 10px
+    bottom: var(--spacing-xs);
+    
+    // Spacing - reduced to prevent overlap on small screens
+    padding: var(--spacing-xs);
+    
+    // Transitions
+    transition: color var(--transition-fast);
+    
+    // Hide on very small screens to prevent overlap
+    @media (max-width: 320px) {
+      display: none;
+    }
+    
+    @include tablet-up {
+      right: var(--spacing-lg); // Adjust for larger container padding on tablet
+      bottom: var(--spacing-sm);
+      padding: var(--spacing-sm);
+    }
+
+    // States - Bright white shine on hover (desktop only)
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: #ffffff;
+        text-shadow: 0 0 6px rgba(255, 255, 255, 0.6),
+                     0 0 8px rgba(255, 255, 255, 0.4),
+                     0 0 12px rgba(255, 255, 255, 0.2);
+        text-decoration: none;
+        // Remove all gradient effects
+        background: none;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        background-clip: initial;
+      }
+    }
+    
+    // Mobile touch states
+    &:active {
+      color: #ffffff;
+      transform: translateY(1px);
+      text-decoration: none;
+      // Reset gradient effects on mobile
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      background-clip: initial;
+    }
+    
+    // Prevent lingering underlines and color changes on mobile
+    &:focus {
+      color: var(--secondary-color);
+      text-decoration: none;
+      outline: none;
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      background-clip: initial;
+    }
+    
+    // Force reset after touch on mobile
+    @media (hover: none) {
+      &:focus {
+        color: var(--secondary-color);
+        text-decoration: none;
+        outline: none;
+        background: none;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        background-clip: initial;
+      }
+      
+      &:visited {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+      
+      &:link {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+    }
+    
+    // Ensure proper reset on all devices
+    &:not(:hover):not(:focus):not(:active) {
+      color: var(--secondary-color);
+      text-decoration: none;
+      background: none;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      background-clip: initial;
+    }
+  }
+}

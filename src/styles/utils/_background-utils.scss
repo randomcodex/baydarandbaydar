@@ -1,0 +1,110 @@
+// background-utils.scss
+
+// CSS Variables for tunable filters
+:root {
+  --bg-contrast: 1.05;
+  --bg-brightness: 1.02;
+  --bg-saturate: 1.1;
+  --bg-overlay-opacity: 0.25;
+}
+
+// 1. Universal background image optimization
+.bg-polish {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: contrast(var(--bg-contrast)) brightness(var(--bg-brightness)) saturate(var(--bg-saturate));
+  will-change: transform, opacity;
+  transform: translateZ(0); // Force GPU acceleration
+}
+
+// 2. Responsive background adjustment for larger screens
+@media (min-width: 768px) {
+  .bg-polish {
+    background-attachment: fixed; // Creates a subtle parallax effect
+  }
+}
+
+// 3. Add optional overlay for clarity
+.bg-overlay {
+  position: relative;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, var(--bg-overlay-opacity));
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+// 4. Blur effect option (for hero sections)
+.bg-blur {
+  filter: blur(2px) brightness(0.9);
+}
+
+// 5. High-contrast mode
+.bg-contrast {
+  filter: contrast(1.2) saturate(1.2);
+}
+
+// 6. Additional utility classes for different overlay colors
+.bg-overlay-light::before {
+  background: rgba(255, 255, 255, var(--bg-overlay-opacity));
+}
+
+.bg-overlay-dark::before {
+  background: rgba(0, 0, 0, var(--bg-overlay-opacity));
+}
+
+.bg-overlay-primary::before {
+  background: rgba(139, 69, 19, var(--bg-overlay-opacity)); // Wine-themed brown overlay
+}
+
+// 7. Content positioning helpers for overlaid backgrounds
+.bg-content {
+  position: relative;
+  z-index: 2;
+}
+
+// 8. Performance optimizations for mobile
+@media (max-width: 767px) {
+  .bg-polish {
+    background-attachment: scroll; // Better performance on mobile
+  }
+}
+
+// 9. Hover effects for interactive backgrounds
+.bg-polish-hover {
+  transition: filter 0.3s ease;
+  
+  &:hover {
+    filter: contrast(calc(var(--bg-contrast) + 0.1)) 
+            brightness(calc(var(--bg-brightness) + 0.05)) 
+            saturate(calc(var(--bg-saturate) + 0.2));
+  }
+}
+
+// 10. Accessibility improvements
+@media (prefers-reduced-motion: reduce) {
+  .bg-polish {
+    background-attachment: scroll;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+// 11. Print styles
+@media print {
+  .bg-polish {
+    background: none !important;
+    filter: none !important;
+  }
+  
+  .bg-overlay::before {
+    display: none;
+  }
+}

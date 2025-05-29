@@ -1,0 +1,131 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+
+.grid {
+  display: grid;
+  width: 100%;
+
+  // Column variants
+  &--columns-1 {
+    grid-template-columns: 1fr;
+  }
+
+  &--columns-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &--columns-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--columns-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--columns-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &--columns-6 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  // Gap variants
+  &--gap-sm {
+    gap: var(--spacing-sm);
+  }
+
+  &--gap-md {
+    gap: var(--spacing-md);
+  }
+
+  &--gap-lg {
+    gap: var(--spacing-lg);
+  }
+
+  // Responsive behavior
+  &--responsive {
+    &.grid--columns-2 {
+      @include mobile-only {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &.grid--columns-3 {
+      @include mobile-only {
+        grid-template-columns: 1fr;
+      }
+
+      @include tablet-only {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &.grid--columns-4 {
+      @include mobile-only {
+        grid-template-columns: 1fr;
+      }
+
+      @include tablet-only {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include desktop-only {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &.grid--columns-5,
+    &.grid--columns-6 {
+      @include mobile-only {
+        grid-template-columns: 1fr;
+      }
+
+      @include tablet-only {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include desktop-only {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+
+  // Grid item
+  &__item {
+    &--span-1 {
+      grid-column: span 1;
+    }
+
+    &--span-2 {
+      grid-column: span 2;
+    }
+
+    &--span-3 {
+      grid-column: span 3;
+    }
+
+    &--span-4 {
+      grid-column: span 4;
+    }
+
+    &--span-5 {
+      grid-column: span 5;
+    }
+
+    &--span-6 {
+      grid-column: span 6;
+    }
+
+    // Responsive spans
+    @include mobile-only {
+      &--span-2,
+      &--span-3,
+      &--span-4,
+      &--span-5,
+      &--span-6 {
+        grid-column: span 1;
+      }
+    }
+  }
+}
