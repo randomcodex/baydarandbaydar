@@ -3,7 +3,7 @@ import './Button.scss'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'xs' | 'sm' | 'md' | 'lg'
   fullWidth?: boolean
   isLoading?: boolean
   children: React.ReactNode

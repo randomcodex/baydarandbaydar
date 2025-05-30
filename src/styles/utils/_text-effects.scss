@@ -1,0 +1,146 @@
+// Text highlighting effects for global use
+// These classes can be applied to any text element to create glow/highlight effects
+
+// Base text highlight effect
+@mixin text-highlight($intensity: medium) {
+  @if $intensity == subtle {
+    color: color-mix(in srgb, var(--secondary-color) 80%, white 20%);
+    text-shadow: 
+      0 0 0.125px color-mix(in srgb, var(--secondary-color) 85%, white 15%),
+      0 0 0.25px color-mix(in srgb, var(--secondary-color) 70%, white 30%),
+      0 0 0.5px color-mix(in srgb, var(--secondary-color) 50%, white 50%);
+    filter: brightness(1.05);
+  } @else if $intensity == medium {
+    color: color-mix(in srgb, var(--secondary-color) 60%, white 40%);
+    text-shadow: 
+      0 0 0.25px color-mix(in srgb, var(--secondary-color) 70%, white 30%),
+      0 0 0.5px color-mix(in srgb, var(--secondary-color) 50%, white 50%),
+      0 0 1px color-mix(in srgb, var(--secondary-color) 30%, white 70%);
+    filter: brightness(1.1);
+  } @else if $intensity == strong {
+    color: color-mix(in srgb, var(--secondary-color) 40%, white 60%);
+    text-shadow: 
+      0 0 0.5px color-mix(in srgb, var(--secondary-color) 60%, white 40%),
+      0 0 1px color-mix(in srgb, var(--secondary-color) 40%, white 60%),
+      0 0 2px color-mix(in srgb, var(--secondary-color) 20%, white 80%);
+    filter: brightness(1.2);
+  }
+}
+
+// Utility classes for direct application
+.text-highlight {
+  transition: color 0.3s ease, text-shadow 0.3s ease, filter 0.3s ease;
+  
+  &--subtle {
+    @include text-highlight(subtle);
+  }
+  
+  &--medium {
+    @include text-highlight(medium);
+  }
+  
+  &--strong {
+    @include text-highlight(strong);
+  }
+}
+
+// Hover variants
+.text-highlight-hover {
+  transition: color 0.3s ease, text-shadow 0.3s ease, filter 0.3s ease;
+  
+  &--subtle:hover {
+    @include text-highlight(subtle);
+  }
+  
+  &--medium:hover {
+    @include text-highlight(medium);
+  }
+  
+  &--strong:hover {
+    @include text-highlight(strong);
+  }
+}
+
+// Primary color variants (using --primary-color instead of --secondary-color)
+@mixin text-highlight-primary($intensity: medium) {
+  @if $intensity == subtle {
+    color: color-mix(in srgb, var(--primary-color) 80%, white 20%);
+    text-shadow: 
+      0 0 0.125px color-mix(in srgb, var(--primary-color) 85%, white 15%),
+      0 0 0.25px color-mix(in srgb, var(--primary-color) 70%, white 30%),
+      0 0 0.5px color-mix(in srgb, var(--primary-color) 50%, white 50%);
+    filter: brightness(1.05);
+  } @else if $intensity == medium {
+    color: color-mix(in srgb, var(--primary-color) 60%, white 40%);
+    text-shadow: 
+      0 0 0.25px color-mix(in srgb, var(--primary-color) 70%, white 30%),
+      0 0 0.5px color-mix(in srgb, var(--primary-color) 50%, white 50%),
+      0 0 1px color-mix(in srgb, var(--primary-color) 30%, white 70%);
+    filter: brightness(1.1);
+  } @else if $intensity == strong {
+    color: color-mix(in srgb, var(--primary-color) 40%, white 60%);
+    text-shadow: 
+      0 0 0.5px color-mix(in srgb, var(--primary-color) 60%, white 40%),
+      0 0 1px color-mix(in srgb, var(--primary-color) 40%, white 60%),
+      0 0 2px color-mix(in srgb, var(--primary-color) 20%, white 80%);
+    filter: brightness(1.2);
+  }
+}
+
+.text-highlight-primary {
+  transition: color 0.3s ease, text-shadow 0.3s ease, filter 0.3s ease;
+  
+  &--subtle {
+    @include text-highlight-primary(subtle);
+  }
+  
+  &--medium {
+    @include text-highlight-primary(medium);
+  }
+  
+  &--strong {
+    @include text-highlight-primary(strong);
+  }
+}
+
+.text-highlight-primary-hover {
+  transition: color 0.3s ease, text-shadow 0.3s ease, filter 0.3s ease;
+  
+  &--subtle:hover {
+    @include text-highlight-primary(subtle);
+  }
+  
+  &--medium:hover {
+    @include text-highlight-primary(medium);
+  }
+  
+  &--strong:hover {
+    @include text-highlight-primary(strong);
+  }
+}
+
+// Custom color variants
+@mixin text-highlight-custom($color, $intensity: medium) {
+  @if $intensity == subtle {
+    color: color-mix(in srgb, #{$color} 80%, white 20%);
+    text-shadow: 
+      0 0 0.125px color-mix(in srgb, #{$color} 85%, white 15%),
+      0 0 0.25px color-mix(in srgb, #{$color} 70%, white 30%),
+      0 0 0.5px color-mix(in srgb, #{$color} 50%, white 50%);
+    filter: brightness(1.05);
+  } @else if $intensity == medium {
+    color: color-mix(in srgb, #{$color} 60%, white 40%);
+    text-shadow: 
+      0 0 0.25px color-mix(in srgb, #{$color} 70%, white 30%),
+      0 0 0.5px color-mix(in srgb, #{$color} 50%, white 50%),
+      0 0 1px color-mix(in srgb, #{$color} 30%, white 70%);
+    filter: brightness(1.1);
+  } @else if $intensity == strong {
+    color: color-mix(in srgb, #{$color} 40%, white 60%);
+    text-shadow: 
+      0 0 0.5px color-mix(in srgb, #{$color} 60%, white 40%),
+      0 0 1px color-mix(in srgb, #{$color} 40%, white 60%),
+      0 0 2px color-mix(in srgb, #{$color} 20%, white 80%);
+    filter: brightness(1.2);
+  }
+}

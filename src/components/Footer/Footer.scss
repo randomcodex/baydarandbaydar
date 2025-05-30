@@ -1,6 +1,12 @@
 // Footer Component Styles
 // Separated into logical sections for better maintainability
 
+// Import utilities
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+@import "../../styles/utils/text-effects";
+@import "../../styles/utils/mobile-touch";
+
 // =============================================================================
 // Layout & Container
 // =============================================================================
@@ -60,17 +66,18 @@
 
   &__powered-by {
     @include small-text;
+    @include mobile-touch-link;
     color: var(--secondary-color);
     font-size: var(--font-size-xs);
+    text-decoration: none;
     
     // Text rendering optimization
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     
-    // Soft shadow for better readability
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 
-                 0 2px 6px rgba(0, 0, 0, 0.15);
+    // Use global text transition system like logo
+    transition: color 0.6s ease, text-shadow 0.6s ease, filter 0.6s ease;
     
     @include tablet-up {
       font-size: var(--font-size-xs);
@@ -91,90 +98,44 @@
     // Spacing - reduced to prevent overlap on small screens
     padding: var(--spacing-xs);
     
-    // Transitions
-    transition: color var(--transition-fast);
-    
     // Hide on very small screens to prevent overlap
     @media (max-width: 320px) {
       display: none;
     }
-    
+
     @include tablet-up {
       right: var(--spacing-lg); // Adjust for larger container padding on tablet
       bottom: var(--spacing-sm);
       padding: var(--spacing-sm);
     }
 
-    // States - Bright white shine on hover (desktop only)
+    // States - Use global text highlight effect like logo (desktop only)
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        color: #ffffff;
-        text-shadow: 0 0 6px rgba(255, 255, 255, 0.6),
-                     0 0 8px rgba(255, 255, 255, 0.4),
-                     0 0 12px rgba(255, 255, 255, 0.2);
+        @include text-highlight(medium);
         text-decoration: none;
-        // Remove all gradient effects
-        background: none;
-        -webkit-background-clip: initial;
-        -webkit-text-fill-color: initial;
-        background-clip: initial;
       }
     }
     
-    // Mobile touch states
+    // Mobile touch states - simple and clean
     &:active {
-      color: #ffffff;
+      @include text-highlight(subtle);
       transform: translateY(1px);
       text-decoration: none;
-      // Reset gradient effects on mobile
-      background: none;
-      -webkit-background-clip: initial;
-      -webkit-text-fill-color: initial;
-      background-clip: initial;
     }
     
-    // Prevent lingering underlines and color changes on mobile
+    // Clean focus states
     &:focus {
       color: var(--secondary-color);
       text-decoration: none;
       outline: none;
-      background: none;
-      -webkit-background-clip: initial;
-      -webkit-text-fill-color: initial;
-      background-clip: initial;
     }
     
-    // Force reset after touch on mobile
-    @media (hover: none) {
-      &:focus {
-        color: var(--secondary-color);
-        text-decoration: none;
-        outline: none;
-        background: none;
-        -webkit-background-clip: initial;
-        -webkit-text-fill-color: initial;
-        background-clip: initial;
-      }
-      
-      &:visited {
-        color: var(--secondary-color);
-        text-decoration: none;
-      }
-      
-      &:link {
-        color: var(--secondary-color);
-        text-decoration: none;
-      }
-    }
-    
-    // Ensure proper reset on all devices
-    &:not(:hover):not(:focus):not(:active) {
+    // Ensure proper link behavior
+    &:link,
+    &:visited {
       color: var(--secondary-color);
       text-decoration: none;
-      background: none;
-      -webkit-background-clip: initial;
-      -webkit-text-fill-color: initial;
-      background-clip: initial;
     }
   }
 }

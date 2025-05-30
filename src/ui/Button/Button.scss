@@ -1,7 +1,9 @@
 @import "../../styles/base/variables";
 @import "../../styles/base/mixins";
+@import "../../styles/utils/mobile-touch";
 
 .btn {
+  @include mobile-touch-button;
   // Base styles
   display: inline-flex;
   align-items: center;
@@ -20,8 +22,13 @@
   &:focus-visible {
     @include focus-ring;
   }
-
   // Size variants
+  &--xs {
+    padding: calc(var(--spacing-xs) / 2) var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    min-height: 28px;
+  }
+
   &--sm {
     padding: var(--spacing-xs) var(--spacing-sm);
     font-size: var(--font-size-sm);
@@ -39,7 +46,6 @@
     font-size: var(--font-size-lg);
     min-height: 48px;
   }
-
   // Color variants
   &--primary {
     background-color: var(--primary-color);
@@ -49,10 +55,10 @@
     &:hover:not(:disabled) {
       background-color: var(--primary-dark);
       border-color: var(--primary-dark);
+      opacity: 0.9;
       @include hover-lift;
     }
   }
-
   &--secondary {
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -61,10 +67,10 @@
     &:hover:not(:disabled) {
       background-color: var(--secondary-light);
       border-color: var(--secondary-light);
+      opacity: 0.9;
       @include hover-lift;
     }
   }
-
   &--outline {
     background-color: transparent;
     color: var(--primary-color);
@@ -73,10 +79,10 @@
     &:hover:not(:disabled) {
       background-color: var(--primary-color);
       color: var(--white);
+      opacity: 0.9;
       @include hover-lift;
     }
   }
-
   &--ghost {
     background-color: transparent;
     color: var(--primary-color);
@@ -84,10 +90,10 @@
 
     &:hover:not(:disabled) {
       background-color: var(--light-gray);
+      opacity: 0.9;
       @include hover-lift;
     }
   }
-
   &--danger {
     background-color: var(--error-color, #dc3545);
     color: var(--white);
@@ -96,6 +102,7 @@
     &:hover:not(:disabled) {
       background-color: var(--error-dark, #c82333);
       border-color: var(--error-dark, #c82333);
+      opacity: 0.9;
       @include hover-lift;
     }
   }

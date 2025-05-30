@@ -1,7 +1,5 @@
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { usePageMetadata } from '@hooks/usePageMetadata'
-import { fadeIn, slideInUp } from '../../animations'
 import './NotFound.scss'
 
 export const NotFound = () => {
@@ -13,36 +11,34 @@ export const NotFound = () => {
   })
 
   return (
-    <motion.div className='not-found' variants={fadeIn} initial='initial' animate='animate'>
+    <div className='not-found'>
       <div className='container'>
         <div className='not-found__content'>
-          <motion.div className='not-found__image' variants={slideInUp}>
-            <img src='/assets/images/wine-glass-404.svg' alt='Wine glass' />
-          </motion.div>
+          <div className='not-found__number'>404</div>
+          
+          <h1>Page Not Found</h1>
 
-          <motion.h1 variants={slideInUp}>Page Not Found</motion.h1>
-
-          <motion.p className='not-found__description' variants={slideInUp}>
+          <p className='not-found__description'>
             Oops! It looks like this page has aged out of existence. Perhaps it's time to explore
             our exceptional wine collection instead?
-          </motion.p>
+          </p>
 
-          <motion.div className='not-found__actions' variants={slideInUp}>
+          <div className='not-found__actions'>
             <Link to='/' className='not-found__btn not-found__btn--primary'>
               Return Home
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div className='not-found__suggestions' variants={slideInUp}>
+          <div className='not-found__suggestions'>
             <h3>You might be looking for:</h3>
             <ul>
               <li>
                 <Link to='/'>Home Page</Link>
               </li>
             </ul>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

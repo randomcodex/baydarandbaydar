@@ -4,14 +4,14 @@
 .container {
   width: 100%;
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--container-padding-mobile); // Use global variable for consistency
 
   @include tablet-up {
-    padding: 0 var(--spacing-lg);
+    padding: 0 var(--container-padding-tablet);
   }
 
   @include large-up {
-    padding: 0 var(--spacing-xl);
+    padding: 0 var(--container-padding-desktop);
   }
 
   // Size variants
@@ -29,6 +29,10 @@
 
   &--xl {
     max-width: var(--container-xl);
+  }
+
+  &--2xl {
+    max-width: var(--container-2xl); // Use larger container by default
   }
 
   &--full {

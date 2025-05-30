@@ -1,5 +1,6 @@
 import { usePageMetadata } from '@hooks/usePageMetadata'
 import { Hero } from '@components/Hero'
+import { HomePageTransition } from '@components/PageTransition'
 
 export const Home = () => {
   usePageMetadata({
@@ -10,12 +11,18 @@ export const Home = () => {
   })
 
   return (
-    <Hero
-      title="Baydar & Baydar"
-      subtitle="Premium Italian Wine Imports"
-      description="Discover exceptional wines from Italy's finest vineyards. We bring you authentic Italian wines with unmatched quality and heritage."
-      backgroundImage="/assets/images/home/bghome.webp"
-      containerId="home-container"
-    />
+    <HomePageTransition>
+      <Hero
+        title="Baydar & Baydar"
+        subtitle="Sourcing exquisite tastes for the discerning palate."
+        backgroundImage="/assets/images/home/bghome.webp"
+        containerId="home-container"
+        buttonText="Explore Our Collection"
+        onButtonClick={() => {
+          // TODO: Add navigation to wine collection page
+          console.log('Navigate to wine collection')
+        }}
+      />
+    </HomePageTransition>
   )
 }

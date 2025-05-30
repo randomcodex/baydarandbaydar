@@ -502,6 +502,43 @@
   @include container;
 }
 
+// Container utilities for better screen utilization
+.container-max-width {
+  max-width: var(--max-content-width) !important;
+}
+
+.container-small-margins {
+  padding-left: var(--container-padding-mobile) !important;
+  padding-right: var(--container-padding-mobile) !important;
+
+  @include tablet-up {
+    padding-left: var(--container-padding-tablet) !important;
+    padding-right: var(--container-padding-tablet) !important;
+  }
+
+  @include large-up {
+    padding-left: var(--container-padding-desktop) !important;
+    padding-right: var(--container-padding-desktop) !important;
+  }
+}
+
+.container-full-width {
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: calc(-1 * var(--container-padding-mobile)) !important;
+  margin-right: calc(-1 * var(--container-padding-mobile)) !important;
+
+  @include tablet-up {
+    margin-left: calc(-1 * var(--container-padding-tablet)) !important;
+    margin-right: calc(-1 * var(--container-padding-tablet)) !important;
+  }
+
+  @include large-up {
+    margin-left: calc(-1 * var(--container-padding-desktop)) !important;
+    margin-right: calc(-1 * var(--container-padding-desktop)) !important;
+  }
+}
+
 // Screen reader only
 .sr-only {
   @include sr-only;

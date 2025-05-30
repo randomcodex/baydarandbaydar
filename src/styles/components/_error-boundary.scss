@@ -1,59 +1,149 @@
 // Error boundary styles
 .error-boundary {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 2rem;
-  text-align: center;
-  background: #f8f9fa;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: var(--spacing-xl);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  font-family: var(--font-family-primary);
 
-  h2 {
-    color: #dc3545;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
-  details {
-    margin: 1rem 0;
-    padding: 1rem;
-    background: white;
-    border-radius: 8px;
-    border-left: 4px solid #dc3545;
-    max-width: 600px;
+  &__icon {
+    font-size: 4rem;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.8;
+  }
+
+  h2 {
+    color: var(--secondary-color);
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+    @include tablet-up {
+      font-size: var(--font-size-4xl);
+    }
+  }
+
+  &__message {
+    color: var(--secondary-color);
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+    margin: 0;
+    opacity: 0.9;
+    max-width: 500px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: var(--spacing-md);
+  }
+
+  &__btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+
+    &--primary {
+      background: var(--secondary-color);
+      color: var(--primary-color);
+      border: var(--border-width-thin) solid var(--secondary-color);
+
+      &:hover {
+        background: var(--secondary-light);
+        border-color: var(--secondary-light);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(255, 224, 153, 0.3);
+      }
+    }
+
+    &--secondary {
+      background: transparent;
+      color: var(--secondary-color);
+      border: var(--border-width-thin) solid var(--secondary-color);
+
+      &:hover {
+        background: var(--secondary-color);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__details {
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: var(--primary-light);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid var(--accent-color);
+    max-width: 100%;
+    width: 100%;
 
     summary {
       cursor: pointer;
-      font-weight: 600;
-      color: #495057;
+      font-weight: var(--font-weight-semibold);
+      color: var(--secondary-color);
+      margin-bottom: var(--spacing-sm);
+      
+      &:hover {
+        color: var(--secondary-light);
+      }
     }
 
     pre {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: #f8f9fa;
-      border-radius: 4px;
+      margin-top: var(--spacing-md);
+      padding: var(--spacing-md);
+      background: var(--primary-dark);
+      border-radius: var(--border-radius-md);
       text-align: left;
       overflow-x: auto;
-      font-size: 0.875rem;
-      color: #dc3545;
+      font-size: var(--font-size-sm);
+      color: var(--secondary-color);
+      border: 1px solid var(--accent-color);
+      white-space: pre-wrap;
+      word-break: break-word;
     }
   }
 
-  button {
-    padding: 0.75rem 1.5rem;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s;
+  // Responsive adjustments
+  @include mobile-only {
+    padding: var(--spacing-lg);
+    
+    &__content {
+      gap: var(--spacing-md);
+    }
 
-    &:hover {
-      background: #0056b3;
+    &__actions {
+      flex-direction: column;
+      width: 100%;
+
+      .error-boundary__btn {
+        width: 100%;
+      }
     }
   }
 }

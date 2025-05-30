@@ -76,17 +76,17 @@
   // Responsive font size using clamp for fluid typography
   --font-size-fluid: clamp(1rem, 0.9rem + 0.3vw, 1.2rem);
 
-  // Spacing
+  // Spacing - Optimized for better screen utilization
   --spacing-xs: 0.25rem; // 4px
   --spacing-sm: 0.5rem; // 8px
-  --spacing-md: 1rem; // 16px
-  --spacing-lg: 1.5rem; // 24px
-  --spacing-xl: 2rem; // 32px
-  --spacing-2xl: 2.5rem; // 40px
-  --spacing-3xl: 3rem; // 48px
-  --spacing-4xl: 4rem; // 64px
-  --spacing-5xl: 6rem; // 96px
-  --spacing-6xl: 8rem; // 128px
+  --spacing-md: 0.75rem; // 12px - Reduced from 16px for tighter layouts
+  --spacing-lg: 1rem; // 16px - Reduced from 24px for smaller margins
+  --spacing-xl: 1.5rem; // 24px - Reduced from 32px
+  --spacing-2xl: 2rem; // 32px - Reduced from 40px
+  --spacing-3xl: 2.5rem; // 40px - Reduced from 48px
+  --spacing-4xl: 3rem; // 48px - Reduced from 64px
+  --spacing-5xl: 4rem; // 64px - Reduced from 96px
+  --spacing-6xl: 6rem; // 96px - Reduced from 128px
 
   // Borders
   --border-radius-none: 0;
@@ -124,12 +124,18 @@
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
 
-  // Container max widths
+  // Container max widths - Updated for better screen fill
   --container-sm: 640px;
   --container-md: 768px;
   --container-lg: 1024px;
-  --container-xl: 1280px;
-  --container-2xl: 1400px;
+  --container-xl: 1440px;  // Increased from 1280px for better screen utilization
+  --container-2xl: 1600px; // Increased from 1400px for large screens
+
+  // Global layout variables for consistent spacing
+  --container-padding-mobile: var(--spacing-sm);    // 8px on mobile
+  --container-padding-tablet: var(--spacing-md);    // 12px on tablet  
+  --container-padding-desktop: var(--spacing-lg);   // 16px on desktop
+  --max-content-width: var(--container-2xl);        // Default max content width
 
   // Transitions
   --transition-fast: 150ms ease;

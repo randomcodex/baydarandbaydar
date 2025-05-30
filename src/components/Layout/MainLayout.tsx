@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
-import { Navbar } from '@ui/Header'
-import { Footer } from '@ui/Footer/Footer'
+import { Navbar } from '@/components/Header'
+import { Footer } from '@/components/Footer'
 import './MainLayout.scss'
 
 export const MainLayout = () => {

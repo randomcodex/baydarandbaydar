@@ -7,3 +7,22 @@ export {
   staggerGrid,
   childVariants,
 } from './staggerChildren'
+export {
+  heroSection,
+  heroTitle,
+  heroSubtitle,
+  heroDescription,
+  heroButton,
+  heroTextContainer,
+  heroBackground,
+} from './heroAnimations'
+export {
+  scrollReveal,
+  scrollRevealScale,
+  scrollRevealLeft,
+  scrollRevealRight,
+  scrollStagger,
+  buttonInteraction,
+  loadingPulse,
+  pageTransitions,
+} from './scrollAnimations'

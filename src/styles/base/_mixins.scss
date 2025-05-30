@@ -166,19 +166,19 @@
   color: var(--text-primary);
 }
 
-// Layout Mixins
+// Layout Mixins - Optimized for better screen fill
 @mixin container {
   width: 100%;
-  max-width: var(--container-xl);
+  max-width: var(--max-content-width); // Use global variable for consistency
   margin: 0 auto;
-  padding: 0 var(--spacing-md);
+  padding: 0 var(--container-padding-mobile);
 
   @include tablet-up {
-    padding: 0 var(--spacing-lg);
+    padding: 0 var(--container-padding-tablet);
   }
 
   @include large-up {
-    padding: 0 var(--spacing-xl);
+    padding: 0 var(--container-padding-desktop);
   }
 }
 

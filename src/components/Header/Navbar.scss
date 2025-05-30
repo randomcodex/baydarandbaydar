@@ -1,0 +1,76 @@
+@import "../../styles/base/variables";
+@import "../../styles/base/mixins";
+@import "../../styles/utils/mobile-touch";
+
+.navbar {
+  // Positioning
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  
+  // Dimensions - match footer height exactly
+  height: 70px;
+  
+  // Appearance - match footer theme
+  background: var(--primary-dark); // Using darker shade (#051905) for navbar contrast
+  border-bottom: 1px solid var(--primary-color);
+  
+  // Flexbox for content alignment
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @include tablet-up {
+    height: 70px; // Match footer height exactly
+  }
+
+  &__container {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; // Prevent logo from shrinking
+    
+    // Remove text styles since Logo component handles its own styling
+    font-family: var(--font-family-primary);
+    
+    @include tablet-up {
+      // Keep responsive behavior
+    }
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    
+    @include mobile-only {
+      display: none; // Hide on mobile, could be replaced with mobile menu
+    }
+  }
+
+  &__link {
+    @include mobile-touch-link;
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    padding: var(--spacing-sm) 0;
+    transition: color var(--transition-fast);
+    
+    // Only apply hover effects on hover-capable devices
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--secondary-light);
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+// Mobile Touch Interaction Utilities
+// GLOBALLY DISABLES ALL CLICK/HOVER/ACTIVE EFFECTS ON MOBILE DEVICES
+
+// Base mobile touch optimization mixin
+@mixin mobile-touch-base {
+  // Prevent touch callouts and selections
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  
+  // Remove tap highlight and optimize touch behavior
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+// Interactive element touch optimization - MINIMAL approach
+@mixin mobile-touch-interactive {
+  @include mobile-touch-base;
+  // That's it! No visual changes, just clean touch behavior
+}
+
+// All other mixins just inherit the basic behavior
+@mixin mobile-touch-button {
+  @include mobile-touch-interactive;
+}
+
+@mixin mobile-touch-link {
+  @include mobile-touch-interactive;
+}
+
+@mixin mobile-touch-area {
+  @include mobile-touch-interactive;
+}
+
+// GLOBAL MOBILE OVERRIDE - Disables ALL visual effects on touch devices
+@media (hover: none) and (pointer: coarse) {
+  // Disable ALL hover, active, focus effects on ALL elements
+  *, *:before, *:after {
+    &:hover,
+    &:active,
+    &:focus {
+      // Reset all possible visual changes
+      transform: none !important;
+      box-shadow: none !important;
+      background-color: inherit !important;
+      background: inherit !important;
+      color: inherit !important;
+      opacity: inherit !important;
+      filter: none !important;
+      text-shadow: inherit !important;
+      border-color: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+    }
+  }
+  
+  // Specifically target common interactive elements
+  button, .btn, [role="button"],
+  a, .link,
+  input, textarea, select,
+  .card, .clickable, .interactive,
+  .logo, .logo-link, .nav-link,
+  .social-link, .icon-button {
+    &:hover,
+    &:active,
+    &:focus,
+    &:focus-visible {
+      // Reset everything
+      transform: none !important;
+      box-shadow: none !important;
+      background-color: inherit !important;
+      background: inherit !important;
+      color: inherit !important;
+      opacity: inherit !important;
+      filter: none !important;
+      text-shadow: inherit !important;
+      border-color: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+    }
+  }
+}
+
+// Utility classes for direct application
+.mobile-touch-base {
+  @include mobile-touch-base;
+}
+
+.mobile-touch-interactive {
+  @include mobile-touch-interactive;
+}
+
+.mobile-touch-button {
+  @include mobile-touch-button;
+}
+
+.mobile-touch-link {
+  @include mobile-touch-link;
+}
+
+.mobile-touch-area {
+  @include mobile-touch-area;
+}
+
+// Prevent iOS zoom on form inputs
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+textarea,
+select {
+  @include mobile-touch-base;
+  font-size: 16px; // Prevents zoom on iOS
+  
+  @media (max-width: 768px) {
+    font-size: 16px; // Ensure minimum 16px on mobile to prevent zoom
+  }
+}
