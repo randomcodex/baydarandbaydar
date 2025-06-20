@@ -1,21 +1,16 @@
-// Import base styles
+
 @import "./base/variables";
 @import "./base/mixins";
 @import "./base/reset";
 
-// Import utility styles
 @import "./utils/utilities";
 @import "./utils/text-enhancements";
 @import "./utils/background-utils";
 @import "./utils/text-effects";
 @import "./utils/mobile-touch";
 
-// Import component styles
 @import "./components/loading";
 @import "./components/error-boundary";
-
-// Import Local Fonts
-// Using TTF format for compatibility
 
 @font-face {
   font-family: "Abhaya Libre";
@@ -23,7 +18,7 @@
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  // Enhanced font rendering hints
+
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-variant-ligatures: common-ligatures;
 }
@@ -68,16 +63,14 @@
   font-variant-ligatures: common-ligatures;
 }
 
-// Global app styles
 .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--primary-color); // Using lighter shade (#051505) for main background
+  background-color: var(--primary-color);
   color: var(--secondary-color);
 }
 
-// Ensure all pages inherit the theme
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--secondary-color) var(--primary-light);

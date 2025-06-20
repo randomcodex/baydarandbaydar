@@ -6,7 +6,6 @@ interface PageTransitionProps {
   className?: string
 }
 
-// Enhanced page transition variants
 const pageVariants = {
   initial: {
     opacity: 0,
@@ -35,7 +34,6 @@ const pageVariants = {
   },
 }
 
-// Preload animation (for refreshes/initial visits)
 const preloadVariants = {
   initial: {
     opacity: 0,
@@ -76,7 +74,6 @@ export const PageTransition = ({ children, className = '' }: PageTransitionProps
   )
 }
 
-// Enhanced version for homepage with preload effects
 export const HomePageTransition = ({ children, className = '' }: PageTransitionProps) => {
   return (
     <AnimatePresence mode="wait">

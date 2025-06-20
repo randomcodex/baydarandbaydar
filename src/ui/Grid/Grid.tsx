@@ -9,12 +9,12 @@ export interface GridProps {
   children: React.ReactNode
 }
 
-export const Grid = ({ 
-  columns = 3, 
-  gap = 'md', 
+export const Grid = ({
+  columns = 3,
+  gap = 'md',
   responsive = true,
-  className = '', 
-  children 
+  className = '',
+  children
 }: GridProps) => {
   const classes = [
     'grid',
@@ -23,7 +23,7 @@ export const Grid = ({
     responsive ? 'grid--responsive' : '',
     className
   ].filter(Boolean).join(' ')
-  
+
   return (
     <div className={classes}>
       {children}
@@ -37,17 +37,17 @@ export interface GridItemProps {
   children: React.ReactNode
 }
 
-export const GridItem = ({ 
+export const GridItem = ({
   span = 1,
-  className = '', 
-  children 
+  className = '',
+  children
 }: GridItemProps) => {
   const classes = [
     'grid__item',
     `grid__item--span-${span}`,
     className
   ].filter(Boolean).join(' ')
-  
+
   return (
     <div className={classes}>
       {children}

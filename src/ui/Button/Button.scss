@@ -4,25 +4,26 @@
 
 .btn {
   @include mobile-touch-button;
-  // Base styles
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-family: inherit;
   font-weight: var(--font-weight-medium);
   text-decoration: none;
-  border: var(--border-width-medium) solid transparent;
-  border-radius: var(--border-radius-md);
+  border: var(--border-width-medium) solid transparent;  border-radius: var(--border-radius-md);
   cursor: pointer;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast),
+              border-color var(--transition-fast),
+              opacity var(--transition-fast),
+              transform var(--transition-fast);
   position: relative;
   overflow: hidden;
 
-  // Focus styles
   &:focus-visible {
     @include focus-ring;
   }
-  // Size variants
+
   &--xs {
     padding: calc(var(--spacing-xs) / 2) var(--spacing-xs);
     font-size: var(--font-size-xs);
@@ -46,7 +47,7 @@
     font-size: var(--font-size-lg);
     min-height: 48px;
   }
-  // Color variants
+
   &--primary {
     background-color: var(--primary-color);
     color: var(--white);
@@ -56,6 +57,7 @@
       background-color: var(--primary-dark);
       border-color: var(--primary-dark);
       opacity: 0.9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       @include hover-lift;
     }
   }
@@ -68,6 +70,7 @@
       background-color: var(--secondary-light);
       border-color: var(--secondary-light);
       opacity: 0.9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       @include hover-lift;
     }
   }
@@ -80,6 +83,7 @@
       background-color: var(--primary-color);
       color: var(--white);
       opacity: 0.9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       @include hover-lift;
     }
   }
@@ -91,6 +95,7 @@
     &:hover:not(:disabled) {
       background-color: var(--light-gray);
       opacity: 0.9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       @include hover-lift;
     }
   }
@@ -103,11 +108,11 @@
       background-color: var(--error-dark, #c82333);
       border-color: var(--error-dark, #c82333);
       opacity: 0.9;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       @include hover-lift;
     }
   }
 
-  // State variants
   &--full-width {
     width: 100%;
   }
@@ -127,7 +132,6 @@
     }
   }
 
-  // Loading spinner
   &__spinner {
     position: absolute;
     top: 50%;

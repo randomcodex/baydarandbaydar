@@ -9,9 +9,9 @@ export const Footer = () => {
         <div className='footer__copyright'>
           © {currentYear} Baydar & Baydar. All rights reserved.
         </div>
-        <a 
+        <a
           href='https://toyomuhendislik.com' 
-          target='_blank' 
+          target='_blank'
           rel='noopener noreferrer'
           className='footer__powered-by'
         >

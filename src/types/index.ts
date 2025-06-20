@@ -1,22 +1,14 @@
-/**
- * Shared type definitions and interfaces
- * Consolidates common type patterns used across components
- */
-
 import { ReactNode } from 'react';
 import { MotionProps } from 'framer-motion';
 
-// Base motion props interface that extends Framer Motion's MotionProps
 export interface BaseMotionProps {
   asMotion?: boolean;
   motionProps?: MotionProps;
 }
 
-// Common size variants used across components
 export type SizeVariant = 'sm' | 'md' | 'lg' | 'xl';
 export type ExtendedSizeVariant = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
-// Common variant patterns
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 export type CardVariant = 'default' | 'wine' | 'feature' | 'outline' | 'elevated';
 export type FormVariant = 'default' | 'card' | 'inline';
@@ -25,57 +17,48 @@ export type ModalVariant = 'default' | 'centered' | 'drawer';
 export type LoaderVariant = 'spinner' | 'dots' | 'pulse' | 'wine' | 'skeleton';
 export type ToastVariant = 'success' | 'error' | 'warning' | 'info';
 
-// Position types for tooltips, dropdowns, toasts
-export type Position = 
-  | 'top' 
-  | 'bottom' 
-  | 'left' 
-  | 'right' 
-  | 'top-left' 
-  | 'top-right' 
-  | 'bottom-left' 
-  | 'bottom-right' 
-  | 'top-center'   | 'bottom-center';
+export type Position =
+  | 'top'
+  | 'bottom'
+  | 'left'
+  | 'right'
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-right'
+  | 'top-center'  | 'bottom-center';
 
-// Common props for components with children
 export interface WithChildren {
   children: ReactNode;
 }
 
-// Common props for components with optional className
 export interface WithClassName {
   className?: string;
 }
 
-// Common props for components with loading state
 export interface WithLoading {
   isLoading?: boolean;
 }
 
-// Common props for components with disabled state
 export interface WithDisabled {
   disabled?: boolean;
 }
 
-// Common props for components with error state
 export interface WithError {
   error?: string;
 }
 
-// Common props for components with full width option
 export interface WithFullWidth {
   fullWidth?: boolean;
 }
 
-// Compound component props
-export interface BaseComponentProps 
-  extends WithChildren, 
-          WithClassName, 
+export interface BaseComponentProps
+  extends WithChildren,
+          WithClassName,
           BaseMotionProps {
   size?: SizeVariant;
 }
 
-// Form-related interfaces
 export interface FormGroupProps extends BaseComponentProps {
   variant?: 'default' | 'inline' | 'stacked';
   required?: boolean;
@@ -86,7 +69,6 @@ export interface FormActionsProps extends BaseComponentProps {
   variant?: 'default' | 'center' | 'space-between';
 }
 
-// Modal-related interfaces
 export interface ModalHeaderProps extends WithChildren, WithClassName {
   title?: string;
   subtitle?: string;
@@ -98,7 +80,6 @@ export interface ModalFooterProps extends WithChildren, WithClassName {
   variant?: 'default' | 'center' | 'space-between';
 }
 
-// Card-related interfaces
 export interface CardHeaderProps extends BaseComponentProps {}
 export interface CardBodyProps extends BaseComponentProps {}
 export interface CardFooterProps extends BaseComponentProps {}
@@ -111,7 +92,6 @@ export interface CardImageProps extends WithClassName, BaseMotionProps {
   overlay?: ReactNode;
 }
 
-// Toast-related interfaces
 export interface ToastAction {
   label: string;
   onClick: () => void;
@@ -131,7 +111,6 @@ export interface ToastBaseProps {
   onClose?: () => void;
 }
 
-// Animation-related types
 export interface AnimationConfig {
   duration?: number;
   ease?: string;
@@ -150,7 +129,6 @@ export interface TransitionConfig {
   ease: string;
 }
 
-// Common filter and pagination interfaces
 export interface PaginationProps {
   currentPage: number;
   totalPages: number;
@@ -163,7 +141,6 @@ export interface FilterState {
   [key: string]: any;
 }
 
-// Wine-specific interfaces (commonly used across components)
 export interface WineRegion {
   id: string;
   name: string;
@@ -191,7 +168,6 @@ export interface Wine {
   featured?: boolean;
 }
 
-// API-related interfaces
 export interface ApiResponse<T = any> {
   data: T;
   success: boolean;
@@ -205,17 +181,14 @@ export interface ApiError {
   data?: any;
 }
 
-// Event handler types
 export type ClickHandler = () => void;
 export type ChangeHandler<T = any> = (value: T) => void;
 export type SubmitHandler = (data: any) => void | Promise<void>;
 
-// Utility types for component props
 export type PropsWithMotion<T> = T & BaseMotionProps;
 export type PropsWithSize<T> = T & { size?: SizeVariant };
 export type PropsWithVariant<T, V> = T & { variant?: V };
 
-// SEO and metadata interfaces
 export interface PageMetadata {
   title: string;
   description: string;
@@ -224,7 +197,6 @@ export interface PageMetadata {
   url?: string;
 }
 
-// Performance monitoring interfaces
 export interface PerformanceMetric {
   name: string;
   value: number;
@@ -232,14 +204,13 @@ export interface PerformanceMetric {
 }
 
 export interface WebVitals {
-  lcp?: number; // Largest Contentful Paint
-  fid?: number; // First Input Delay
-  cls?: number; // Cumulative Layout Shift
-  fcp?: number; // First Contentful Paint
-  ttfb?: number; // Time to First Byte
+  lcp?: number;
+  fid?: number;
+  cls?: number;
+  fcp?: number;
+  ttfb?: number;
 }
 
-// Navigation and routing interfaces
 export interface NavigationItem {
   name: string;
   path: string;
@@ -248,7 +219,6 @@ export interface NavigationItem {
   children?: NavigationItem[];
 }
 
-// Configuration interfaces
 export interface AppConfig {
   apiBaseUrl: string;
   siteUrl: string;
@@ -259,13 +229,11 @@ export interface AppConfig {
   isProduction: boolean;
 }
 
-// Store/State management interfaces
 export interface BaseStore {
   loading: boolean;
   error: string | null;
 }
 
-// Window size and responsive interfaces
 export interface WindowSize {
   width: number;
   height: number;
@@ -275,11 +243,9 @@ export interface WindowSize {
   isLarge: boolean;
 }
 
-// Generic handler function types
 export type EventHandler<T = Event> = (event: T) => void;
 export type AsyncEventHandler<T = Event> = (event: T) => Promise<void>;
 
-// File and media types
 export interface MediaFile {
   id: string;
   name: string;
@@ -289,7 +255,6 @@ export interface MediaFile {
   alt?: string;
 }
 
-// Common validation types
 export interface ValidationRule {
   required?: boolean;
   minLength?: number;
@@ -302,7 +267,6 @@ export interface ValidationErrors {
   [field: string]: string;
 }
 
-// Generic data fetching interfaces
 export interface FetchState<T> {
   data: T | null;
   loading: boolean;
@@ -317,7 +281,6 @@ export interface InfiniteScrollState<T> {
   page: number;
 }
 
-// Sort and order interfaces
 export type SortOrder = 'asc' | 'desc';
 
 export interface SortConfig {
@@ -325,7 +288,6 @@ export interface SortConfig {
   order: SortOrder;
 }
 
-// Generic CRUD operations
 export interface CrudOperations<T> {
   create: (item: Omit<T, 'id'>) => Promise<T>;
   read: (id: string) => Promise<T>;

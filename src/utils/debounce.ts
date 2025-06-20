@@ -1,6 +1,3 @@
-/**
- * Debounce utility to prevent excessive function calls
- */
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
@@ -18,9 +15,6 @@ export function debounce<T extends (...args: any[]) => any>(
   }
 }
 
-/**
- * Throttle utility to limit function calls
- */
 export function throttle<T extends (...args: any[]) => any>(
   func: T,
   limit: number

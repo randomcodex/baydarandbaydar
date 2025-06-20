@@ -1,6 +1,4 @@
-// background-utils.scss
 
-// 1. Universal background image optimization
 .bg-polish {
   background-size: cover;
   background-position: center;
@@ -8,30 +6,26 @@
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   will-change: transform, opacity;
-  transform: translateZ(0); // Force GPU acceleration
+  transform: translateZ(0);
 }
 
-// 2. Responsive background adjustment for larger screens
 @media (min-width: 768px) {
   .bg-polish {
-    background-attachment: fixed; // Creates a subtle parallax effect
+    background-attachment: fixed;
   }
 }
 
-// 7. Content positioning helpers for overlaid backgrounds
 .bg-content {
   position: relative;
   z-index: 2;
 }
 
-// 8. Performance optimizations for mobile
 @media (max-width: 767px) {
   .bg-polish {
-    background-attachment: scroll; // Better performance on mobile
+    background-attachment: scroll;
   }
 }
 
-// 10. Accessibility improvements
 @media (prefers-reduced-motion: reduce) {
   .bg-polish {
     background-attachment: scroll;
@@ -40,7 +34,6 @@
   }
 }
 
-// 11. Print styles
 @media print {
   .bg-polish {
     background: none !important;

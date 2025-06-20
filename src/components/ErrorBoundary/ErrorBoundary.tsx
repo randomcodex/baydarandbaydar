@@ -36,13 +36,13 @@ export class ErrorBoundary extends Component<Props, State> {
               We're sorry, but something unexpected happened. Please try refreshing the page.
             </p>
             <div className="error-boundary__actions">
-              <button 
+              <button
                 className="error-boundary__btn error-boundary__btn--primary"
                 onClick={() => window.location.reload()}
               >
                 Reload Page
               </button>
-              <button 
+              <button
                 className="error-boundary__btn error-boundary__btn--secondary"
                 onClick={() => window.history.back()}
               >

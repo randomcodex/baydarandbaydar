@@ -1,9 +1,3 @@
-/**
- * Application constants and configuration values
- * Centralizes hardcoded values used throughout the application
- */
-
-// Animation durations (in milliseconds)
 export const ANIMATION_DURATION = {
   FAST: 150,
   NORMAL: 250,
@@ -17,7 +11,6 @@ export const ANIMATION_DURATION = {
   MODAL_EXIT: 200,
 } as const;
 
-// Animation timing values
 export const ANIMATION_TIMING = {
   EASE_OUT: 'easeOut',
   EASE_IN: 'easeIn',
@@ -25,7 +18,6 @@ export const ANIMATION_TIMING = {
   LINEAR: 'linear',
 } as const;
 
-// Stagger animation delays
 export const STAGGER_DELAYS = {
   FAST: 0.05,
   NORMAL: 0.1,
@@ -35,29 +27,25 @@ export const STAGGER_DELAYS = {
   CHILDREN_SLOW: 0.3,
 } as const;
 
-// Performance thresholds
 export const PERFORMANCE_THRESHOLDS = {
-  SLOW_RESOURCE: 1000, // ms
-  PAGE_LOAD_WARNING: 2000, // ms
-  MEMORY_CHECK_DELAY: 2000, // ms
+  SLOW_RESOURCE: 1000,
+  PAGE_LOAD_WARNING: 2000,
+  MEMORY_CHECK_DELAY: 2000,
 } as const;
 
-// API configuration
 export const API_CONFIG = {
-  TIMEOUT: 10000, // 10 seconds
+  TIMEOUT: 10000,
   DEFAULT_CURRENCY: 'USD',
   DEFAULT_LOCALE: 'en-US',
   FRACTION_DIGITS: 2,
 } as const;
 
-// Date calculations (in days)
 export const DATE_CONSTANTS = {
   DAYS_IN_WEEK: 7,
   DAYS_IN_MONTH: 30,
   DAYS_IN_YEAR: 365,
 } as const;
 
-// UI component sizes
 export const COMPONENT_SIZES = {
   SMALL: 'sm',
   MEDIUM: 'md',
@@ -65,11 +53,10 @@ export const COMPONENT_SIZES = {
   EXTRA_LARGE: 'xl',
 } as const;
 
-// Toast configuration
 export const TOAST_CONFIG = {
-  DEFAULT_DURATION: 5000, // ms
+  DEFAULT_DURATION: 5000,
   MAX_TOASTS: 5,
-  PROGRESS_ANIMATION_DURATION: 5000, // ms
+  PROGRESS_ANIMATION_DURATION: 5000,
   POSITIONS: {
     TOP_RIGHT: 'top-right',
     TOP_LEFT: 'top-left',
@@ -80,7 +67,6 @@ export const TOAST_CONFIG = {
   },
 } as const;
 
-// Modal configuration
 export const MODAL_CONFIG = {
   SIZES: {
     SMALL: 'sm',
@@ -96,7 +82,6 @@ export const MODAL_CONFIG = {
   },
 } as const;
 
-// Form configuration
 export const FORM_CONFIG = {
   VARIANTS: {
     DEFAULT: 'default',
@@ -106,7 +91,6 @@ export const FORM_CONFIG = {
   },
 } as const;
 
-// Button variants
 export const BUTTON_VARIANTS = {
   PRIMARY: 'primary',
   SECONDARY: 'secondary',
@@ -115,22 +99,19 @@ export const BUTTON_VARIANTS = {
   DANGER: 'danger',
 } as const;
 
-// Grid configuration
 export const GRID_CONFIG = {
   DEFAULT_COLUMNS: 3,
   DEFAULT_ITEMS_PER_PAGE: 12,
-  MIN_COLUMN_WIDTH: 250, // pixels
+  MIN_COLUMN_WIDTH: 250,
 } as const;
 
-// Cache control values (in seconds)
 export const CACHE_DURATION = {
-  STATIC_ASSETS: 31536000, // 1 year
-  HTML: 0, // No cache for HTML
-  IMAGES: 31536000, // 1 year
-  FONTS: 31536000, // 1 year
+  STATIC_ASSETS: 31536000,
+  HTML: 0,
+  IMAGES: 31536000,
+  FONTS: 31536000,
 } as const;
 
-// Z-index layers
 export const Z_INDEX = {
   DROPDOWN: 1000,
   STICKY: 1020,
@@ -142,7 +123,6 @@ export const Z_INDEX = {
   TOAST: 1080,
 } as const;
 
-// Breakpoints (pixels)
 export const BREAKPOINTS = {
   SM: 640,
   MD: 768,
@@ -151,7 +131,6 @@ export const BREAKPOINTS = {
   XXL: 1536,
 } as const;
 
-// Spacing values (pixels)
 export const SPACING = {
   XS: 4,
   SM: 8,
@@ -165,12 +144,10 @@ export const SPACING = {
   XXXXXXL: 128,
 } as const;
 
-// Wine grid layouts
 export const WINE_GRID_LAYOUTS = {
   GRID: 'grid',  LIST: 'list',
 } as const;
 
-// Toast types
 export const TOAST_TYPES = {
   SUCCESS: 'success',
   ERROR: 'error',
@@ -178,7 +155,6 @@ export const TOAST_TYPES = {
   INFO: 'info',
 } as const;
 
-// Loader variants
 export const LOADER_VARIANTS = {
   SPINNER: 'spinner',
   DOTS: 'dots',
@@ -187,7 +163,6 @@ export const LOADER_VARIANTS = {
   SKELETON: 'skeleton',
 } as const;
 
-// Card variants
 export const CARD_VARIANTS = {
   DEFAULT: 'default',
   WINE: 'wine',
@@ -196,7 +171,6 @@ export const CARD_VARIANTS = {
   ELEVATED: 'elevated',
 } as const;
 
-// Animation scale values
 export const ANIMATION_SCALE = {
   HOVER: 1.02,
   TAP: 0.98,
@@ -206,7 +180,6 @@ export const ANIMATION_SCALE = {
   BUTTON_TAP: 0.95,
 } as const;
 
-// Icon sizes
 export const ICON_SIZES = {
   XS: 12,
   SM: 16,
@@ -215,20 +188,17 @@ export const ICON_SIZES = {
   XL: 32,
 } as const;
 
-// Common CSS transition values
 export const CSS_TRANSITIONS = {
   FAST: '150ms ease',
   NORMAL: '250ms ease',
   SLOW: '500ms ease',
 } as const;
 
-// Form validation
 export const VALIDATION = {
   EMAIL_PATTERN: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   PHONE_PATTERN: /^\+?[\d\s\-\(\)]+$/,
 } as const;
 
-// Error codes
 export const ERROR_CODES = {
   NETWORK_ERROR: 0,
   TIMEOUT: 408,

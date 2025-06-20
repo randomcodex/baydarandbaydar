@@ -1,6 +1,4 @@
-// Utility Classes
 
-// Display
 .hidden {
   display: none !important;
 }
@@ -23,7 +21,6 @@
   display: inline-block !important;
 }
 
-// Flexbox utilities
 .flex-row {
   flex-direction: row !important;
 }
@@ -79,7 +76,6 @@
   flex: none !important;
 }
 
-// Text alignment
 .text-left {
   text-align: left !important;
 }
@@ -93,7 +89,6 @@
   text-align: justify !important;
 }
 
-// Font weights
 .font-light {
   font-weight: var(--font-weight-light) !important;
 }
@@ -110,7 +105,6 @@
   font-weight: var(--font-weight-bold) !important;
 }
 
-// Font sizes
 .text-xs {
   font-size: var(--font-size-xs) !important;
 }
@@ -136,7 +130,6 @@
   font-size: var(--font-size-4xl) !important;
 }
 
-// Colors
 .text-primary {
   color: var(--primary-color) !important;
 }
@@ -196,7 +189,6 @@
   background-color: var(--accent-light) !important;
 }
 
-// Spacing - Margin
 .m-0 {
   margin: 0 !important;
 }
@@ -294,7 +286,6 @@
   margin-right: var(--spacing-lg) !important;
 }
 
-// Spacing - Padding
 .p-0 {
   padding: 0 !important;
 }
@@ -387,7 +378,6 @@
   padding-right: var(--spacing-lg) !important;
 }
 
-// Border radius
 .rounded-none {
   border-radius: var(--border-radius-none) !important;
 }
@@ -407,7 +397,6 @@
   border-radius: var(--border-radius-full) !important;
 }
 
-// Shadows
 .shadow-sm {
   box-shadow: var(--shadow-sm) !important;
 }
@@ -424,7 +413,6 @@
   box-shadow: none !important;
 }
 
-// Position
 .relative {
   position: relative !important;
 }
@@ -438,7 +426,6 @@
   position: sticky !important;
 }
 
-// Width & Height
 .w-full {
   width: 100% !important;
 }
@@ -455,7 +442,6 @@
   min-height: 100vh !important;
 }
 
-// Overflow
 .overflow-hidden {
   overflow: hidden !important;
 }
@@ -466,7 +452,6 @@
   overflow: scroll !important;
 }
 
-// Cursor
 .cursor-pointer {
   cursor: pointer !important;
 }
@@ -477,7 +462,6 @@
   cursor: not-allowed !important;
 }
 
-// Transitions
 .transition {
   transition: all var(--transition-normal) !important;
 }
@@ -488,7 +472,6 @@
   transition: all var(--transition-slow) !important;
 }
 
-// Hover utilities
 .hover-lift {
   transition: transform var(--transition-normal);
 
@@ -497,12 +480,10 @@
   }
 }
 
-// Container
 .container {
   @include container;
 }
 
-// Container utilities for better screen utilization
 .container-max-width {
   max-width: var(--max-content-width) !important;
 }
@@ -539,17 +520,14 @@
   }
 }
 
-// Screen reader only
 .sr-only {
   @include sr-only;
 }
 
-// Truncate text
 .truncate {
   @include truncate;
 }
 
-// Line clamp
 .line-clamp-1 {
   @include line-clamp(1);
 }
@@ -560,7 +538,6 @@
   @include line-clamp(3);
 }
 
-// Theme Background Colors
 .bg-primary {
   background-color: var(--primary-color) !important;
 }
@@ -580,7 +557,6 @@
   background-color: var(--secondary-dark) !important;
 }
 
-// Theme Border Colors
 .border-primary {
   border-color: var(--primary-color) !important;
 }
@@ -591,7 +567,6 @@
   border-color: var(--accent-color) !important;
 }
 
-// Text rendering utilities
 .text-smooth {
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;

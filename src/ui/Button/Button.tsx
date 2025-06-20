@@ -9,7 +9,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children: React.ReactNode
 }
 
-export const Button = ({ 
+export const Button = ({
   variant = 'primary',
   size = 'md',
   fullWidth = false,
@@ -17,7 +17,7 @@ export const Button = ({
   children,
   className = '',
   disabled,
-  ...props 
+  ...props
 }: ButtonProps) => {
   const baseClasses = 'btn'
   const variantClass = `btn--${variant}`
@@ -37,7 +37,7 @@ export const Button = ({
   ].filter(Boolean).join(' ')
 
   return (
-    <button 
+    <button
       className={classes}
       disabled={disabled || isLoading}
       {...props}

@@ -6,11 +6,11 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  
+
   &--compact {
     gap: var(--spacing-xs);
   }
-  
+
   &--spacious {
     gap: var(--spacing-md);
   }  &__link {
@@ -21,11 +21,11 @@
     padding: 2px;
     border-radius: var(--border-radius-sm);
     transition: all var(--transition-fast);
-    
+
     img {
       width: 25px;
       height: 25px;
-     
+
       @include mobile-only {
         width: 16px;
         height: 16px;
@@ -34,17 +34,17 @@
       &--small img {
       width: 16px;
       height: 16px;
-      
+
       @include mobile-only {
         width: 14px;
         height: 14px;
       }
     }
-    
+
     &--large img {
       width: 22px;
       height: 22px;
-      
+
       @include mobile-only {
         width: 20px;
         height: 20px;
@@ -52,15 +52,14 @@
     }
       &:hover {
       transform: translateY(-1px);
-      
+
       img {
         transform: scale(1.1);
       }
     }    &:active {
       transform: translateY(0);
     }
-    
-    // Hide specific social media icons on smaller screens (below large breakpoint)
+
     &--facebook,
     &--instagram,
     &--twitter {

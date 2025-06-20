@@ -1,6 +1,5 @@
 import { Variants } from 'framer-motion'
 
-// Enhanced hero section animation
 export const heroSection: Variants = {
   initial: {
     opacity: 0,
@@ -17,7 +16,6 @@ export const heroSection: Variants = {
   },
 }
 
-// Title animation with dramatic entrance
 export const heroTitle: Variants = {
   initial: {
     opacity: 0,
@@ -35,7 +33,6 @@ export const heroTitle: Variants = {
   },
 }
 
-// Subtitle with elegant slide-in
 export const heroSubtitle: Variants = {
   initial: {
     opacity: 0,
@@ -53,7 +50,6 @@ export const heroSubtitle: Variants = {
   },
 }
 
-// Description with subtle fade
 export const heroDescription: Variants = {
   initial: {
     opacity: 0,
@@ -69,7 +65,6 @@ export const heroDescription: Variants = {
   },
 }
 
-// Button with bounce and scale effect
 export const heroButton: Variants = {
   initial: {
     opacity: 0,
@@ -104,7 +99,6 @@ export const heroButton: Variants = {
   },
 }
 
-// Container for staggered text elements
 export const heroTextContainer: Variants = {
   initial: {
     opacity: 0,
@@ -118,7 +112,6 @@ export const heroTextContainer: Variants = {
   },
 }
 
-// Background fade-in for smooth loading
 export const heroBackground: Variants = {
   initial: {
     opacity: 0,

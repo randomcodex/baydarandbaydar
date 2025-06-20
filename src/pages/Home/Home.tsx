@@ -17,9 +17,9 @@ export const Home = () => {
         subtitle="Sourcing exquisite tastes for the discerning palate."
         backgroundImage="/assets/images/home/bghome.webp"
         containerId="home-container"
-        buttonText="Explore Our Collection"
+        buttonText="View Selection"
         onButtonClick={() => {
-          // TODO: Add navigation to wine collection page
+
           console.log('Navigate to wine collection')
         }}
       />

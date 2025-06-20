@@ -2,11 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { resolve } from 'path'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   esbuild: {
-    // Ensure proper handling of TypeScript files
     loader: 'tsx',
     include: /src\/.*\.[tj]sx?$/,
   },
@@ -40,31 +38,28 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
-    open: true, // Auto-launch browser on server start
+    open: true,
     hmr: {
       port: 3000,
-      overlay: true, // Enable HMR overlay for better debugging
+      overlay: true,
     },
     watch: {
-      usePolling: false, // Disable polling to reduce resource usage
+      usePolling: false,
       ignored: ['**/node_modules/**', '**/.git/**'],
     },
     strictPort: false,
-    // Prevent caching issues during development
     headers: {
       'Cache-Control': 'no-cache, no-store, must-revalidate',
       'Pragma': 'no-cache',
       'Expires': '0',
     },
-    // Force correct MIME types
     middlewareMode: false,
   },
   build: {
     outDir: 'dist',
-    sourcemap: false, // Disable sourcemaps for production builds
+    sourcemap: false,
     rollupOptions: {
       output: {
-        // Optimize chunk file names for better caching
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
@@ -73,7 +68,6 @@ export default defineConfig({
         moduleSideEffects: false,
       },
     },
-    // Optimize for production
     minify: 'terser',
     terserOptions: {
       compress: {
@@ -85,11 +79,8 @@ export default defineConfig({
         safari10: true,
       },
     },
-    // Increase chunk size warning limit
     chunkSizeWarningLimit: 1000,
-    // Enable CSS code splitting
     cssCodeSplit: true,
-    // Optimize dependencies
     commonjsOptions: {
       include: [/node_modules/],
     },

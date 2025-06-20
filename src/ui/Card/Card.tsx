@@ -24,7 +24,7 @@ export interface CardFooterProps {
 
 export const Card = ({ variant = 'default', className = '', children }: CardProps) => {
   const classes = ['card', `card--${variant}`, className].filter(Boolean).join(' ')
-  
+
   return (
     <div className={classes}>
       {children}
@@ -34,7 +34,7 @@ export const Card = ({ variant = 'default', className = '', children }: CardProp
 
 export const CardHeader = ({ className = '', children }: CardHeaderProps) => {
   const classes = ['card__header', className].filter(Boolean).join(' ')
-  
+
   return (
     <div className={classes}>
       {children}
@@ -44,7 +44,7 @@ export const CardHeader = ({ className = '', children }: CardHeaderProps) => {
 
 export const CardBody = ({ className = '', children }: CardBodyProps) => {
   const classes = ['card__body', className].filter(Boolean).join(' ')
-  
+
   return (
     <div className={classes}>
       {children}
@@ -54,7 +54,7 @@ export const CardBody = ({ className = '', children }: CardBodyProps) => {
 
 export const CardFooter = ({ className = '', children }: CardFooterProps) => {
   const classes = ['card__footer', className].filter(Boolean).join(' ')
-  
+
   return (
     <div className={classes}>
       {children}

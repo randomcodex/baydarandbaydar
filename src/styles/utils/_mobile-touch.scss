@@ -1,28 +1,22 @@
-// Mobile Touch Interaction Utilities
-// GLOBALLY DISABLES ALL CLICK/HOVER/ACTIVE EFFECTS ON MOBILE DEVICES
 
-// Base mobile touch optimization mixin
 @mixin mobile-touch-base {
-  // Prevent touch callouts and selections
+
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  
-  // Remove tap highlight and optimize touch behavior
+
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
 
-// Interactive element touch optimization - MINIMAL approach
 @mixin mobile-touch-interactive {
   @include mobile-touch-base;
-  // That's it! No visual changes, just clean touch behavior
+
 }
 
-// All other mixins just inherit the basic behavior
 @mixin mobile-touch-button {
   @include mobile-touch-interactive;
 }
@@ -35,14 +29,10 @@
   @include mobile-touch-interactive;
 }
 
-// GLOBAL MOBILE OVERRIDE - Disables ALL visual effects on touch devices
-@media (hover: none) and (pointer: coarse) {
-  // Disable ALL hover, active, focus effects on ALL elements
-  *, *:before, *:after {
-    &:hover,
-    &:active,
-    &:focus {
-      // Reset all possible visual changes
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  *:not(.navbar):not(.navbar__logo), *:not(.navbar):not(.navbar__logo):before, *:not(.navbar):not(.navbar__logo):after {
+    &:hover {
+
       transform: none !important;
       box-shadow: none !important;
       background-color: inherit !important;
@@ -59,19 +49,13 @@
       rotate: none !important;
     }
   }
-  
-  // Specifically target common interactive elements
-  button, .btn, [role="button"],
-  a, .link,
+  a:not(.navbar), .link:not(.navbar),
   input, textarea, select,
   .card, .clickable, .interactive,
-  .logo, .logo-link, .nav-link,
-  .social-link, .icon-button {
-    &:hover,
-    &:active,
-    &:focus,
-    &:focus-visible {
-      // Reset everything
+  .nav-link, .social-link, .icon-button,
+  .logo:not(.navbar__logo), .logo-link:not(.navbar__logo) {
+    &:hover {
+
       transform: none !important;
       box-shadow: none !important;
       background-color: inherit !important;
@@ -86,11 +70,155 @@
       scale: none !important;
       translate: none !important;
       rotate: none !important;
+    }
+  }
+
+  .navbar__logo {
+    &:hover {
+
+      box-shadow: none !important;
+      background-color: inherit !important;
+      background: inherit !important;
+      color: inherit !important;
+      opacity: inherit !important;
+      filter: none !important;
+      text-shadow: inherit !important;
+      border-color: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+
+      transform: translateY(-50%) !important;
+    }
+  }
+
+  button, .btn, [role="button"] {
+    &:hover {
+
+      transform: none !important;
+      box-shadow: none !important;
+      filter: none !important;
+      text-shadow: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+
     }
   }
 }
 
-// Utility classes for direct application
+@media (hover: none) and (pointer: coarse) {
+  *:not(.navbar):not(.navbar__logo), *:not(.navbar):not(.navbar__logo):before, *:not(.navbar):not(.navbar__logo):after {
+    &:active,
+    &:focus {
+
+      transform: none !important;
+      box-shadow: none !important;
+      background-color: inherit !important;
+      background: inherit !important;
+      color: inherit !important;
+      opacity: inherit !important;
+      filter: none !important;
+      text-shadow: inherit !important;
+      border-color: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+    }
+  }
+
+  a, .link,
+  input, textarea, select,
+  .card, .clickable, .interactive,
+  .nav-link, .social-link, .icon-button {    &:active,
+    &:focus,
+    &:focus-visible {
+
+      transform: none !important;
+      box-shadow: none !important;
+      background-color: inherit !important;
+      background: inherit !important;
+      color: inherit !important;
+      opacity: inherit !important;
+      filter: none !important;
+      text-shadow: inherit !important;
+      border-color: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+    }
+  }
+
+  button, .btn, [role="button"] {
+    &:active,
+    &:focus,
+    &:focus-visible {
+
+      transform: none !important;
+      text-shadow: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+
+    }
+  }
+
+  .logo, .logo-link {
+    &:active,
+    &:focus,
+    &:focus-visible {
+
+      box-shadow: none !important;
+      background-color: transparent !important;
+      background: none !important;
+      color: inherit !important;
+      opacity: inherit !important;
+      filter: none !important;
+      text-shadow: inherit !important;
+      border-color: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+
+    }
+  }
+
+  .navbar__logo {
+    &:active,
+    &:focus,
+    &:focus-visible {
+
+      box-shadow: none !important;
+      background-color: transparent !important;
+      background: none !important;
+      color: inherit !important;
+      opacity: inherit !important;
+      filter: none !important;
+      text-shadow: inherit !important;
+      border-color: inherit !important;
+      outline: none !important;
+      text-decoration: none !important;
+      scale: none !important;
+      translate: none !important;
+      rotate: none !important;
+
+      transform: translateY(-50%) !important;
+    }
+  }
+}
+
 .mobile-touch-base {
   @include mobile-touch-base;
 }
@@ -111,7 +239,6 @@
   @include mobile-touch-area;
 }
 
-// Prevent iOS zoom on form inputs
 input[type="text"],
 input[type="email"],
 input[type="tel"],
@@ -121,9 +248,9 @@ input[type="search"],
 textarea,
 select {
   @include mobile-touch-base;
-  font-size: 16px; // Prevents zoom on iOS
-  
+  font-size: 16px;
+
   @media (max-width: 768px) {
-    font-size: 16px; // Ensure minimum 16px on mobile to prevent zoom
+    font-size: 16px;
   }
 }

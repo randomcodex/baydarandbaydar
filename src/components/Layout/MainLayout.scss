@@ -2,18 +2,18 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: var(--primary-color); // Using lighter shade (#051505) for main layout background
+  background-color: var(--primary-color);
   color: var(--secondary-color);
 }
 
 .main-content {
   flex: 1;
   width: 100%;
-  padding-top: 60px; // Match navbar height exactly
-  background-color: var(--primary-color); // Using lighter shade (#051505) for main content background
+  padding-top: 60px;
+  background-color: var(--primary-color);
   color: var(--secondary-color);
 
   @include tablet-up {
-    padding-top: 70px; // Match navbar height exactly
+    padding-top: 70px;
   }
 }

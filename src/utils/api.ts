@@ -1,6 +1,5 @@
 import { env } from '../config'
 
-// API Error class
 export class ApiError extends Error {
   constructor(
     message: string,
@@ -12,17 +11,14 @@ export class ApiError extends Error {
   }
 }
 
-// API Response type
 export interface ApiResponse<T = any> {
   data: T
   message?: string
   success: boolean
 }
 
-// HTTP Methods
 type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
-// Request options
 interface RequestOptions {
   method?: HttpMethod
   headers?: Record<string, string>
@@ -30,13 +26,11 @@ interface RequestOptions {
   timeout?: number
 }
 
-// Default headers
 const defaultHeaders = {
   'Content-Type': 'application/json',
   Accept: 'application/json',
 }
 
-// Main API function
 export const api = async <T = any>(
   endpoint: string,
   options: RequestOptions = {},
@@ -53,12 +47,10 @@ export const api = async <T = any>(
     },
   }
 
-  // Add body for non-GET requests
   if (body && method !== 'GET') {
     config.body = JSON.stringify(body)
   }
 
-  // Create abort controller for timeout
   const controller = new AbortController()
   const timeoutId = setTimeout(() => controller.abort(), timeout)
   config.signal = controller.signal
@@ -75,7 +67,6 @@ export const api = async <T = any>(
         errorData = await response.json()
         errorMessage = errorData.message || errorMessage
       } catch {
-        // Response is not JSON, use status text
       }
 
       throw new ApiError(errorMessage, response.status, errorData)
@@ -98,7 +89,6 @@ export const api = async <T = any>(
   }
 }
 
-// Helper functions for common HTTP methods
 export const apiGet = <T = any>(endpoint: string, headers?: Record<string, string>) =>
   api<T>(endpoint, { method: 'GET', headers })
 

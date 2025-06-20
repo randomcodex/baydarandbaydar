@@ -1,4 +1,4 @@
-// Error boundary styles
+
 .error-boundary {
   min-height: 100vh;
   display: flex;
@@ -108,7 +108,7 @@
       font-weight: var(--font-weight-semibold);
       color: var(--secondary-color);
       margin-bottom: var(--spacing-sm);
-      
+
       &:hover {
         color: var(--secondary-light);
       }
@@ -129,10 +129,9 @@
     }
   }
 
-  // Responsive adjustments
   @include mobile-only {
     padding: var(--spacing-lg);
-    
+
     &__content {
       gap: var(--spacing-md);
     }

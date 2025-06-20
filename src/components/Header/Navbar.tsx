@@ -1,16 +1,13 @@
 import './Navbar.scss'
 import SocialMediaIcons from '../SocialMediaIcons'
-import { Logo } from '@/ui/Logo'
+import Logo from '../Logo'
 
 export const Navbar = () => {
   return (
     <nav className="navbar">
+      <Logo className="navbar__logo" size="large" />
       <div className="navbar__container">
-        <div className="navbar__brand">
-          <Logo size="small" />
-        </div>
-        
-        <SocialMediaIcons 
+        <SocialMediaIcons
           className="navbar__social"
           size="medium"
           variant="compact"

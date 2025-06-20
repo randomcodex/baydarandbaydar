@@ -2,10 +2,8 @@
 @import "../../styles/base/mixins";
 
 .grid {
-  display: grid;
-  width: 100%;
+  display: grid;  width: 100%;
 
-  // Column variants
   &--columns-1 {
     grid-template-columns: 1fr;
   }
@@ -30,7 +28,6 @@
     grid-template-columns: repeat(6, 1fr);
   }
 
-  // Gap variants
   &--gap-sm {
     gap: var(--spacing-sm);
   }
@@ -43,7 +40,6 @@
     gap: var(--spacing-lg);
   }
 
-  // Responsive behavior
   &--responsive {
     &.grid--columns-2 {
       @include mobile-only {
@@ -91,7 +87,6 @@
     }
   }
 
-  // Grid item
   &__item {
     &--span-1 {
       grid-column: span 1;
@@ -117,7 +112,6 @@
       grid-column: span 6;
     }
 
-    // Responsive spans
     @include mobile-only {
       &--span-2,
       &--span-3,

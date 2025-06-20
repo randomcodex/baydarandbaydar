@@ -36,13 +36,10 @@ export const useWindowSize = (): WindowSize => {
       })
     }
 
-    // Set initial size
     handleResize()
 
-    // Add event listener
     window.addEventListener('resize', handleResize)
 
-    // Cleanup
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 

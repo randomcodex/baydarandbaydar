@@ -1,11 +1,11 @@
-// CSS Reset and Base Styles
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  // Apply consistent text rendering to all elements
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -17,7 +17,7 @@
 html {
   scroll-behavior: smooth;
   text-size-adjust: 100%;
-  font-size: var(--font-size-fluid); // Responsive font size using clamp
+  font-size: var(--font-size-fluid);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -25,19 +25,22 @@ html {
   font-variant-ligatures: common-ligatures;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-display: swap;
+
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
   font-family: var(--font-family-secondary);
-  font-size: var(--font-size-base); // Now 1.05rem for better serif readability
+  font-size: var(--font-size-base);
   font-weight: var(--font-weight-normal);
-  line-height: var(--line-height-relaxed); // Now 1.7 for enhanced vertical rhythm
-  letter-spacing: var(--letter-spacing-normal); // Subtle letter spacing for clarity
+  line-height: var(--line-height-relaxed);
+  letter-spacing: var(--letter-spacing-normal);
   color: var(--secondary-color);
   background-color: var(--primary-color);
   min-height: 100vh;
   overflow-x: hidden;
-  // Enhanced text rendering for maximum clarity and antialiasing
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -47,7 +50,6 @@ body {
   font-optical-sizing: auto;
 }
 
-// Typography with uniform antialiasing - Enhanced for Abhaya Libre
 h1,
 h2,
 h3,
@@ -56,8 +58,8 @@ h5,
 h6 {
   @include heading-primary;
   margin-bottom: var(--spacing-md);
-  color: #111; // Slightly darker for strong contrast
-  letter-spacing: var(--letter-spacing-wide); // Enhanced for headings
+  color: #111;
+  letter-spacing: var(--letter-spacing-wide);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -117,7 +119,7 @@ h6 {
 
 p {
   margin-bottom: var(--spacing-md);
-  max-width: var(--max-reading-width); // Keeps lines readable (60ch)
+  max-width: var(--max-reading-width);
   @include body-text;
 }
 
@@ -154,7 +156,6 @@ blockquote {
   font-style: italic;
 }
 
-// Images and Media
 img {
   max-width: 100%;
   height: auto;
@@ -165,7 +166,6 @@ svg {
   fill: currentColor;
 }
 
-// Forms with enhanced text rendering
 button {
   font-family: inherit;
   cursor: pointer;
@@ -184,7 +184,6 @@ select {
   text-rendering: optimizeLegibility;
 }
 
-// Enhanced text rendering for common text elements
 p,
 span,
 div,
@@ -195,7 +194,6 @@ a {
   text-rendering: optimizeLegibility;
 }
 
-// Tables
 table {
   width: 100%;
   border-collapse: collapse;
@@ -214,7 +212,6 @@ th {
   color: var(--dark-gray);
 }
 
-// Accessibility
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -226,13 +223,11 @@ th {
   }
 }
 
-// Focus styles for keyboard navigation
 *:focus-visible {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
 
-// Skip link for accessibility
 .skip-link {
   position: absolute;
   top: -40px;

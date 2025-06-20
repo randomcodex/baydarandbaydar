@@ -1,6 +1,5 @@
 import { Variants } from 'framer-motion'
 
-// Scroll-triggered animations for elements coming into view
 export const scrollReveal: Variants = {
   hidden: {
     opacity: 0,
@@ -16,7 +15,6 @@ export const scrollReveal: Variants = {
   },
 }
 
-// Enhanced scroll reveal with scale
 export const scrollRevealScale: Variants = {
   hidden: {
     opacity: 0,
@@ -34,7 +32,6 @@ export const scrollRevealScale: Variants = {
   },
 }
 
-// Scroll reveal from left
 export const scrollRevealLeft: Variants = {
   hidden: {
     opacity: 0,
@@ -50,7 +47,6 @@ export const scrollRevealLeft: Variants = {
   },
 }
 
-// Scroll reveal from right
 export const scrollRevealRight: Variants = {
   hidden: {
     opacity: 0,
@@ -66,7 +62,6 @@ export const scrollRevealRight: Variants = {
   },
 }
 
-// Staggered scroll reveal for lists
 export const scrollStagger: Variants = {
   hidden: {
     opacity: 0,
@@ -80,7 +75,6 @@ export const scrollStagger: Variants = {
   },
 }
 
-// Button interaction animations
 export const buttonInteraction: Variants = {
   initial: {
     scale: 1,
@@ -102,7 +96,6 @@ export const buttonInteraction: Variants = {
   },
 }
 
-// Loading animation
 export const loadingPulse: Variants = {
   initial: {
     opacity: 0.6,
@@ -120,9 +113,8 @@ export const loadingPulse: Variants = {
   },
 }
 
-// Page transition variants for different page types
 export const pageTransitions = {
-  // Standard page transition
+
   standard: {
     initial: {
       opacity: 0,
@@ -145,8 +137,7 @@ export const pageTransitions = {
       },
     },
   },
-  
-  // Homepage transition with enhanced effects
+
   homepage: {
     initial: {
       opacity: 0,

@@ -15,7 +15,7 @@ export const NotFound = () => {
       <div className='container'>
         <div className='not-found__content'>
           <div className='not-found__number'>404</div>
-          
+
           <h1>Page Not Found</h1>
 
           <p className='not-found__description'>

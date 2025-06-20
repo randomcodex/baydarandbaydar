@@ -9,7 +9,6 @@
   overflow: hidden;
   transition: all var(--transition-normal);
 
-  // Base variant styles
   &--default {
     @include card-elevation(1);
     border: var(--border-width-thin) solid var(--light-gray);
@@ -66,11 +65,10 @@
     }
   }
 
-  // Card sections
   &__header {
     padding: var(--spacing-lg);
     border-bottom: var(--border-width-thin) solid var(--light-gray);
-    
+
     h1, h2, h3, h4, h5, h6 {
       margin: 0;
     }
@@ -87,7 +85,6 @@
     background: var(--off-white);
   }
 
-  // When card has both header and footer
   &__header + &__body {
     padding-top: var(--spacing-lg);
   }
@@ -96,7 +93,6 @@
     padding-top: var(--spacing-lg);
   }
 
-  // Full-height cards
   &--full-height {
     height: 100%;
     display: flex;

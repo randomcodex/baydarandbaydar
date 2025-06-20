@@ -14,12 +14,11 @@ interface PageMetadata {
 
 export const usePageMetadata = (metadata: PageMetadata) => {
   useEffect(() => {
-    // Set page title
+
     if (metadata.title) {
       document.title = metadata.title
     }
 
-    // Set meta description
     if (metadata.description) {
       let metaDescription = document.querySelector('meta[name="description"]')
       if (!metaDescription) {
@@ -30,7 +29,6 @@ export const usePageMetadata = (metadata: PageMetadata) => {
       metaDescription.setAttribute('content', metadata.description)
     }
 
-    // Set meta keywords
     if (metadata.keywords) {
       let metaKeywords = document.querySelector('meta[name="keywords"]')
       if (!metaKeywords) {
@@ -41,7 +39,6 @@ export const usePageMetadata = (metadata: PageMetadata) => {
       metaKeywords.setAttribute('content', metadata.keywords)
     }
 
-    // Set Open Graph title
     if (metadata.ogTitle) {
       let ogTitle = document.querySelector('meta[property="og:title"]')
       if (!ogTitle) {
@@ -52,7 +49,6 @@ export const usePageMetadata = (metadata: PageMetadata) => {
       ogTitle.setAttribute('content', metadata.ogTitle)
     }
 
-    // Set Open Graph description
     if (metadata.ogDescription) {
       let ogDescription = document.querySelector('meta[property="og:description"]')
       if (!ogDescription) {
@@ -63,7 +59,6 @@ export const usePageMetadata = (metadata: PageMetadata) => {
       ogDescription.setAttribute('content', metadata.ogDescription)
     }
 
-    // Set Open Graph image
     if (metadata.ogImage) {
       let ogImage = document.querySelector('meta[property="og:image"]')
       if (!ogImage) {
@@ -72,7 +67,7 @@ export const usePageMetadata = (metadata: PageMetadata) => {
         document.head.appendChild(ogImage)
       }
       ogImage.setAttribute('content', metadata.ogImage)
-    } // Set canonical URL
+    }
     if (metadata.canonicalUrl) {
       let canonical = document.querySelector('link[rel="canonical"]')
       if (!canonical) {
@@ -83,24 +78,21 @@ export const usePageMetadata = (metadata: PageMetadata) => {
       canonical.setAttribute('href', `${env.SITE_URL}${metadata.canonicalUrl}`)
     }
 
-    // Set structured data
     if (metadata.structuredData) {
-      // Remove existing structured data
+
       const existingScript = document.querySelector('script[type="application/ld+json"]')
       if (existingScript) {
         existingScript.remove()
       }
 
-      // Add new structured data
       const script = document.createElement('script')
       script.type = 'application/ld+json'
       script.textContent = JSON.stringify(metadata.structuredData)
       document.head.appendChild(script)
     }
 
-    // Cleanup function
     return () => {
-      // Optional: Clean up dynamically added meta tags if needed
+
     }
   }, [
     metadata.title,

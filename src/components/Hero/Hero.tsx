@@ -1,12 +1,12 @@
 import { useEffect, useCallback, useMemo, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { 
-  heroTitle, 
-  heroSubtitle, 
-  heroDescription, 
-  heroButton, 
+import {
+  heroTitle,
+  heroSubtitle,
+  heroDescription,
+  heroButton,
   heroTextContainer,
-  heroBackground 
+  heroBackground
 } from '../../animations'
 import { Container } from '@ui/Container'
 import { Button } from '@ui/Button'
@@ -24,10 +24,10 @@ export interface HeroProps {
   onButtonClick?: () => void
 }
 
-export const Hero = ({ 
-  title, 
-  subtitle, 
-  description, 
+export const Hero = ({
+  title,
+  subtitle,
+  description,
   backgroundImage = '/assets/images/home/bghome.webp',
   containerId = 'hero-container',
   buttonText,
@@ -40,7 +40,7 @@ export const Hero = ({
 
   const setupBackground = useCallback(() => {
     if (!backgroundImage || isBackgroundLoadedRef.current) return
-    
+
     try {
       const element = document.getElementById(memoizedContainerId)
       if (element) {        element.style.backgroundImage = `url(${backgroundImage})`
@@ -57,14 +57,13 @@ export const Hero = ({
 
   useEffect(() => {
     setupBackground()
-    
-    // Cleanup function to reset the loaded state if component unmounts
+
     return () => {
       isBackgroundLoadedRef.current = false
     }
   }, [setupBackground])
   return (
-    <motion.section 
+    <motion.section
       id={memoizedContainerId}
       className='hero'
       variants={heroBackground}
@@ -72,7 +71,7 @@ export const Hero = ({
       animate="animate"
     >
       <Container className="hero__content">
-        <motion.div 
+        <motion.div
           className="hero__text"
           variants={heroTextContainer}
           initial="initial"
@@ -88,22 +87,15 @@ export const Hero = ({
             <motion.p variants={heroDescription} className="hero__description">
               {description}
             </motion.p>
-          )}
-          {buttonText && (
+          )}          {buttonText && (
             <motion.div variants={heroButton} className="hero__actions">
-              <motion.div
-                whileHover="hover"
-                whileTap="tap"
-                variants={heroButton}
+              <Button
+                variant={buttonVariant}
+                size={buttonSize}
+                onClick={onButtonClick}
               >
-                <Button 
-                  variant={buttonVariant} 
-                  size={buttonSize} 
-                  onClick={onButtonClick}
-                >
-                  {buttonText}
-                </Button>
-              </motion.div>
+                {buttonText}
+              </Button>
             </motion.div>
           )}
         </motion.div>
