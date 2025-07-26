@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { MainLayout } from '@/components/Layout/MainLayout'
-import { Home } from '@/pages/Home/Home'
+import { Home, Portfolio } from '@/pages'
 import { NotFound } from '@/pages/404/NotFound'
 
 export const Router = () => {
@@ -8,6 +8,7 @@ export const Router = () => {
     <Routes>
       <Route path='/' element={<MainLayout />}>
         <Route index element={<Home />} />
+        <Route path='/portfolio' element={<Portfolio />} />
         <Route path='*' element={<NotFound />} />
       </Route>
     </Routes>

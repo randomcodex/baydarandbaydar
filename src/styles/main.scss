@@ -7,10 +7,15 @@
 @import "./utils/text-enhancements";
 @import "./utils/background-utils";
 @import "./utils/text-effects";
-@import "./utils/mobile-touch";
 
 @import "./components/loading";
-@import "./components/error-boundary";
+@import "../components/ErrorBoundary/ErrorBoundary";
+@import "../components/Footer/Footer";
+@import "../components/Header/Navbar";
+@import "../components/Hero/Hero";
+@import "../components/Layout/MainLayout";
+@import "../components/Logo/Logo";
+@import "../components/SocialMediaIcons/SocialMediaIcons";
 
 @font-face {
   font-family: "Abhaya Libre";

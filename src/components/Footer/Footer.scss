@@ -2,7 +2,6 @@
 @import "../../styles/base/variables";
 @import "../../styles/base/mixins";
 @import "../../styles/utils/text-effects";
-@import "../../styles/utils/mobile-touch";
 
 .footer {
 
@@ -50,10 +49,8 @@
       font-size: var(--font-size-xs);
     }
   }
-
   &__powered-by {
     @include small-text;
-    @include mobile-touch-link;
     color: var(--secondary-color);
     font-size: var(--font-size-xs);
     text-decoration: none;

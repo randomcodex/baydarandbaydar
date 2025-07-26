@@ -5,8 +5,7 @@ import {
   heroSubtitle,
   heroDescription,
   heroButton,
-  heroTextContainer,
-  heroBackground
+  heroTextContainer
 } from '../../animations'
 import { Container } from '@ui/Container'
 import { Button } from '@ui/Button'
@@ -62,13 +61,11 @@ export const Hero = ({
       isBackgroundLoadedRef.current = false
     }
   }, [setupBackground])
+
   return (
-    <motion.section
+    <section
       id={memoizedContainerId}
       className='hero'
-      variants={heroBackground}
-      initial="initial"
-      animate="animate"
     >
       <Container className="hero__content">
         <motion.div
@@ -97,9 +94,8 @@ export const Hero = ({
                 {buttonText}
               </Button>
             </motion.div>
-          )}
-        </motion.div>
+          )}        </motion.div>
       </Container>
-    </motion.section>
+    </section>
   )
 }

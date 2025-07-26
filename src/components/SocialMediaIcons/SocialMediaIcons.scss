@@ -1,6 +1,5 @@
 @import "../../styles/base/variables";
 @import "../../styles/base/mixins";
-@import "../../styles/utils/mobile-touch";
 
 .social-media-icons {
   display: flex;
@@ -14,7 +13,6 @@
   &--spacious {
     gap: var(--spacing-md);
   }  &__link {
-    @include mobile-touch-button;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,14 +56,10 @@
       }
     }    &:active {
       transform: translateY(0);
-    }
-
-    &--facebook,
+    }    &--facebook,
     &--instagram,
     &--twitter {
-      @media (max-width: 1023px) {
-        display: none;
-      }
+      @include hide-below-lg;
     }
   }
 }

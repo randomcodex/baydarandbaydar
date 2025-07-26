@@ -109,60 +109,35 @@ export const loadingPulse: Variants = {
       ease: 'easeInOut',
       repeat: Infinity,
       repeatType: 'reverse',
+    },  },
+}
+
+export const cardScrollReveal: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+    scale: 0.95,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.46, 0.45, 0.94],
     },
   },
 }
 
-export const pageTransitions = {
-
-  standard: {
-    initial: {
-      opacity: 0,
-      y: 20,
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: -20,
-      transition: {
-        duration: 0.4,
-        ease: 'easeIn',
-      },
-    },
+export const cardStaggerContainer: Variants = {
+  hidden: {
+    opacity: 1,
   },
-
-  homepage: {
-    initial: {
-      opacity: 0,
-      scale: 0.98,
-      filter: 'blur(2px)',
-    },
-    animate: {
-      opacity: 1,
-      scale: 1,
-      filter: 'blur(0px)',
-      transition: {
-        duration: 1,
-        ease: 'easeOut',
-        when: 'beforeChildren',
-        staggerChildren: 0.1,
-      },
-    },
-    exit: {
-      opacity: 0,
-      scale: 1.02,
-      filter: 'blur(1px)',
-      transition: {
-        duration: 0.5,
-        ease: 'easeIn',
-      },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
     },
   },
 }

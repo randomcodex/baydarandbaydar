@@ -49,9 +49,55 @@
   }
 }
 
-@mixin large-desktop-only {
-  @media (min-width: #{var(--breakpoint-lg)}) and (max-width: #{var(--breakpoint-xl) - 1px}) {
-    @content;
+@mixin hide-on-mobile {
+  @include mobile-only {
+    display: none !important;
+  }
+}
+
+@mixin hide-on-tablet {
+  @include tablet-only {
+    display: none !important;
+  }
+}
+
+@mixin hide-on-desktop {
+  @include desktop-only {
+    display: none !important;
+  }
+}
+
+@mixin hide-on-large {
+  @include large-up {
+    display: none !important;
+  }
+}
+
+@mixin hide-below-lg {
+  @media (max-width: 1023px) {
+    display: none !important;
+  }
+}
+
+@mixin show-below-lg {
+  @media (max-width: 1023px) {
+    display: block !important;
+  }
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+}
+
+@mixin hide-above-lg {
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+}
+
+@mixin show-above-lg {
+  display: none !important;
+  @media (min-width: 1024px) {
+    display: block !important;
   }
 }
 
@@ -375,4 +421,38 @@
   -webkit-line-clamp: $lines;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+@mixin apply-below-breakpoint($property, $value, $breakpoint: 1024px) {
+  @media (max-width: #{$breakpoint - 1}px) {
+    #{$property}: $value !important;
+  }
+}
+
+@mixin hide-below-breakpoint($breakpoint: var(--breakpoint-lg)) {
+  @if type-of($breakpoint) == 'string' and str-index($breakpoint, 'var(') != null {
+    @media (max-width: calc(#{$breakpoint} - 1px)) {
+      display: none !important;
+    }
+  } @else {
+    @include apply-below-breakpoint(display, none, $breakpoint);
+  }
+}
+
+@mixin show-above-breakpoint($breakpoint: var(--breakpoint-lg)) {
+  @if type-of($breakpoint) == 'string' and str-index($breakpoint, 'var(') != null {
+    display: none !important;
+    @media (min-width: #{$breakpoint}) {
+      display: block !important;
+    }
+  } @else {
+    display: none !important;
+    @media (min-width: #{$breakpoint}px) {
+      display: block !important;
+    }
+  }
+}
+
+@mixin hide-below-lg-old {
+  @include hide-below-breakpoint(1024);
 }

@@ -24,5 +24,6 @@ export {
   scrollStagger,
   buttonInteraction,
   loadingPulse,
-  pageTransitions,
+  cardScrollReveal,
+  cardStaggerContainer,
 } from './scrollAnimations'

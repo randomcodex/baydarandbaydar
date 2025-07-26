@@ -1,10 +1,15 @@
 import React from 'react'
+import { motion } from 'framer-motion'
+import { cardScrollReveal } from '../../animations'
+import { useScrollAnimation } from '../../hooks/useScrollAnimation'
 import './Card.scss'
 
 export interface CardProps {
   variant?: 'default' | 'wine' | 'feature' | 'outline' | 'elevated'
   className?: string
   children: React.ReactNode
+  enableScrollAnimation?: boolean
+  isStaggerChild?: boolean
 }
 
 export interface CardHeaderProps {
@@ -22,9 +27,45 @@ export interface CardFooterProps {
   children: React.ReactNode
 }
 
-export const Card = ({ variant = 'default', className = '', children }: CardProps) => {
-  const classes = ['card', `card--${variant}`, className].filter(Boolean).join(' ')
+export interface CardContainerProps {
+  className?: string
+  children: React.ReactNode
+  enableStagger?: boolean
+}
 
+export const Card = ({ variant = 'default', className = '', children, enableScrollAnimation = true, isStaggerChild = false }: CardProps) => {
+  const classes = ['card', `card--${variant}`, className].filter(Boolean).join(' ')
+  const { ref, isInView } = useScrollAnimation({ threshold: 0.1, triggerOnce: true })
+
+  // Apply scroll animations when enabled
+  if (enableScrollAnimation) {
+    // If this card is a child of CardContainer (stagger parent), use simpler variant
+    if (isStaggerChild) {
+      return (
+        <motion.div
+          className={classes}
+          variants={cardScrollReveal}
+        >
+          {children}
+        </motion.div>
+      )
+    }
+
+    // Independent card with its own scroll trigger
+    return (
+      <motion.div
+        ref={ref}
+        className={classes}
+        variants={cardScrollReveal}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+      >
+        {children}
+      </motion.div>
+    )
+  }
+
+  // Static div when animations are disabled
   return (
     <div className={classes}>
       {children}
@@ -55,6 +96,42 @@ export const CardBody = ({ className = '', children }: CardBodyProps) => {
 export const CardFooter = ({ className = '', children }: CardFooterProps) => {
   const classes = ['card__footer', className].filter(Boolean).join(' ')
 
+  return (
+    <div className={classes}>
+      {children}
+    </div>
+  )
+}
+
+export const CardContainer = ({ className = '', children, enableStagger = true }: CardContainerProps) => {
+  const { ref, isInView } = useScrollAnimation({ threshold: 0.1, triggerOnce: true })
+  const classes = ['card-container', className].filter(Boolean).join(' ')
+
+  // Apply scroll animations when stagger is enabled
+  if (enableStagger) {
+    return (
+      <motion.div
+        ref={ref}
+        className={classes}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={{
+          hidden: { opacity: 1 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.15,
+              delayChildren: 0.1,
+            },
+          },
+        }}
+      >
+        {children}
+      </motion.div>
+    )
+  }
+
+  // Static div when stagger is disabled
   return (
     <div className={classes}>
       {children}

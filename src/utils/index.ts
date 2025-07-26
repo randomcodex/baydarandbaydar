@@ -21,11 +21,9 @@ export {
 export {
   loadBackground,
   loadBackgroundBySelector,
-  loadBackgroundMultiple,
-  preloadBackgroundImages,
+  loadBackgroundMultiple,  preloadBackgroundImages,
   lazyLoadBackground,
   removeBackground,
-  updateBackgroundFilters,
 } from './loadBackground'
 export type { ApiResponse } from './api'
 export type { BackgroundOptions } from './loadBackground'

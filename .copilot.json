@@ -10,6 +10,34 @@
           "delete": true,
           "modify": true
         }
+      },
+      "settings": {
+        "github.copilot.advanced.showExplanations": false,
+        "github.copilot.editor.enableAutoCompletions": true,
+        "github.copilot.inlineSuggest.enable": true,
+        "github.copilot.chat.showWelcomeMessage": false,
+        "github.copilot.advanced.length": 500,
+        "github.copilot.advanced.top_p": 1,
+        "github.copilot.advanced.temperature": 0
+      },
+      "context": {
+        "includePatterns": [
+          "**/*.js",
+          "**/*.ts",
+          "**/*.jsx",
+          "**/*.tsx",
+          "**/*.css",
+          "**/*.html",
+          "**/*.json",
+          "package.json",
+          "README.md"
+        ],
+        "excludePatterns": [
+          "node_modules/**",
+          "dist/**",
+          "build/**",
+          ".git/**"
+        ]
       }
     }
   ]
