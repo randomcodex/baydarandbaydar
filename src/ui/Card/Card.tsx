@@ -10,6 +10,8 @@ export interface CardProps {
   children: React.ReactNode
   enableScrollAnimation?: boolean
   isStaggerChild?: boolean
+  onClick?: () => void
+  style?: React.CSSProperties
 }
 
 export interface CardHeaderProps {
@@ -33,7 +35,7 @@ export interface CardContainerProps {
   enableStagger?: boolean
 }
 
-export const Card = ({ variant = 'default', className = '', children, enableScrollAnimation = true, isStaggerChild = false }: CardProps) => {
+export const Card = ({ variant = 'default', className = '', children, enableScrollAnimation = true, isStaggerChild = false, onClick, style }: CardProps) => {
   const classes = ['card', `card--${variant}`, className].filter(Boolean).join(' ')
   const { ref, isInView } = useScrollAnimation({ threshold: 0.1, triggerOnce: true })
 
@@ -45,6 +47,8 @@ export const Card = ({ variant = 'default', className = '', children, enableScro
         <motion.div
           className={classes}
           variants={cardScrollReveal}
+          onClick={onClick}
+          style={style}
         >
           {children}
         </motion.div>
@@ -59,6 +63,8 @@ export const Card = ({ variant = 'default', className = '', children, enableScro
         variants={cardScrollReveal}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
+        onClick={onClick}
+        style={style}
       >
         {children}
       </motion.div>
@@ -67,7 +73,7 @@ export const Card = ({ variant = 'default', className = '', children, enableScro
 
   // Static div when animations are disabled
   return (
-    <div className={classes}>
+    <div className={classes} onClick={onClick} style={style}>
       {children}
     </div>
   )
