@@ -6,9 +6,9 @@ export const Home = () => {
   const navigate = useNavigate()
 
   usePageMetadata({
-    title: 'Premium Italian Wine Imports | Baydar & Baydar',
+    title: 'Premium Italian Wines | Baydar & Baydar',
     description:
-      'Discover exceptional wines from Italy\'s finest vineyards. Baydar & Baydar brings you premium Italian wine imports with unmatched quality and authenticity.',
+      'Discover exceptional wines from Italy\'s finest vineyards. Baydar & Baydar brings you premium Italian wines with unmatched quality and authenticity.',
     keywords: 'Italian wine, premium wine imports, Baydar & Baydar, wine collection, authentic Italian wines',
   })
 

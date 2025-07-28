@@ -1,4 +1,3 @@
-import { useEffect, useCallback, useMemo, useRef } from 'react'
 import { motion } from 'framer-motion'
 import {
   heroTitle,
@@ -9,6 +8,7 @@ import {
 } from '../../animations'
 import { Container } from '@ui/Container'
 import { Button } from '@ui/Button'
+import { useBackgroundImage } from '@hooks/useBackgroundImage'
 import './Hero.scss'
 
 export interface HeroProps {
@@ -34,37 +34,16 @@ export const Hero = ({
   buttonSize = 'md',
   onButtonClick
 }: HeroProps) => {
-  const isBackgroundLoadedRef = useRef(false)
-  const memoizedContainerId = useMemo(() => containerId, [containerId])
-
-  const setupBackground = useCallback(() => {
-    if (!backgroundImage || isBackgroundLoadedRef.current) return
-
-    try {
-      const element = document.getElementById(memoizedContainerId)
-      if (element) {        element.style.backgroundImage = `url(${backgroundImage})`
-        element.style.backgroundSize = 'cover'
-        element.style.backgroundPosition = 'center'
-        element.style.backgroundRepeat = 'no-repeat'
-        element.classList.add('bg-polish')
-        isBackgroundLoadedRef.current = true
-      }
-    } catch (error) {
-      console.error('Failed to load background image:', error)
-    }
-  }, [backgroundImage, memoizedContainerId])
-
-  useEffect(() => {
-    setupBackground()
-
-    return () => {
-      isBackgroundLoadedRef.current = false
-    }
-  }, [setupBackground])
+  useBackgroundImage({
+    backgroundImage,
+    containerId,
+    backgroundAttachment: 'parallax',
+    parallaxSpeed: 0.2
+  })
 
   return (
     <section
-      id={memoizedContainerId}
+      id={containerId}
       className='hero'
     >
       <Container className="hero__content">

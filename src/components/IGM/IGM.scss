@@ -1,0 +1,127 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/mixins';
+
+.igm {
+  min-height: 100vh;
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: rgb(5, 21, 5);
+  color: rgb(255, 225, 155);
+
+  @include tablet-up {
+    padding: 3rem 1.5rem;
+  }
+
+  &__content {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    
+    @include tablet-up {
+      gap: 3rem;
+    }
+
+    &:hover {
+      .igm__divider {
+        height: 2px;
+      }
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    height: 2px;
+    background-image: linear-gradient(to right, rgb(255, 225, 155), rgb(255, 255, 255), rgb(255, 225, 155));
+    box-shadow: rgba(255, 225, 155, 0.4) 0px 0px 8px 1px;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    transition: all 0.3s ease;
+
+    &--top,
+    &--bottom {
+      height: 2px;
+    }
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-family: var(--font-family-primary);
+    text-align: center;
+    margin: 0;
+    color: rgb(255, 225, 155);
+    
+    @include tablet-up {
+      font-size: 3rem;
+    }
+  }
+
+  &__description {
+    text-align: center;
+    font-size: 1.125rem;
+    max-width: 48rem;
+    margin: 0 auto;
+    line-height: 1.6;
+    
+    @include tablet-up {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+
+    &:hover {
+      .igm__logo-image {
+        transform: scale(1.05);
+      }
+
+      @media (min-width: 1024px) {
+        .igm__logo-glow {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
+  &__logo-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    opacity: 0.3;
+    background: radial-gradient(circle, rgba(255, 225, 155, 0.3) 0%, rgba(5, 21, 5, 0) 70%);
+    filter: blur(3rem);
+    transition: opacity 0.7s ease;
+
+    @media (min-width: 1024px) {
+      opacity: 0;
+    }
+  }
+
+  &__logo-link {
+    position: relative;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  &__logo-image {
+    width: 20rem;
+    height: auto;
+    transition: all 0.3s ease;
+    display: block;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

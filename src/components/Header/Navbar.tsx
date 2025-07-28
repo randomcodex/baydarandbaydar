@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './Navbar.scss'
 import SocialMediaIcons from '../SocialMediaIcons'
 import Logo from '../Logo'
+import { HamburgerMenu } from '../../ui'
 
 export const Navbar = () => {
   const scrollToTop = () => {
@@ -20,20 +21,26 @@ export const Navbar = () => {
       <Logo className="navbar__logo" size="large" />
       <ul className="navbar__nav">
         <li className="navbar__nav-item portfolio-link">
-          <Link to="/portfolio" className="navbar__link" onClick={handleLinkClick}>Portfolio</Link>
+          <NavLink to="/portfolio" className="navbar__link" onClick={handleLinkClick}>Portfolio</NavLink>
         </li>
         <li className="navbar__nav-item vision-link">
-          <a href="#vision" className="navbar__link" onClick={handleLinkClick}>Vision</a>
+          <NavLink to="/vision" className="navbar__link" onClick={handleLinkClick}>Vision</NavLink>
         </li>
         <li className="navbar__nav-item igm-link">
-          <a href="#igm" className="navbar__link" onClick={handleLinkClick}>IGM</a>
+          <NavLink to="/igm" className="navbar__link" onClick={handleLinkClick}>IGM</NavLink>
         </li>
       </ul>
-      <SocialMediaIcons
-        className="navbar__social"
-        size="medium"
-        variant="compact"
-      />
+      <div className="hamburger-row">
+        <SocialMediaIcons
+          className="navbar__social"
+          size="medium"
+          variant="compact"
+        />
+        <HamburgerMenu 
+          className="navbar__hamburger"
+          onLinkClick={handleLinkClick}
+        />
+      </div>
     </nav>
   )
 }

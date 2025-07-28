@@ -4,3 +4,4 @@ export { useScrollLock } from './useScrollLock';
 export { useWindowSize } from './useWindowSize';
 export { useStableLayout } from './useStableLayout';
 export { useScrollAnimation, useStaggeredScrollAnimation, usePageLoadAnimation } from './useScrollAnimation';
+export { useBackgroundImage } from './useBackgroundImage';

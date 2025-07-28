@@ -1,3 +1,5 @@
 export { Home } from './Home/Home'
 export { Portfolio } from './Portfolio/Portfolio'
+export { Vision } from './Vision/Vision'
+export { IGM } from './IGM/IGM'
 export { NotFound } from './404/NotFound'

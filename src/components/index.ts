@@ -1,6 +1,8 @@
 
 export * from './Hero'
 export * from './Portfolio'
+export * from './Vision'
+export * from './IGM'
 export * from './ErrorBoundary'
 export * from './Header'
 export * from './Footer'

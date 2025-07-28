@@ -1,7 +1,8 @@
-import { useEffect, useCallback, useMemo, useRef } from 'react'
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Container } from '@ui/Container'
 import { Card, CardHeader, CardBody, CardFooter } from '@ui/Card'
+import { useBackgroundImage } from '@hooks/useBackgroundImage'
 import './Portfolio.scss'
 
 export interface PortfolioProps {
@@ -85,7 +86,7 @@ const wineries: Winery[] = [
     name: 'San Giovenale',
     region: 'Lazio',
     description: 'Innovative winery led by winemaker Emanuele Pangrazi, focused on sustainable viticulture and modern winemaking techniques in the heart of Lazio.',
-    image: 'https://lh6.googleusercontent.com/proxy/rQUQmcWVf14hFAsYEsB3N-_x6Gj4E16DeFCJerykVNiNClRAx0HAUY6aCXutehJUULMwjbhd2p6fDw0dRmad9ndRV8JwasI',
+    image: 'public/assets/images/portfolio/hab.png',
     established: 2005,
     specialty: 'Sustainable & Modern Wines',
     website: 'http://www.sangiovenale.it/'
@@ -176,34 +177,16 @@ export const Portfolio = ({
   backgroundImage = '/assets/images/portfolio/bgportfolio.webp',
   containerId = 'portfolio-container'
 }: PortfolioProps) => {
-  const isBackgroundLoadedRef = useRef(false)
-  const memoizedContainerId = useMemo(() => containerId, [containerId])
+  useBackgroundImage({
+    backgroundImage,
+    containerId,
+    backgroundAttachment: 'parallax',
+    parallaxSpeed: 0.3
+  })
 
-  const setupBackground = useCallback(() => {
-    if (!backgroundImage || isBackgroundLoadedRef.current) return
-
-    try {
-      const element = document.getElementById(memoizedContainerId)
-      if (element) {
-        element.style.backgroundImage = `url(${backgroundImage})`
-        element.style.backgroundSize = 'cover'
-        element.style.backgroundPosition = 'center'
-        element.style.backgroundRepeat = 'no-repeat'
-        element.classList.add('bg-polish')
-        isBackgroundLoadedRef.current = true
-      }
-    } catch (error) {
-      console.error('Failed to load background image:', error)
-    }
-  }, [backgroundImage, memoizedContainerId])
-
-  useEffect(() => {
-    setupBackground()
-
-    return () => {
-      isBackgroundLoadedRef.current = false
-    }
-  }, [setupBackground])
+  const sortedWineries = useMemo(() => {
+    return [...wineries].sort((a, b) => a.name.localeCompare(b.name))
+  }, [])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -235,7 +218,7 @@ export const Portfolio = ({
 
   return (
     <section
-      id={memoizedContainerId}
+      id={containerId}
       className={`portfolio ${className || ''}`}
     >
       <Container className="portfolio__content">
@@ -259,7 +242,7 @@ export const Portfolio = ({
           variants={containerVariants}
           className="portfolio__grid"
         >
-          {wineries.map((winery) => (
+          {sortedWineries.map((winery) => (
             <motion.div key={winery.id} variants={cardVariants}>
               <Card 
                 variant="wine" 
@@ -292,7 +275,8 @@ export const Portfolio = ({
                   </div>
                 </CardFooter>
               </Card>
-            </motion.div>          ))}
+            </motion.div>
+          ))}
         </motion.div>
       </Container>
     </section>

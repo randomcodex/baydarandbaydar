@@ -96,6 +96,19 @@
     @include mobile-only {
       right: var(--spacing-lg);
     }
+    
+    @include hide-below-lg;
+  }
+
+  &__hamburger {
+    position: absolute;
+    right: var(--spacing-xl);
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include mobile-only {
+      right: var(--spacing-lg);
+    }
   }  &__nav-item {
     margin: 0;
     
@@ -121,9 +134,14 @@
           outline: none;
           box-shadow: none;
         }
-          &:hover {
+        &:hover {
           color: var(--secondary-color);
           text-decoration: underline;
+          text-decoration-color: var(--secondary-color);
+        }
+
+        &.active {
+          color: var(--secondary-color);
           text-decoration-color: var(--secondary-color);
         }
       }
