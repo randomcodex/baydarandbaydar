@@ -64,7 +64,7 @@
   for = "/"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
-    Link = "</assets/fonts/Abhaya_Libre/AbhayaLibre-Regular.woff2>; rel=preload; as=font; type=font/woff2; crossorigin"
+    Link = "</assets/fonts/AbhayaLibre-Regular.ttf>; rel=preload; as=font; type=font/ttf; crossorigin"
 
 # Cache static assets
 [[headers]]
