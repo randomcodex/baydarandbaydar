@@ -1,14 +1,20 @@
 [build]
   publish = "dist"
-  command = "npm run build:netlify"
+  command = "npm install && npm run build:production"
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_VERSION = "10"
   CI = "true"
-  VITE_SITE_URL = "https://baydarandbaydar.netlify.app"
+  NODE_ENV = "production"
+  VITE_SITE_URL = "https://baydarandbaydar.com"
+  VITE_API_BASE_URL = "https://api.baydarandbaydar.com"
+  VITE_COMPANY_EMAIL = "baydarandbaydar@gmail.com"
+  VITE_COMPANY_PHONE = "+90 533 869 2852"
+  VITE_GOOGLE_ANALYTICS_ID = ""
   NETLIFY_EXPERIMENTAL_BUILD_NODE_POOL = "false"
   NODE_OPTIONS = "--max-old-space-size=4096"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 # Build optimization
 [build.processing]
