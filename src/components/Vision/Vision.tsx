@@ -21,7 +21,6 @@ export const Vision = ({
     parallaxSpeed: 0.5
   })
 
-  // Animation variants for staggered children
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

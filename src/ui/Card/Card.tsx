@@ -39,9 +39,7 @@ export const Card = ({ variant = 'default', className = '', children, enableScro
   const classes = ['card', `card--${variant}`, className].filter(Boolean).join(' ')
   const { ref, isInView } = useScrollAnimation({ threshold: 0.1, triggerOnce: true })
 
-  // Apply scroll animations when enabled
   if (enableScrollAnimation) {
-    // If this card is a child of CardContainer (stagger parent), use simpler variant
     if (isStaggerChild) {
       return (
         <motion.div
@@ -55,7 +53,6 @@ export const Card = ({ variant = 'default', className = '', children, enableScro
       )
     }
 
-    // Independent card with its own scroll trigger
     return (
       <motion.div
         ref={ref}
@@ -71,7 +68,6 @@ export const Card = ({ variant = 'default', className = '', children, enableScro
     )
   }
 
-  // Static div when animations are disabled
   return (
     <div className={classes} onClick={onClick} style={style}>
       {children}
@@ -113,7 +109,6 @@ export const CardContainer = ({ className = '', children, enableStagger = true }
   const { ref, isInView } = useScrollAnimation({ threshold: 0.1, triggerOnce: true })
   const classes = ['card-container', className].filter(Boolean).join(' ')
 
-  // Apply scroll animations when stagger is enabled
   if (enableStagger) {
     return (
       <motion.div
@@ -137,7 +132,6 @@ export const CardContainer = ({ className = '', children, enableStagger = true }
     )
   }
 
-  // Static div when stagger is disabled
   return (
     <div className={classes}>
       {children}

@@ -11,7 +11,6 @@ export const IGM = ({
   className = '', 
   containerId = 'igm-container'
 }: IGMProps) => {
-  // Animation variants for staggered children
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {

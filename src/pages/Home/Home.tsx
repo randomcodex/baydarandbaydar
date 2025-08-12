@@ -14,6 +14,9 @@ export const Home = () => {
 
   const handleViewSelection = () => {
     navigate('/portfolio')
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 100)
   }
 
   return (
