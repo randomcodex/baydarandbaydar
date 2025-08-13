@@ -86,7 +86,7 @@ const wineries: Winery[] = [
     name: 'San Giovenale',
     region: 'Lazio',
     description: 'Innovative winery led by winemaker Emanuele Pangrazi, focused on sustainable viticulture and modern winemaking techniques in the heart of Lazio.',
-    image: 'public/assets/images/portfolio/hab.png',
+    image: './assets/images/portfolio/hab.png',
     established: 2005,
     specialty: 'Sustainable & Modern Wines',
     website: 'http://www.sangiovenale.it/'
@@ -155,7 +155,7 @@ const wineries: Winery[] = [
     name: 'Vignedileo',
     region: 'Marche',
     description: 'Family winery specializing in Verdicchio dei Castelli di Jesi and other premium wines from the Marche hills.',
-    image: 'public/assets/images/portfolio/vdl.webp',
+    image: './assets/images/portfolio/vdl.webp',
     established: 1990,
     specialty: 'Verdicchio dei Castelli di Jesi',
     website: 'https://www.vignedileo.it'
@@ -165,7 +165,7 @@ const wineries: Winery[] = [
     name: 'Wine Emotion',
     region: 'Technology Solutions',
     description: 'Premium wine dispensing systems providing perfect preservation and serving solutions for wine by the glass programs.',
-    image: '/assets/images/portfolio/wem.png',
+    image: './assets/images/portfolio/wem.png',
     established: 2003,
     specialty: 'Wine Dispensers & Preservation Technology',
     website: 'https://www.wineemotion.com'

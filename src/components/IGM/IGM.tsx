@@ -94,7 +94,7 @@ export const IGM = ({
               <img 
                 alt="Istituto Grandi Marchi Official Logo" 
                 className="igm__logo-image"
-                src="/assets/images/igm/logoigm.png"
+                src="./assets/images/igm/logoigm.png"
               />
             </a>
           </motion.div>

@@ -19,53 +19,67 @@
 
 @font-face {
   font-family: "Abhaya Libre";
-  src: url("/assets/fonts/AbhayaLibre-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/AbhayaLibre-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
-
+  font-display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-variant-ligatures: common-ligatures;
+  font-optical-sizing: auto;
 }
 
 @font-face {
   font-family: "Abhaya Libre";
-  src: url("/assets/fonts/AbhayaLibre-Medium.ttf") format("truetype");
+  src: url("./assets/fonts/AbhayaLibre-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-variant-ligatures: common-ligatures;
+  font-optical-sizing: auto;
 }
 
 @font-face {
   font-family: "Abhaya Libre";
-  src: url("/assets/fonts/AbhayaLibre-SemiBold.ttf") format("truetype");
+  src: url("./assets/fonts/AbhayaLibre-SemiBold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-variant-ligatures: common-ligatures;
+  font-optical-sizing: auto;
 }
 
 @font-face {
   font-family: "Abhaya Libre";
-  src: url("/assets/fonts/AbhayaLibre-Bold.ttf") format("truetype");
+  src: url("./assets/fonts/AbhayaLibre-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-variant-ligatures: common-ligatures;
+  font-optical-sizing: auto;
 }
 
 @font-face {
   font-family: "Abhaya Libre";
-  src: url("/assets/fonts/AbhayaLibre-ExtraBold.ttf") format("truetype");
+  src: url("./assets/fonts/AbhayaLibre-ExtraBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
   font-variant-ligatures: common-ligatures;
+  font-optical-sizing: auto;
 }
 
 .app {
@@ -74,6 +88,24 @@
   flex-direction: column;
   background-color: var(--primary-color);
   color: var(--secondary-color);
+  
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1 !important;
+  font-variant-ligatures: common-ligatures !important;
+  font-kerning: auto !important;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+  font-smooth: always !important;
+  -webkit-font-feature-settings: "kern" 1, "liga" 1, "calt" 1 !important;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1 !important;
 }
 
 * {

@@ -31,7 +31,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'large' }) => {
       aria-label="Go to home page"
     >
       <img
-        src="/assets/images/header/logotransparent.png"
+        src="./assets/images/header/logotransparent.png"
         alt="Baydar & Baydar Logo"
         className="logo__image"
       />

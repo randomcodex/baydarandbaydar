@@ -23,7 +23,7 @@ export const Home = () => {
     <Hero
       title="Baydar & Baydar"
       subtitle="Sourcing exquisite tastes for the discerning palate."
-      backgroundImage="/assets/images/home/bghome.webp"
+      backgroundImage="./assets/images/home/bghome.webp"
       containerId="home-container"
       buttonText="View Selection"
       onButtonClick={handleViewSelection}

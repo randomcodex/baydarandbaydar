@@ -10,7 +10,7 @@ export const Portfolio = () => {
 
   return (
     <PortfolioComponent
-      backgroundImage="/assets/images/portfolio/bgportfolio.webp"
+      backgroundImage="./assets/images/portfolio/bgportfolio.webp"
       containerId="portfolio-container"
     />
   )

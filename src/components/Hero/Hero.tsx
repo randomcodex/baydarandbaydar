@@ -27,7 +27,7 @@ export const Hero = ({
   title,
   subtitle,
   description,
-  backgroundImage = '/assets/images/home/bghome.webp',
+  backgroundImage = './assets/images/home/bghome.webp',
   containerId = 'hero-container',
   buttonText,
   buttonVariant = 'secondary',

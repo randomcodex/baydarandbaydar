@@ -6,9 +6,10 @@ export default defineConfig({
   plugins: [react()],
   base: './',
   esbuild: {
-    loader: 'tsx',
-    include: /src\/.*\.[tj]sx?$/,
-    drop: ['console', 'debugger'],
+    drop: ['debugger'],
+    minifyIdentifiers: true,
+    minifySyntax: true,
+    minifyWhitespace: true,
   },
   resolve: {
     alias: {
@@ -35,6 +36,10 @@ export default defineConfig({
         silenceDeprecations: ['legacy-js-api', 'import', 'mixed-decls'],
         additionalData: `@import "@/styles/base/_variables.scss"; @import "@/styles/base/_mixins.scss";`,
       },
+    },
+    devSourcemap: false,
+    postcss: {
+      plugins: []
     },
   },
   server: {
@@ -65,16 +70,24 @@ export default defineConfig({
         entryFileNames: 'assets/[name]-[hash].js',
         chunkFileNames: 'assets/[name]-[hash].js',
         assetFileNames: 'assets/[name]-[hash].[ext]',
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          motion: ['framer-motion'],
+        },
       },
       treeshake: {
-        moduleSideEffects: false,
+        preset: 'smallest',
+        moduleSideEffects: 'no-external',
+        propertyReadSideEffects: false,
+        tryCatchDeoptimization: false,
       },
     },
     minify: 'esbuild',
-    chunkSizeWarningLimit: 1000,
+    target: 'es2020',
+    chunkSizeWarningLimit: 500,
     cssCodeSplit: true,
-    commonjsOptions: {
-      include: [/node_modules/],
-    },
+    cssMinify: 'esbuild',
+    assetsInlineLimit: 4096,
+    emptyOutDir: true,
   },
 })

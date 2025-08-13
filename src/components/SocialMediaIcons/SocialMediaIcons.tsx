@@ -27,7 +27,7 @@ export const SocialMediaIcons = ({
         className={`${baseClass}__link ${baseClass}__link--facebook ${linkSizeClass}`.trim()}
         aria-label="Facebook"
       >
-        <img src="/assets/images/social/facebooksvgrepo.svg" alt="Facebook" />
+        <img src="./assets/images/social/facebooksvgrepo.svg" alt="Facebook" />
       </a>
       <a
         href="https://instagram.com/baydarandbaydar" 
@@ -36,7 +36,7 @@ export const SocialMediaIcons = ({
         className={`${baseClass}__link ${baseClass}__link--instagram ${linkSizeClass}`.trim()}
         aria-label="Instagram"
       >
-        <img src="/assets/images/social/instagramsvgrepo.svg" alt="Instagram" />
+        <img src="./assets/images/social/instagramsvgrepo.svg" alt="Instagram" />
       </a>
       <a
         href="https://twitter.com/baydarandbaydar" 
@@ -45,7 +45,7 @@ export const SocialMediaIcons = ({
         className={`${baseClass}__link ${baseClass}__link--twitter ${linkSizeClass}`.trim()}
         aria-label="Twitter"
       >
-        <img src="/assets/images/social/twittersvgrepo.svg" alt="Twitter" />
+        <img src="./assets/images/social/twittersvgrepo.svg" alt="Twitter" />
       </a>
       <a
         href="https://wa.me/905338692852" 
@@ -54,7 +54,7 @@ export const SocialMediaIcons = ({
         className={`${baseClass}__link ${linkSizeClass}`.trim()}
         aria-label="WhatsApp"
       >
-        <img src="/assets/images/social/whatsappsvgrepo.svg" alt="WhatsApp" />
+        <img src="./assets/images/social/whatsappsvgrepo.svg" alt="WhatsApp" />
       </a>
       <a
         href="https://linkedin.com/company/baydarandbaydar" 
@@ -63,13 +63,13 @@ export const SocialMediaIcons = ({
         className={`${baseClass}__link ${linkSizeClass}`.trim()}
         aria-label="LinkedIn"
       >
-        <img src="/assets/images/social/linkedinsvgrepo.svg" alt="LinkedIn" />
+        <img src="./assets/images/social/linkedinsvgrepo.svg" alt="LinkedIn" />
       </a>
       <a
         href="mailto:baydarandbaydar@gmail.com"
         className={`${baseClass}__link ${linkSizeClass}`.trim()}
         aria-label="Email"
-      >        <img src="/assets/images/social/emailsvgrepo.svg" alt="Email" />
+      >        <img src="./assets/images/social/emailsvgrepo.svg" alt="Email" />
       </a>
     </div>
   )

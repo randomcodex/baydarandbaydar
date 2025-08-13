@@ -10,7 +10,7 @@ export const Vision = () => {
 
   return (
     <VisionComponent
-      backgroundImage="/assets/images/vision/bgvision.webp"
+      backgroundImage="./assets/images/vision/bgvision.webp"
       containerId="vision-container"
     />
   )
