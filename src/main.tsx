@@ -32,7 +32,6 @@ try {
 } catch (error) {
   console.error('💥 Error in main.tsx:', error)
   
-  // Fallback rendering
   const rootElement = document.getElementById('root')
   if (rootElement) {
     rootElement.innerHTML = `

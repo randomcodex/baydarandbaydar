@@ -4,10 +4,11 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // Ensure base path is correct for production
+  base: '/',
   esbuild: {
     loader: 'tsx',
     include: /src\/.*\.[tj]sx?$/,
+    drop: ['console', 'debugger'],
   },
   resolve: {
     alias: {
@@ -69,17 +70,7 @@ export default defineConfig({
         moduleSideEffects: false,
       },
     },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
-      },
-      mangle: {
-        safari10: true,
-      },
-    },
+    minify: 'esbuild',
     chunkSizeWarningLimit: 1000,
     cssCodeSplit: true,
     commonjsOptions: {
