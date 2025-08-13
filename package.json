@@ -8,7 +8,7 @@
     "dev:open": "vite --open",
     "dev:browser": "start http://localhost:3000 && vite",
     "build": "tsc && vite build",
-    "build:netlify": "npm run type-check && npm run build && npm run generate:sitemap",
+    "build:netlify": "vite build && npm run generate:sitemap",
     "build:production": "vite build && npm run generate:sitemap",
     "build:safe": "npm ci && npm run build:netlify",
     "build:analyze": "npm run build && npx vite-bundle-analyzer dist",

@@ -4,6 +4,7 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/', // Ensure base path is correct for production
   esbuild: {
     loader: 'tsx',
     include: /src\/.*\.[tj]sx?$/,
