@@ -44,16 +44,6 @@ const wineries: Winery[] = [
     website: 'https://www.brancaia.com'
   },
   {
-    id: '3',
-    name: 'Castello di Ama',
-    region: 'Chianti Classico, Tuscany',
-    description: 'Prestigious estate combining traditional winemaking with contemporary art, creating iconic Chianti Classico wines.',
-    image: 'https://castellodiama.com/images/logo-5fc4f562.png',
-    established: 1976,
-    specialty: 'Chianti Classico & Single Vineyard',
-    website: 'https://www.castellodiama.com'
-  },
-  {
     id: '4',
     name: 'Col Sandago',
     region: 'Conegliano Valdobbiadene, Veneto',
