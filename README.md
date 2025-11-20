@@ -1,6 +1,6 @@
-# Baydar & Baydar - Premium Wine Imports
+# Baydar & Baydar – Premium Italian Wine & Spirits Imports
 
-A modern, responsive website for Baydar & Baydar, showcasing premium wine imports from Italy.
+Modern, performance‑optimized React + Vite site showcasing premium Italian wines & spirits. Includes advanced build optimizations, real user performance monitoring (RUM), and deployment hardening.
 
 ## 🚀 Live Site
 
@@ -9,13 +9,16 @@ A modern, responsive website for Baydar & Baydar, showcasing premium wine import
 
 ## 🛠 Technology Stack
 
-- **Frontend**: React 18 + TypeScript + Vite
-- **Styling**: SCSS with modern CSS features
+- **Framework**: React 18 + TypeScript
+- **Bundler**: Vite 5 (SWC, ESBuild minification)
+- **Styling**: SCSS (critical CSS inline + code‑split)
 - **Animations**: Framer Motion
-- **Routing**: React Router DOM
-- **State Management**: Zustand
-- **Build Tool**: Vite with SWC
-- **Deployment**: Netlify with auto-deployment from GitHub
+- **Routing**: React Router (lazy loaded chunks)
+- **State**: Zustand (minimal slice usage)
+- **Images**: `vite-imagetools` (responsive WebP/AVIF + blur placeholders)
+- **Performance**: Modulepreload injection, Brotli + Gzip precompression, tree‑shaking, size-limit CI guard
+- **RUM**: Inline beacon + Netlify Edge Function endpoint (`/api/rum`)
+- **Deployment**: Netlify (Edge Functions, custom caching strategy)
 
 ## 📁 Project Structure
 
@@ -107,21 +110,36 @@ VITE_COMPANY_PHONE=+90 533 869 2852
 VITE_GOOGLE_ANALYTICS_ID=YOUR_GA_ID
 ```
 
-### Build Process
+### Build / Optimization Pipeline
 
-1. **Dependencies**: Install all packages including TypeScript
-2. **Compilation**: Vite builds with SWC TypeScript compiler
-3. **Optimization**: Asset minification, tree-shaking, code splitting
-4. **Sitemap**: Auto-generated XML sitemap
-5. **Deploy**: Static files deployed to CDN
+1. Install dependencies via `npm ci` (Netlify) ensuring lockfile integrity
+2. TypeScript compile for type safety (no emit changes to dist artifacts)
+3. Vite build with:
+	- Rollup tree‑shaking (`preset: 'smallest'`)
+	- Code splitting (lazy routes) + manual vendor/motion chunks
+	- Dual compression output (Brotli `.br` + Gzip `.gz`)
+	- Modulepreload tags injection for entry & hot chunks
+4. Critical CSS extraction (inline minimal hero/layout + remaining async CSS)
+5. Responsive image generation (WebP + AVIF) with hashed filenames
+6. Sitemap generation (`scripts/generate-sitemap.js`)
+7. Size-limit check (CI enforcement) preventing regressions
+8. Deploy to Netlify edge CDN (short root cache; long immutable assets)
 
-### Deployment Fixes Applied
+### Key Enhancements Implemented
 
-- ✅ **TypeScript Issue**: Moved TypeScript to devDependencies with proper installation
-- ✅ **SPA Routing**: Added `_redirects` file for client-side routing
-- ✅ **Build Command**: Optimized for Netlify environment
-- ✅ **Environment Variables**: All required vars configured
-- ✅ **Asset Optimization**: Proper caching and compression headers
+- ✅ Tree‑shaking (`sideEffects` & Rollup config)
+- ✅ ESBuild minification (dropping `console` / `debugger` in prod)
+- ✅ Route‑level lazy loading via `React.lazy` + `Suspense`
+- ✅ Critical CSS inlined (hero baseline layout)
+- ✅ Responsive images (640 / 1280 / 1920) + AVIF alternatives
+- ✅ Blur placeholder (32px highly compressed) for fast first paint
+- ✅ DPR‑aware hero background selection logic
+- ✅ Brotli + Gzip precompression
+- ✅ Modulepreload injection post‑build
+- ✅ RUM beacon (TTFB / DCL / LCP) for Instagram & Facebook WebViews
+- ✅ Edge function endpoints: `geolocation`, `rum`
+- ✅ Size-limit guard + GitHub Action workflow
+- ✅ Adjusted caching: root `max-age=300, stale-while-revalidate=600`, assets immutable
 
 ## 🎨 Features
 
@@ -140,12 +158,57 @@ VITE_GOOGLE_ANALYTICS_ID=YOUR_GA_ID
 - `package.json` - Dependencies and scripts
 - `public/_redirects` - SPA routing fallback
 
-## 📊 Performance
+## 📊 Performance & Monitoring
 
-- **Lighthouse Score**: 95+ across all metrics
-- **Core Web Vitals**: Optimized for Google's performance metrics
-- **Bundle Size**: Optimized with tree-shaking and code splitting
-- **Asset Optimization**: Images, fonts, and static assets optimized
+| Aspect | Approach |
+|--------|---------|
+| JS Discovery | Modulepreload injection for entry + key chunks |
+| Tree‑shaking | Rollup `preset: 'smallest'`, `moduleSideEffects: 'no-external'` |
+| Image Strategy | Responsive WebP/AVIF, blur placeholder, DPR selection |
+| Compression | Prebuilt Brotli + Gzip, long-term immutable caching |
+| CSS | Critical inline + code-split remainder |
+| RUM | Beacon posting metrics to `/api/rum` (Edge Function logs) |
+| Bundle Guard | `size-limit` CI thresholds (vendor/motion/index js & css) |
+
+### Collecting RUM Data
+Access Netlify Function logs to view `[RUM]` entries or enhance `/api/rum` for persistent storage (e.g., external analytics service). Payload includes: `ttfb`, `domInteractive`, `domContentLoaded`, `lcp`, timestamp.
+
+### Measuring Cold Navigation Latency
+Use `curl -w '%{time_starttransfer}\n' -o /dev/null -s https://baydarandbaydar.com` twice; first hit shows edge cold start, second validates caching.
+
+### Recommended External Checks
+- WebPageTest (mobile Chrome, Istanbul/Izmir/Cyprus region) for TTFB & LCP
+- DNS propagation & latency (use `dig +trace baydarandbaydar.com`)
+- SSL certificate chain (ensure minimal intermediates)
+
+### Future Improvements (Optional)
+- Early Hints (HTTP 103) for main JS/CSS
+- Placeholder LCP element targeting for more accurate reporting
+- Font subsetting & self‑hosting with `font-display: swap`
+- Blur-up transition fade on hero replacement
+
+## 📋 Deployment Verification Checklist
+
+After each deploy (cold incognito load + Instagram WebView):
+
+1. DNS Resolution: `nslookup baydarandbaydar.com` (≤100ms local, ≤300ms remote)
+2. TLS Handshake: Check Chrome DevTools waterfall (cert chain < 3 hops)
+3. Redirect Chain: Confirm direct 200 (no unexpected 301/302)
+4. TTFB: ≤600ms first cold, ≤200ms subsequent (RUM + DevTools)
+5. First Paint: Blur placeholder visible quickly (<800ms on 4G)
+6. LCP Element: Hero title paint ≤2500ms mobile
+7. Critical CSS: No FOIT/FOUT beyond acceptable flash
+8. JS Chunks: Modulepreload links present in `<head>`
+9. Image Variants: Correct resolution chosen (inspect network widths)
+10. Cache Headers: Root short max-age; assets immutable long-term
+11. Edge Functions: `/api/geolocation` & `/api/rum` return 200
+12. Sitemap & Robots: `sitemap.xml` accessible; `robots.txt` valid
+13. SEO Tags: Meta/OG/Twitter tags present; canonical correct
+14. Error Boundary: Force a route error (dev) still renders fallback
+15. Size-limit: CI passes; no threshold regression
+16. Rollback Procedure: Revert commit or redeploy previous build from Netlify UI if metrics degrade
+
+Record metrics & compare with prior baseline before marking deploy healthy.
 
 ## 🐛 Troubleshooting
 
