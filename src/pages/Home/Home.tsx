@@ -8,6 +8,13 @@ import bgSmall from '../../assets/images/home/bghome.webp?w=640&format=webp'
 import bgMedium from '../../assets/images/home/bghome.webp?w=1280&format=webp'
 // @ts-ignore imagetools query import
 import bgLarge from '../../assets/images/home/bghome.webp?w=1920&format=webp'
+// AVIF variants
+// @ts-ignore
+import bgSmallAvif from '../../assets/images/home/bghome.webp?w=640&format=avif'
+// @ts-ignore
+import bgMediumAvif from '../../assets/images/home/bghome.webp?w=1280&format=avif'
+// @ts-ignore
+import bgLargeAvif from '../../assets/images/home/bghome.webp?w=1920&format=avif'
 
 export const Home = () => {
   const navigate = useNavigate()
@@ -32,6 +39,7 @@ export const Home = () => {
       subtitle="Sourcing exquisite tastes for the discerning palate."
       backgroundImage={bgLarge}
       backgroundSources={[bgSmall, bgMedium, bgLarge]}
+      backgroundAvifSources={[bgSmallAvif, bgMediumAvif, bgLargeAvif]}
       containerId="home-container"
       buttonText="View Selection"
       onButtonClick={handleViewSelection}

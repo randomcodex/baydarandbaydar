@@ -19,6 +19,8 @@ export interface HeroProps {
   backgroundImage?: string
   /** Ordered low->high resolution image URLs; first used on small screens */
   backgroundSources?: string[]
+  /** Optional AVIF variants matching backgroundSources ordering */
+  backgroundAvifSources?: string[]
   containerId?: string
   buttonText?: string
   buttonVariant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
@@ -32,6 +34,7 @@ export const Hero = ({
   description,
   backgroundImage = './assets/images/home/bghome.webp',
   backgroundSources,
+  backgroundAvifSources,
   containerId = 'hero-container',
   buttonText,
   buttonVariant = 'secondary',
@@ -43,14 +46,24 @@ export const Hero = ({
   useEffect(() => {
     if (!backgroundSources || backgroundSources.length === 0) return
     const width = window.innerWidth
-    // Simple heuristic: pick source based on breakpoints
-    const candidate = width < 640
-      ? backgroundSources[0]
-      : width < 1024 && backgroundSources.length > 1
-        ? backgroundSources[Math.min(1, backgroundSources.length - 1)]
-        : backgroundSources[backgroundSources.length - 1]
-    setResolvedBg(candidate)
-  }, [backgroundSources])
+    const pick = (sources: string[]) => {
+      if (width < 640) return sources[0]
+      if (width < 1280) return sources[Math.min(1, sources.length - 1)]
+      return sources[sources.length - 1]
+    }
+    const webpCandidate = pick(backgroundSources)
+
+    // Try AVIF if provided
+    if (backgroundAvifSources && backgroundAvifSources.length === backgroundSources.length) {
+      const avifCandidate = pick(backgroundAvifSources)
+      const testImg = new Image()
+      testImg.onload = () => setResolvedBg(avifCandidate)
+      testImg.onerror = () => setResolvedBg(webpCandidate)
+      testImg.src = avifCandidate
+    } else {
+      setResolvedBg(webpCandidate)
+    }
+  }, [backgroundSources, backgroundAvifSources])
 
   useBackgroundImage({
     backgroundImage: resolvedBg,
