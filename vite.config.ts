@@ -2,15 +2,18 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { resolve } from 'path'
 
-export default defineConfig({
-  plugins: [react()],
-  base: './',
-  esbuild: {
-    drop: ['debugger'],
-    minifyIdentifiers: true,
-    minifySyntax: true,
-    minifyWhitespace: true,
-  },
+export default defineConfig(({ command, mode }) => {
+  const isProd = mode === 'production'
+
+  return {
+    plugins: [react()],
+    base: './',
+    esbuild: {
+      drop: isProd ? ['console', 'debugger'] : ['debugger'],
+      minifyIdentifiers: true,
+      minifySyntax: true,
+      minifyWhitespace: true,
+    },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
@@ -90,4 +93,5 @@ export default defineConfig({
     assetsInlineLimit: 4096,
     emptyOutDir: true,
   },
+  }
 })
