@@ -1,13 +1,19 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { imagetools } from 'vite-imagetools'
+import compression from 'vite-plugin-compression'
 import { resolve } from 'path'
 
 export default defineConfig(({ command, mode }) => {
   const isProd = mode === 'production'
 
   return {
-    plugins: [react(), imagetools()],
+    plugins: [
+      react(),
+      imagetools(),
+      compression({ algorithm: 'brotliCompress', ext: '.br', deleteOriginalAssets: false }),
+      compression({ algorithm: 'gzip', ext: '.gz', deleteOriginalAssets: false })
+    ],
     base: './',
     esbuild: {
       drop: isProd ? ['console', 'debugger'] : ['debugger'],
