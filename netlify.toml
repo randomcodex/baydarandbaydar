@@ -42,7 +42,7 @@
 [[headers]]
   for = "/"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=300, stale-while-revalidate=600"
     Link = "</assets/fonts/AbhayaLibre-Regular.ttf>; rel=preload; as=font; type=font/ttf; crossorigin"
 
 # Cache static assets
@@ -111,6 +111,11 @@
 [[edge_functions]]
   function = "geolocation"
   path = "/api/location"
+
+# RUM metrics collection endpoint
+[[edge_functions]]
+  function = "rum"
+  path = "/api/rum"
 
 # Image optimization redirects
 [[redirects]]

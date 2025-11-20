@@ -7,12 +7,38 @@ import { resolve } from 'path'
 export default defineConfig(({ command, mode }) => {
   const isProd = mode === 'production'
 
+  // Inject modulepreload tags post-build to reduce JS discovery latency
+  const injectModulePreload = () => {
+    return {
+      name: 'inject-modulepreload',
+      apply: 'build',
+      enforce: 'post',
+      generateBundle(_, bundle) {
+        const html = bundle['index.html']
+        if (!html) return
+        const entries = Object.values(bundle).filter(
+          (f: any) => f.type === 'chunk' && f.isEntry
+        )
+        const others = Object.values(bundle).filter(
+          (f: any) => f.type === 'chunk' && !f.isEntry
+        )
+        const selected = [...entries, ...others.slice(0, 4)]
+        const tags = selected
+          .filter((c: any) => c.fileName.endsWith('.js'))
+          .map((c: any) => `<link rel="modulepreload" href="/${c.fileName}" crossorigin>`)
+          .join('')
+        html.source = html.source.replace('</head>', `${tags}</head>`)
+      }
+    }
+  }
+
   return {
     plugins: [
       react(),
       imagetools(),
       compression({ algorithm: 'brotliCompress', ext: '.br', deleteOriginalAssets: false }),
-      compression({ algorithm: 'gzip', ext: '.gz', deleteOriginalAssets: false })
+      compression({ algorithm: 'gzip', ext: '.gz', deleteOriginalAssets: false }),
+      injectModulePreload()
     ],
     base: './',
     esbuild: {

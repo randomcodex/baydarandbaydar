@@ -84,10 +84,19 @@
     </script>
 
     <title>Baydar & Baydar - Premium Italian Wine & Spirits Imports</title>
+    <style>
+      /* Minimal critical CSS: layout + hero baseline */
+      html,body {margin:0;padding:0;min-height:100%;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;background:#000;color:#fff;}
+      #root {min-height:100dvh;display:flex;flex-direction:column;}
+      .hero {min-height:100dvh;position:relative;display:flex;align-items:center;}
+      .hero__content {width:100%;padding:clamp(1.5rem,4vw,3rem);}
+      .hero__title {font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;margin:0 0 .5rem;font-weight:600;}
+      .hero__subtitle {font-size:clamp(1rem,2.5vw,1.25rem);margin:0 0 1rem;font-weight:400;opacity:.9;}
+    </style>
     <script>
       (function(){
         const ua = navigator.userAgent.toLowerCase();
-        const isInstagram = ua.includes('instagram');
+        const isSpecialWebView = ua.includes('instagram') || ua.includes('facebook');
         const nav = performance.getEntriesByType('navigation')[0];
         const metrics = nav ? {
           ttfb: Math.round(nav.responseStart - nav.requestStart),
@@ -101,19 +110,25 @@
           });
           po.observe({ type: 'largest-contentful-paint', buffered: true });
         } catch(e) {}
-        function report(){
-          if(!isInstagram) return;
+        function send(){
+          if(!isSpecialWebView) return;
           const payload = {
             ua: navigator.userAgent,
             ttfb: metrics.ttfb,
             domInteractive: metrics.domInteractive,
             domContentLoaded: metrics.domContentLoaded,
-            lcp: lcpEntry ? Math.round(lcpEntry.startTime) : undefined
+            lcp: lcpEntry ? Math.round(lcpEntry.startTime) : undefined,
+            ts: Date.now()
           };
-          console.log('[RUM]', payload);
+          const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+          if (navigator.sendBeacon) {
+            navigator.sendBeacon('/api/rum', blob);
+          } else {
+            fetch('/api/rum', { method:'POST', body: blob, keepalive: true });
+          }
         }
-        window.addEventListener('load', () => { setTimeout(report, 0); });
-        window.addEventListener('beforeunload', report);
+        window.addEventListener('load', () => { setTimeout(send, 0); });
+        window.addEventListener('visibilitychange', () => { if(document.visibilityState==='hidden') send(); });
       })();
     </script>
   </head>
