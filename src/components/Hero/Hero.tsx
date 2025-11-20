@@ -21,6 +21,8 @@ export interface HeroProps {
   backgroundSources?: string[]
   /** Optional AVIF variants matching backgroundSources ordering */
   backgroundAvifSources?: string[]
+  /** Very small blurred placeholder shown until main background resolves */
+  backgroundPlaceholder?: string
   containerId?: string
   buttonText?: string
   buttonVariant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
@@ -35,13 +37,14 @@ export const Hero = ({
   backgroundImage = './assets/images/home/bghome.webp',
   backgroundSources,
   backgroundAvifSources,
+  backgroundPlaceholder,
   containerId = 'hero-container',
   buttonText,
   buttonVariant = 'secondary',
   buttonSize = 'md',
   onButtonClick
 }: HeroProps) => {
-  const [resolvedBg, setResolvedBg] = useState(backgroundImage)
+  const [resolvedBg, setResolvedBg] = useState(backgroundPlaceholder || backgroundImage)
 
   useEffect(() => {
     if (!backgroundSources || backgroundSources.length === 0) return
@@ -58,14 +61,23 @@ export const Hero = ({
 
     const webpCandidate = pick(backgroundSources)
 
+    // Preload chosen candidate; keep placeholder until one loads
     if (backgroundAvifSources && backgroundAvifSources.length === backgroundSources.length) {
       const avifCandidate = pick(backgroundAvifSources)
       const testImg = new Image()
       testImg.onload = () => setResolvedBg(avifCandidate)
-      testImg.onerror = () => setResolvedBg(webpCandidate)
+      testImg.onerror = () => {
+        const fallbackImg = new Image()
+        fallbackImg.onload = () => setResolvedBg(webpCandidate)
+        fallbackImg.onerror = () => setResolvedBg(webpCandidate)
+        fallbackImg.src = webpCandidate
+      }
       testImg.src = avifCandidate
     } else {
-      setResolvedBg(webpCandidate)
+      const fallbackImg = new Image()
+      fallbackImg.onload = () => setResolvedBg(webpCandidate)
+      fallbackImg.onerror = () => setResolvedBg(webpCandidate)
+      fallbackImg.src = webpCandidate
     }
   }, [backgroundSources, backgroundAvifSources])
 

@@ -15,6 +15,9 @@ import bgSmallAvif from '../../assets/images/home/bghome.webp?w=640&format=avif&
 import bgMediumAvif from '../../assets/images/home/bghome.webp?w=1280&format=avif&quality=70'
 // @ts-ignore
 import bgLargeAvif from '../../assets/images/home/bghome.webp?w=1920&format=avif&quality=70'
+// Tiny blurred placeholder
+// @ts-ignore
+import bgBlur from '../../assets/images/home/bghome.webp?w=32&format=webp&blur=40&quality=50'
 
 export const Home = () => {
   const navigate = useNavigate()
@@ -40,6 +43,7 @@ export const Home = () => {
       backgroundImage={bgLarge}
       backgroundSources={[bgSmall, bgMedium, bgLarge]}
       backgroundAvifSources={[bgSmallAvif, bgMediumAvif, bgLargeAvif]}
+      backgroundPlaceholder={bgBlur}
       containerId="home-container"
       buttonText="View Selection"
       onButtonClick={handleViewSelection}

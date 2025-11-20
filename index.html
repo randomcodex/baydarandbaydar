@@ -84,6 +84,38 @@
     </script>
 
     <title>Baydar & Baydar - Premium Italian Wine & Spirits Imports</title>
+    <script>
+      (function(){
+        const ua = navigator.userAgent.toLowerCase();
+        const isInstagram = ua.includes('instagram');
+        const nav = performance.getEntriesByType('navigation')[0];
+        const metrics = nav ? {
+          ttfb: Math.round(nav.responseStart - nav.requestStart),
+          domInteractive: Math.round(nav.domInteractive - nav.startTime),
+          domContentLoaded: Math.round(nav.domContentLoadedEventEnd - nav.startTime)
+        } : {};
+        let lcpEntry; try {
+          const po = new PerformanceObserver(list => {
+            const entries = list.getEntries();
+            lcpEntry = entries[entries.length - 1];
+          });
+          po.observe({ type: 'largest-contentful-paint', buffered: true });
+        } catch(e) {}
+        function report(){
+          if(!isInstagram) return;
+          const payload = {
+            ua: navigator.userAgent,
+            ttfb: metrics.ttfb,
+            domInteractive: metrics.domInteractive,
+            domContentLoaded: metrics.domContentLoaded,
+            lcp: lcpEntry ? Math.round(lcpEntry.startTime) : undefined
+          };
+          console.log('[RUM]', payload);
+        }
+        window.addEventListener('load', () => { setTimeout(report, 0); });
+        window.addEventListener('beforeunload', report);
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
