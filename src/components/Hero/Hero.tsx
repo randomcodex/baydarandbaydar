@@ -46,14 +46,18 @@ export const Hero = ({
   useEffect(() => {
     if (!backgroundSources || backgroundSources.length === 0) return
     const width = window.innerWidth
+    const dpr = window.devicePixelRatio || 1
+    const effectiveWidth = width * dpr
+
     const pick = (sources: string[]) => {
-      if (width < 640) return sources[0]
-      if (width < 1280) return sources[Math.min(1, sources.length - 1)]
-      return sources[sources.length - 1]
+      // More granular breakpoints accounting for high-DPR mobile screens
+      if (effectiveWidth < 750) return sources[0]            // small / low DPR mobile
+      if (effectiveWidth < 1400) return sources[Math.min(1, sources.length - 1)] // medium phones & small tablets
+      return sources[sources.length - 1]                     // large / retina tablets & desktops
     }
+
     const webpCandidate = pick(backgroundSources)
 
-    // Try AVIF if provided
     if (backgroundAvifSources && backgroundAvifSources.length === backgroundSources.length) {
       const avifCandidate = pick(backgroundAvifSources)
       const testImg = new Image()
