@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "Premium wine imports from Italy - Baydar & Baydar",
   "type": "module",
-  "sideEffects": ["**/*.scss", "**/*.css"],
+  "sideEffects": [
+    "**/*.scss",
+    "**/*.css"
+  ],
   "scripts": {
     "dev": "vite",
     "dev:open": "vite --open",
     "dev:browser": "start http://localhost:3000 && vite",
     "build": "tsc && vite build",
-    "build:netlify": "vite build && npm run generate:sitemap",
+    "build:netlify": "vite build && npm run generate:sitemap && npm run generate:critical",
     "build:production": "vite build && npm run generate:sitemap",
     "build:safe": "npm ci && npm run build:netlify",
     "build:analyze": "npm run build && npx vite-bundle-analyzer dist",
@@ -28,16 +31,16 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "@vitejs/plugin-react-swc": "^3.5.0",
     "clsx": "^2.0.0",
     "framer-motion": "^10.18.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.1",
-    "zustand": "^4.4.7",
-    "vite": "^5.0.8",
+    "sass": "^1.69.5",
     "typescript": "^5.9.2",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "sass": "^1.69.5"
+    "vite": "^5.0.8",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^22.15.21",
@@ -45,14 +48,15 @@
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
+    "critical": "^6.0.0",
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "prettier": "^3.1.1",
     "rimraf": "^5.0.5",
     "vite-bundle-analyzer": "^0.7.0",
-    "vite-plugin-pwa": "^0.17.4",
-    "critical": "^6.0.0"
+    "vite-imagetools": "^9.0.0",
+    "vite-plugin-pwa": "^0.17.4"
   },
   "keywords": [
     "wine",

@@ -1,12 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import { imagetools } from 'vite-imagetools'
 import { resolve } from 'path'
 
 export default defineConfig(({ command, mode }) => {
   const isProd = mode === 'production'
 
   return {
-    plugins: [react()],
+    plugins: [react(), imagetools()],
     base: './',
     esbuild: {
       drop: isProd ? ['console', 'debugger'] : ['debugger'],
