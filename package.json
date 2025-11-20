@@ -28,7 +28,8 @@
     "postbuild": "npm run optimize:images",
     "generate:critical": "critical dist/index.html --inline --width 1300 --height 900",
     "optimize:images": "echo 'Image optimization completed'",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "size-limit": "npm run build && npx size-limit"
   },
   "dependencies": {
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -57,8 +58,16 @@
     "vite-bundle-analyzer": "^0.7.0",
     "vite-imagetools": "^9.0.0",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-pwa": "^0.17.4"
+    "vite-plugin-pwa": "^0.17.4",
+    "size-limit": "^11.0.0",
+    "@size-limit/file": "^11.0.0"
   },
+  "size-limit": [
+    { "path": "dist/assets/vendor-*.js", "limit": "145 KB" },
+    { "path": "dist/assets/motion-*.js", "limit": "105 KB" },
+    { "path": "dist/assets/index-*.js", "limit": "36 KB" },
+    { "path": "dist/assets/index-*.css", "limit": "48 KB" }
+  ],
   "keywords": [
     "wine",
     "italy",
