@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Premium wine imports from Italy - Baydar & Baydar",
   "type": "module",
+  "sideEffects": ["**/*.scss", "**/*.css"],
   "scripts": {
     "dev": "vite",
     "dev:open": "vite --open",
