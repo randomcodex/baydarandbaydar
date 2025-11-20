@@ -11,3 +11,30 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
+
+// Vite ImageTools query imports (treat processed assets as strings for background urls)
+declare module '*.webp?*' {
+  const src: string
+  export default src
+}
+declare module '*.png?*' {
+  const src: string
+  export default src
+}
+declare module '*.jpg?*' {
+  const src: string
+  export default src
+}
+declare module '*.jpeg?*' {
+  const src: string
+  export default src
+}
+declare module '*.avif?*' {
+  const src: string
+  export default src
+}
+// Alias + query pattern (e.g., @assets/.../image.webp?width=640&format=webp)
+declare module '@assets/*?*' {
+  const src: string
+  export default src
+}
