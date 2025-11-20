@@ -26,7 +26,7 @@
     "analyze": "npm run build && npx vite-bundle-analyzer dist",
     "generate:sitemap": "node scripts/generate-sitemap.js",
     "postbuild": "npm run optimize:images",
-    "generate:critical": "critical dist/index.html --inline --minify --width 1300 --height 900",
+    "generate:critical": "critical dist/index.html --inline --width 1300 --height 900",
     "optimize:images": "echo 'Image optimization completed'",
     "clean": "rimraf dist"
   },
