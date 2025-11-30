@@ -68,6 +68,17 @@ export const usePageMetadata = (metadata: PageMetadata) => {
       }
       ogImage.setAttribute('content', metadata.ogImage)
     }
+
+    // Ensure Facebook App ID is present if configured
+    if (env.FACEBOOK_APP_ID) {
+      let fbAppId = document.querySelector('meta[property="fb:app_id"]')
+      if (!fbAppId) {
+        fbAppId = document.createElement('meta')
+        fbAppId.setAttribute('property', 'fb:app_id')
+        document.head.appendChild(fbAppId)
+      }
+      fbAppId.setAttribute('content', env.FACEBOOK_APP_ID)
+    }
     if (metadata.canonicalUrl) {
       let canonical = document.querySelector('link[rel="canonical"]')
       if (!canonical) {
@@ -102,6 +113,7 @@ export const usePageMetadata = (metadata: PageMetadata) => {
     metadata.ogDescription,
     metadata.ogImage,
     metadata.canonicalUrl,
-    metadata.structuredData
+    metadata.structuredData,
+    env.FACEBOOK_APP_ID
   ])
 }

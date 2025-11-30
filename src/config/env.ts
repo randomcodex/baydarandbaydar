@@ -4,6 +4,7 @@ export const env = {
   COMPANY_EMAIL: import.meta.env.VITE_COMPANY_EMAIL || 'baydarandbaydar@gmail.com',
   COMPANY_PHONE: import.meta.env.VITE_COMPANY_PHONE || '+90 533 869 2852',
   GOOGLE_ANALYTICS_ID: import.meta.env.VITE_GOOGLE_ANALYTICS_ID || '',
+  FACEBOOK_APP_ID: import.meta.env.VITE_FACEBOOK_APP_ID || '',
   isDevelopment: import.meta.env.DEV,
   isProduction: import.meta.env.PROD,
 } as const

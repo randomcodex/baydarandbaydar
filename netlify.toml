@@ -11,6 +11,7 @@
   VITE_COMPANY_EMAIL = "baydarandbaydar@gmail.com"
   VITE_COMPANY_PHONE = "+90 533 869 2852"
   VITE_GOOGLE_ANALYTICS_ID = ""
+  VITE_FACEBOOK_APP_ID = ""
 
 # Build optimization - DISABLED to prevent conflicts with Vite
 [build.processing]
