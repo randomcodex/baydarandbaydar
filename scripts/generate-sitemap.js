@@ -15,6 +15,7 @@ const routes = [
 const generateSitemap = () => {
   const baseUrl = process.env.VITE_SITE_URL || 'https://baydarandbaydar.com'
   const currentDate = new Date().toISOString().split('T')[0]
+  const newsSitemap = null // placeholder for optional news or blog in future
 
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
