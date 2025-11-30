@@ -1,52 +1,41 @@
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { imagetools } from 'vite-imagetools'
 import compression from 'vite-plugin-compression'
 import { resolve } from 'path'
 
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
   const isProd = mode === 'production'
 
-  // Inject modulepreload tags post-build to reduce JS discovery latency
-  const injectModulePreload = () => {
-    return {
-      name: 'inject-modulepreload',
-      apply: 'build',
-      enforce: 'post',
-      generateBundle(_, bundle) {
-        const html = bundle['index.html']
-        if (!html) return
-        const entries = Object.values(bundle).filter(
-          (f: any) => f.type === 'chunk' && f.isEntry
-        )
-        const others = Object.values(bundle).filter(
-          (f: any) => f.type === 'chunk' && !f.isEntry
-        )
-        const selected = [...entries, ...others.slice(0, 4)]
-        const tags = selected
-          .filter((c: any) => c.fileName.endsWith('.js'))
-          .map((c: any) => `<link rel="modulepreload" href="/${c.fileName}" crossorigin>`)
-          .join('')
-        html.source = html.source.replace('</head>', `${tags}</head>`)
-      }
+  const injectModulePreload = (): Plugin => ({
+    name: 'inject-modulepreload',
+    apply: 'build',
+    enforce: 'post', // literal keeps correct narrow type
+    generateBundle(_, bundle) {
+      const html = bundle['index.html'] as any
+      if (!html) return
+      const all = Object.values(bundle) as any[]
+      const entries = all.filter(f => f.type === 'chunk' && f.isEntry)
+      const others = all.filter(f => f.type === 'chunk' && !f.isEntry)
+      const selected = [...entries, ...others.slice(0, 4)]
+      const tags = selected
+        .filter(c => c.fileName.endsWith('.js'))
+        .map(c => `<link rel="modulepreload" href="/${c.fileName}" crossorigin>`)
+        .join('')
+      html.source = html.source.replace('</head>', `${tags}</head>`)
     }
-  }
+  })
 
   return {
     plugins: [
       react(),
       imagetools(),
-      compression({ algorithm: 'brotliCompress', ext: '.br', deleteOriginalAssets: false }),
-      compression({ algorithm: 'gzip', ext: '.gz', deleteOriginalAssets: false }),
+      compression({ algorithm: 'brotliCompress', ext: '.br', deleteOriginFile: false }),
+      compression({ algorithm: 'gzip', ext: '.gz', deleteOriginFile: false }),
       injectModulePreload()
     ],
-    base: './',
-    esbuild: {
-      drop: isProd ? ['console', 'debugger'] : ['debugger'],
-      minifyIdentifiers: true,
-      minifySyntax: true,
-      minifyWhitespace: true,
-    },
+    base: '/',
+    esbuild: isProd ? { drop: ['console','debugger'] } : { drop: ['debugger'] },
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),

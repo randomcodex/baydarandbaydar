@@ -54,7 +54,7 @@
       "type": "image/png"
     },
     {
-      "src": "/logo.png",
+      "src": "/tag.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any"
