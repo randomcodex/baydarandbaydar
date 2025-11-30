@@ -1,11 +1,15 @@
 {
-  "name": "Baydar & Baydar - Premium Italian Wine Imports",
+  "name": "Baydar & Baydar",
   "short_name": "Baydar & Baydar",
-  "description": "Discover exceptional wines from Italy's finest vineyards",
+  "description": "Premium Italian Wine & Spirits Imports",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#051905",
-  "theme_color": "#FFE099",
+  "background_color": "#000000",
+  "theme_color": "#8B0000",
+  "lang": "en",
+  "orientation": "portrait",
+  "categories": ["food", "drink", "business"],
   "icons": [
     {
       "src": "/AppImages/android/android-launchericon-48-48.png",
@@ -51,16 +55,8 @@
     {
       "src": "/AppImages/android/android-launchericon-512-512.png",
       "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "/og.png",
-      "sizes": "any",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
-  ],
-  "categories": ["food", "wine", "business"],
-  "lang": "en",
-  "orientation": "portrait-primary"
+  ]
 }

@@ -2,6 +2,7 @@ import { defineConfig, Plugin } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import { imagetools } from 'vite-imagetools'
 import compression from 'vite-plugin-compression'
+import { VitePWA } from 'vite-plugin-pwa'
 import { resolve } from 'path'
 
 export default defineConfig(({ mode }) => {
@@ -32,7 +33,47 @@ export default defineConfig(({ mode }) => {
       imagetools(),
       compression({ algorithm: 'brotliCompress', ext: '.br', deleteOriginFile: false }),
       compression({ algorithm: 'gzip', ext: '.gz', deleteOriginFile: false }),
-      injectModulePreload()
+      injectModulePreload(),
+      VitePWA({
+        registerType: 'autoUpdate',
+        injectRegister: 'auto',
+        includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+        manifest: {
+          name: 'Baydar & Baydar',
+          short_name: 'Baydar & Baydar',
+          description: 'Premium Italian Wine & Spirits Imports',
+          start_url: '/',
+          scope: '/',
+          display: 'standalone',
+          background_color: '#000000',
+          theme_color: '#8B0000',
+          icons: [
+            { src: '/AppImages/ios/180.png', sizes: '180x180', type: 'image/png' },
+            { src: '/AppImages/android/android-launchericon-192-192.png', sizes: '192x192', type: 'image/png' },
+            { src: '/AppImages/android/android-launchericon-512-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
+          ]
+        },
+        workbox: {
+          navigateFallback: '/index.html',
+          runtimeCaching: [
+            {
+              urlPattern: ({ request }) => request.destination === 'document',
+              handler: 'NetworkFirst',
+              options: { cacheName: 'html-cache' }
+            },
+            {
+              urlPattern: ({ request }) => request.destination === 'script' || request.destination === 'style',
+              handler: 'StaleWhileRevalidate',
+              options: { cacheName: 'asset-cache' }
+            },
+            {
+              urlPattern: ({ request }) => request.destination === 'image',
+              handler: 'CacheFirst',
+              options: { cacheName: 'image-cache', expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 } }
+            }
+          ]
+        }
+      })
     ],
     base: '/',
     esbuild: isProd ? { drop: ['console','debugger'] } : { drop: ['debugger'] },
