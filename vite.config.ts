@@ -67,7 +67,13 @@ export default defineConfig(({ mode }) => {
               options: { cacheName: 'asset-cache' }
             },
             {
-              urlPattern: ({ request }) => request.destination === 'image',
+              urlPattern: ({ request, url }) => {
+                // Exclude OG images from service worker cache (scrapers need fresh copy)
+                if (url.pathname.includes('og.png') || url.pathname.includes('og.jpg')) {
+                  return false;
+                }
+                return request.destination === 'image';
+              },
               handler: 'CacheFirst',
               options: { cacheName: 'image-cache', expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 } }
             }
