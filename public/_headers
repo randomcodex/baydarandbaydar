@@ -1,11 +1,7 @@
 /og.png
   Content-Type: image/png
-  Cache-Control: public, max-age=31536000, immutable
-
-/og.jpg
-  Content-Type: image/jpeg
-  Cache-Control: public, max-age=31536000, immutable
-
+  Cache-Control: public, max-age=3600
+  
 /*.png
   Content-Type: image/png
   Cache-Control: public, max-age=31536000, immutable
