@@ -34,6 +34,10 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'large' }) => {
         src="./assets/images/header/logotransparent.png"
         alt="Baydar & Baydar Logo"
         className="logo__image"
+        width={693}
+        height={347}
+        decoding="async"
+        fetchpriority="high"
       />
     </div>
   );
