@@ -54,7 +54,7 @@
       "type": "image/png"
     },
     {
-      "src": "/tag.png",
+      "src": "/og.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any"
