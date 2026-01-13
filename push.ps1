@@ -15,7 +15,7 @@ if ($status -match "bug|fix") { $type = "fix" }
 if ($diff -match "perf|performance" -or $status -match "perf") { $type = "perf" }
 if ($diff -match "test" -or $status -match "test") { $type = "test" }
 
-$files = $diff | Select-Object -First 3 | ForEach-Object { Split-Path -Leaf $_ } | Join-String -Separator ", "
+$files = ($diff | Select-Object -First 3 | ForEach-Object { Split-Path -Leaf $_ }) -join ", "
 
 $message = "$($type): update $($files)"
 
