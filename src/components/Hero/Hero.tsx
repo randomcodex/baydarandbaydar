@@ -1,4 +1,3 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import {
   heroTitle,
@@ -20,6 +19,7 @@ export interface HeroProps {
   backgroundImage?: string
   backgroundSources?: string[]
   backgroundAvifSources?: string[]
+  backgroundPlaceholder?: string
   containerId?: string
   buttonText?: string
   buttonVariant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'

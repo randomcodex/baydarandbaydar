@@ -8,17 +8,25 @@
           "read": true,
           "write": true,
           "delete": true,
-          "modify": true
+          "modify": true,
+          "create": true
+        },
+        "commands": {
+          "execute": true,
+          "shell": true
         }
       },
       "settings": {
+        "github.copilot.enable": true,
         "github.copilot.advanced.showExplanations": false,
         "github.copilot.editor.enableAutoCompletions": true,
         "github.copilot.inlineSuggest.enable": true,
         "github.copilot.chat.showWelcomeMessage": false,
         "github.copilot.advanced.length": 500,
         "github.copilot.advanced.top_p": 1,
-        "github.copilot.advanced.temperature": 0
+        "github.copilot.advanced.temperature": 0,
+        "github.copilot.advanced.authorizationFallback": true,
+        "github.copilot.chat.monacoEditor": true
       },
       "context": {
         "includePatterns": [
@@ -27,16 +35,21 @@
           "**/*.jsx",
           "**/*.tsx",
           "**/*.css",
+          "**/*.scss",
           "**/*.html",
           "**/*.json",
           "package.json",
+          "tsconfig.json",
+          "vite.config.ts",
           "README.md"
         ],
         "excludePatterns": [
           "node_modules/**",
           "dist/**",
           "build/**",
-          ".git/**"
+          ".git/**",
+          ".netlify/**",
+          ".vscode/**"
         ]
       }
     }

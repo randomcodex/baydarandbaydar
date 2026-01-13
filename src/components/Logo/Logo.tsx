@@ -37,7 +37,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'large' }) => {
         width={693}
         height={347}
         decoding="async"
-        fetchpriority="high"
+        fetchPriority="high"
       />
     </div>
   );
