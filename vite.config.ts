@@ -68,7 +68,6 @@ export default defineConfig(({ mode }) => {
             },
             {
               urlPattern: ({ request, url }) => {
-                // Exclude OG images from service worker cache (scrapers need fresh copy)
                 if (url.pathname.includes('og.png') || url.pathname.includes('og.jpg')) {
                   return false;
                 }

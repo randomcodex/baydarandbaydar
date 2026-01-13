@@ -5,7 +5,6 @@ export default async (request: Request) => {
   } catch (e) {
     data = { error: 'invalid json' }
   }
-  // Basic logging (Netlify function logs). In production replace with external analytics.
   console.log('[RUM]', data)
   return new Response(JSON.stringify({ status: 'ok' }), {
     headers: {

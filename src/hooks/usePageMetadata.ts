@@ -69,7 +69,6 @@ export const usePageMetadata = (metadata: PageMetadata) => {
       ogImage.setAttribute('content', metadata.ogImage)
     }
 
-    // Ensure Facebook App ID is present if configured
     if (env.FACEBOOK_APP_ID) {
       let fbAppId = document.querySelector('meta[property="fb:app_id"]')
       if (!fbAppId) {
