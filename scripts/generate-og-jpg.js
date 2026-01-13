@@ -28,7 +28,7 @@ async function run() {
     console.log(`[generate-og-jpg] Wrote ${dstJpgPath} (${targetWidth}x${targetHeight}) from og.png`)
   } catch (err) {
     console.error('[generate-og-jpg] Error generating og.jpg:', err)
-    process.exitCode = 0 // do not fail build on conversion errors
+    process.exitCode = 0
   }
 }
 

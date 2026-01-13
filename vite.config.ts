@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
   const injectModulePreload = (): Plugin => ({
     name: 'inject-modulepreload',
     apply: 'build',
-    enforce: 'post', // literal keeps correct narrow type
+    enforce: 'post',
     generateBundle(_, bundle) {
       const html = bundle['index.html'] as any
       if (!html) return
@@ -41,7 +41,7 @@ export default defineConfig(({ mode }) => {
         manifest: {
           name: 'Baydar & Baydar',
           short_name: 'Baydar & Baydar',
-          description: 'Premium Italian Wine & Spirits Imports',
+          description: 'Italia. Qualità. Vino.',
           start_url: '/',
           scope: '/',
           display: 'standalone',

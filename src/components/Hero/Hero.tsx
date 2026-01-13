@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import {
   heroTitle,
@@ -17,12 +18,8 @@ export interface HeroProps {
   subtitle: string
   description?: string
   backgroundImage?: string
-  /** Ordered low->high resolution image URLs; first used on small screens */
   backgroundSources?: string[]
-  /** Optional AVIF variants matching backgroundSources ordering */
   backgroundAvifSources?: string[]
-  /** Very small blurred placeholder shown until main background resolves */
-  backgroundPlaceholder?: string
   containerId?: string
   buttonText?: string
   buttonVariant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'
@@ -41,7 +38,7 @@ export const Hero = ({
   containerId = 'hero-container',
   buttonText,
   buttonVariant = 'secondary',
-  buttonSize = 'md',
+  buttonSize = 'sm',
   onButtonClick
 }: HeroProps) => {
   const [resolvedBg, setResolvedBg] = useState(backgroundPlaceholder || backgroundImage)
@@ -53,15 +50,13 @@ export const Hero = ({
     const effectiveWidth = width * dpr
 
     const pick = (sources: string[]) => {
-      // More granular breakpoints accounting for high-DPR mobile screens
-      if (effectiveWidth < 750) return sources[0]            // small / low DPR mobile
-      if (effectiveWidth < 1400) return sources[Math.min(1, sources.length - 1)] // medium phones & small tablets
-      return sources[sources.length - 1]                     // large / retina tablets & desktops
+      if (effectiveWidth < 750) return sources[0]
+      if (effectiveWidth < 1400) return sources[Math.min(1, sources.length - 1)]
+      return sources[sources.length - 1]
     }
 
     const webpCandidate = pick(backgroundSources)
 
-    // Preload chosen candidate; keep placeholder until one loads
     if (backgroundAvifSources && backgroundAvifSources.length === backgroundSources.length) {
       const avifCandidate = pick(backgroundAvifSources)
       const testImg = new Image()

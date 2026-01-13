@@ -37,7 +37,7 @@ export const heroSubtitle: Variants = {
   initial: {
     opacity: 0,
     y: 40,
-    x: -20,
+    x: 0,
   },
   animate: {
     opacity: 1,

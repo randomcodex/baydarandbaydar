@@ -1,6 +1,6 @@
-# Baydar & Baydar – Premium Italian Wine & Spirits Imports
+# Baydar & Baydar – Italia. Qualità. Vino.
 
-Modern, performance‑optimized React + Vite site showcasing premium Italian wines & spirits. Includes advanced build optimizations, real user performance monitoring (RUM), and deployment hardening.
+Modern, performance‑optimized React + Vite site. Includes advanced build optimizations, real user performance monitoring (RUM), and deployment hardening.
 
 ## 🚀 Live Site
 
@@ -242,4 +242,4 @@ MIT License - see LICENSE file for details
 
 ---
 
-**Baydar & Baydar** - Premium Wine Imports from Italy
+**Baydar & Baydar** - Italia. Qualità. Vino.

@@ -1,18 +1,21 @@
 {
   "name": "baydarandbaydar",
   "version": "1.0.0",
-  "description": "Premium wine imports from Italy - Baydar & Baydar",
+  "description": "",
+  "main": "index.js",
   "type": "module",
   "sideEffects": [
     "**/*.scss",
     "**/*.css"
   ],
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
     "dev:open": "vite --open",
     "dev:browser": "start http://localhost:3000 && vite",
     "build": "tsc && vite build",
     "build:netlify": "vite build && npm run generate:sitemap && npm run generate:critical",
+    "deploy": "npm run build:netlify && npx netlify deploy --dir=dist --prod",
     "build:production": "vite build && npm run generate:sitemap",
     "build:safe": "npm ci && npm run build:netlify",
     "build:analyze": "npm run build && npx vite-bundle-analyzer dist",
@@ -29,7 +32,9 @@
     "generate:critical": "critical dist/index.html --inline --width 1300 --height 900",
     "optimize:images": "echo 'Image optimization completed'",
     "clean": "rimraf dist",
-    "size-limit": "npm run build && npx size-limit"
+    "size-limit": "npm run build && npx size-limit",
+    "commit": "powershell -ExecutionPolicy Bypass -File push.ps1",
+    "push": "powershell -ExecutionPolicy Bypass -File push.ps1"
   },
   "dependencies": {
     "@vitejs/plugin-react-swc": "^3.5.0",
@@ -44,29 +49,43 @@
     "zustand": "^4.4.7"
   },
   "devDependencies": {
+    "@size-limit/file": "^11.0.0",
     "@types/node": "^22.15.21",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
+    "commitizen": "^4.3.1",
     "critical": "^6.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.55.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "prettier": "^3.1.1",
     "rimraf": "^5.0.5",
+    "size-limit": "^11.0.0",
     "vite-bundle-analyzer": "^0.7.0",
     "vite-imagetools": "^9.0.0",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-pwa": "^0.17.5",
-    "size-limit": "^11.0.0",
-    "@size-limit/file": "^11.0.0"
+    "vite-plugin-pwa": "^0.17.5"
   },
   "size-limit": [
-    { "path": "dist/assets/vendor-*.js", "limit": "145 KB" },
-    { "path": "dist/assets/motion-*.js", "limit": "105 KB" },
-    { "path": "dist/assets/index-*.js", "limit": "36 KB" },
-    { "path": "dist/assets/index-*.css", "limit": "48 KB" }
+    {
+      "path": "dist/assets/vendor-*.js",
+      "limit": "145 KB"
+    },
+    {
+      "path": "dist/assets/motion-*.js",
+      "limit": "105 KB"
+    },
+    {
+      "path": "dist/assets/index-*.js",
+      "limit": "36 KB"
+    },
+    {
+      "path": "dist/assets/index-*.css",
+      "limit": "48 KB"
+    }
   ],
   "keywords": [
     "wine",
@@ -77,5 +96,10 @@
   ],
   "author": "Baydar & Baydar",
   "license": "MIT",
-  "homepage": "https://baydarandbaydar.com"
+  "homepage": "https://baydarandbaydar.com",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
 }

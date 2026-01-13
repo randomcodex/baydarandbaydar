@@ -219,10 +219,10 @@ export const Portfolio = ({
           className="portfolio__header"
         >
           <motion.h1 variants={cardVariants} className="portfolio__title">
-            Our Wine Partners
+            Our Wineries
           </motion.h1>
           <motion.p variants={cardVariants} className="portfolio__description">
-            Discover exceptional wines from Italy's most prestigious estates and family-owned wineries
+            Select Italian estates and family-owned wineries.
           </motion.p>
         </motion.div>
 

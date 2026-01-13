@@ -101,7 +101,7 @@ export const Vision = ({
                     variants={itemVariants}
                   >
                     <span className="vision__title-text">
-                      Our Mission
+                      Our Vision
                       <span className="vision__title-underline"></span>
                     </span>
                   </motion.h2>
@@ -109,7 +109,7 @@ export const Vision = ({
                     className="vision__intro"
                     variants={itemVariants}
                   >
-                    At <strong>Baydar &amp; Baydar</strong>, we believe that great wine is not just produced — it is discovered, understood, and shared with reverence. Our mission is to seek out Italy's most exceptional wines — bottles shaped by land, legacy, and the quiet mastery of dedicated artisans. We partner with producers who work not for scale, but for purity and depth: limited-production wines rooted in history and terroir, expressing the very soul of their region. Each selection in our portfolio is the result of thoughtful curation — an invitation to experience a deeper narrative of Italian viticulture, one bottle at a time. Whether born of ancient volcanic soils or alpine breezes, our wines are chosen for those who seek not only taste, but truth.
+                    At <strong>Baydar &amp; Baydar</strong>, we believe that great wine is not merely produced — it is understood, positioned, and shared with respect. Our mission is to identify and represent Italy’s most distinctive wineries, estates shaped by land, legacy, and the quiet mastery of dedicated producers. We work alongside independent wineries whose focus is not scale, but purity and depth: limited-production estates rooted in history and terroir, expressing the identity of their region. Each winery within our portfolio is selected through thoughtful evaluation, with a focus on long-term representation and international relevance.
                   </motion.p>
                 </motion.div>
                 
@@ -131,7 +131,7 @@ export const Vision = ({
                       </span>
                     </h3>
                     <p className="vision__section-text">
-                      Our portfolio celebrates the vast diversity of Italy's twenty wine regions—from the sunlit coasts of Sicily to the alpine peaks of Valle d'Aosta. Each bottle is a faithful expression of its origin, shaped by soil, climate, and centuries of tradition. We showcase the elegance of Piedmont's Barolo, the charm of Veneto's Prosecco, the soul of Tuscany's Sangiovese, and the volcanic depth of Campania's ancient grapes. These wines are more than regional—each one carries the voice of its land and the vision of its maker.
+                      Our portfolio reflects the diversity of Italy’s twenty wine regions, from the sunlit coasts of the south to the alpine landscapes of the north. Each estate is defined by its geography, climate, and generations of accumulated knowledge, resulting in wines that speak clearly of their origin. From historic regions shaped by ancient trade routes to lesser-known areas preserving indigenous varieties, the wineries we represent embody Italy’s extraordinary viticultural heritage. Together, they form a landscape of expression where tradition, place, and individual vision remain inseparable.
                     </p>
                   </motion.div>
                   
@@ -194,7 +194,7 @@ export const Vision = ({
                         </span>
                       </h3>
                       <p className="vision__section-text">
-                        Our clients include luxury hotels, haute cuisine establishments, private collectors, and cultural tastemakers—those who seek not only exceptional wines, but also the stories behind them.
+                        Our work is dedicated to professional partners within the premium on-trade and specialist trade. We collaborate with luxury hotels, fine dining establishments, and hospitality groups that value provenance, consistency, and long-term collaboration.
                       </p>
                     </motion.div>
                   </motion.div>
@@ -213,7 +213,7 @@ export const Vision = ({
                       </span>
                     </h3>
                     <p className="vision__section-text">
-                      With every wine we import, we offer more than quality. We offer nuance, narrative, and a true sense of place.
+                      With every winery we represent, we commit to clarity of identity, consistency of quality, and respect for origin. Our role is to ensure that each estate’s philosophy is preserved as it enters new markets, maintaining integrity across borders and vintages alike.
                     </p>
                   </motion.div>
                 </motion.div>

@@ -3,9 +3,9 @@ import { Portfolio as PortfolioComponent } from '@/components/Portfolio/Portfoli
 
 export const Portfolio = () => {
   usePageMetadata({
-    title: 'Wine Portfolio | Baydar & Baydar',
-    description: 'Explore our curated collection of premium Italian wines from the finest vineyards.',
-    keywords: 'wine portfolio, Italian wines, premium wine collection, Baydar & Baydar wines',
+    title: 'Our Wineries | Baydar & Baydar',
+    description: 'Our portfolio of select Italian wineries represented across international wine markets.',
+    keywords: 'Italian wineries, wine partners, fine wine representation, winery portfolio, wine trade, Baydar & Baydar',
   })
 
   return (
