@@ -2,7 +2,6 @@
 @import "../../styles/base/mixins";
 
 .logo {
-
   position: relative;
 
   display: flex;
@@ -35,7 +34,7 @@
     transform: translateY(-50%);
     z-index: 102;
 
-    left: var(--spacing-sm);
+    left: var(--spacing-lg);
 
     @media (min-width: 768px) and (max-width: 1023px) {
       left: var(--spacing-md);
@@ -50,7 +49,14 @@
         transform: translateY(-50%) scale(1.15);
       }
     }
-  }&__image {
+
+    @media (hover: none) and (pointer: coarse) {
+      &:active {
+        transform: translateY(-50%) scale(0.95);
+      }
+    }
+  }
+  &__image {
     display: block;
     object-fit: contain;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -86,7 +92,7 @@
 
   &--large {
     .logo__image {
-      height: 80px;
+      height: 60px;
       width: auto;
     }
   }

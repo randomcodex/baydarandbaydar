@@ -1,46 +1,46 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Logo.scss';
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import './Logo.scss'
 
 interface LogoProps {
-  className?: string;
-  size?: 'small' | 'medium' | 'large';
+  className?: string
+  size?: 'small' | 'medium' | 'large'
 }
 
 const Logo: React.FC<LogoProps> = ({ className = '', size = 'large' }) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleLogoClick = () => {
-    navigate('/');
+    navigate('/')
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <div
       className={`logo ${className} logo--${size}`}
       onClick={handleLogoClick}
-      role="button"
+      role='button'
       tabIndex={0}
-      onKeyDown={(e) => {
+      onKeyDown={e => {
         if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleLogoClick();
+          e.preventDefault()
+          handleLogoClick()
         }
       }}
-      aria-label="Go to home page"
+      aria-label='Go to home page'
     >
       <img
-        src="./assets/images/header/logotransparent.png"
-        alt="Baydar & Baydar Logo"
-        className="logo__image"
-        width={693}
-        height={347}
-        decoding="async"
-        fetchPriority="high"
+        src='./assets/images/header/android-launchericon-96-96.png'
+        alt='Baydar & Baydar Logo'
+        className='logo__image'
+        width={96}
+        height={96}
+        decoding='async'
+        fetchPriority='high'
       />
     </div>
-  );
-};
+  )
+}
 
-export default Logo;
+export default Logo
