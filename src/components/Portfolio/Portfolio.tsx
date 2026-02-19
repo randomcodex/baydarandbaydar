@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Container } from '@ui/Container'
-import { Card, CardHeader, CardBody, CardFooter } from '@ui/Card'
+import { Card, CardHeader } from '@ui/Card'
 import { useBackgroundImage } from '@hooks/useBackgroundImage'
 import './Portfolio.scss'
 
@@ -31,9 +31,16 @@ const wineries: Winery[] = [
   {
     id: '2',
     name: 'Brancaia',
-    region: 'Chianti Classico, Tuscany',
+    region: 'Chianti Classico, Toscana',
     image: 'https://brancaia.com/wp-content/uploads/Casa_Brancaia_Logo_400px.png',
     website: 'https://www.brancaia.com',
+  },
+  {
+    id: '3',
+    name: 'Contini',
+    region: 'Oristano, Sardegna',
+    image: 'https://vinicontini.com/wp-content/uploads/2023/05/Contini-1898-Logo-Whyte.png',
+    website: 'https://vinicontini.com',
   },
   {
     id: '4',
@@ -45,7 +52,7 @@ const wineries: Winery[] = [
   {
     id: '5',
     name: 'De Bartoli Etna',
-    region: 'Etna, Sicily',
+    region: 'Etna, Sicilia',
     image: 'https://debartolietna.it/wp-content/uploads/2024/03/DBE_logo-1-1-900x164.png',
     website: 'https://debartolietna.it',
   },
@@ -59,7 +66,7 @@ const wineries: Winery[] = [
   {
     id: '7',
     name: 'San Giovenale',
-    region: 'Rome, Lazio',
+    region: 'Roma, Lazio',
     image: './assets/images/portfolio/hab.png',
     website: 'http://www.sangiovenale.it/',
   },
@@ -73,7 +80,7 @@ const wineries: Winery[] = [
   {
     id: '9',
     name: 'La Togata',
-    region: 'Montalcino, Tuscany',
+    region: 'Montalcino, Toscana',
     image:
       'https://cdn.prod.website-files.com/62d5723c3038e04b6484b3c8/634ef407b912887e1077cd23_logo_vertica_black%402x-p-500.png',
     website: 'https://www.latogata.com/',

@@ -49,6 +49,23 @@ declare module '*.svg' {
   export default src
 }
 
+// Vite Imagetools - wildcard pattern for all query parameters
+declare module '*?w=*' {
+  const src: string
+  export default src
+}
+
+declare module '*?*&format=*' {
+  const src: string
+  export default src
+}
+
+// Generic catch-all for any import with query parameters
+declare module '*?*' {
+  const src: string
+  export default src
+}
+
 // Image module declarations - with query parameters (vite-imagetools)
 declare module '*.webp?*' {
   const src: string

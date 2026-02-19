@@ -1,7 +1,4 @@
-@import "../../styles/base/variables";
-@import "../../styles/base/mixins";
 @import "../../styles/base/background-sections";
-@import "../../ui/Card/Card.scss";
 
 .portfolio {
   @extend %background-section;

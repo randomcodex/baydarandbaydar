@@ -1,5 +1,3 @@
-@import "../../styles/base/variables";
-@import "../../styles/base/mixins";
 @import "../../styles/utils/text-effects";
 
 @keyframes logo-shine-pulse {
@@ -41,6 +39,7 @@
       transform: scale(1.15);
     }
   }
+
   &.navbar__logo {
     position: absolute;
     top: 50%;
@@ -83,7 +82,7 @@
 
     @media (hover: hover) and (pointer: fine) {
       .logo:hover & {
-        filter: brightness(1.03) drop-shadow(0 0 0.75px color-mix(in srgb, var(--secondary-color) 60%, white 40%));
+        animation: logo-shine-pulse 1.5s cubic-bezier(0.4, 0, 0.2, 1) 1;
       }
     }
   }
@@ -124,12 +123,6 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 101;
-
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        transform: translateY(-50%) scale(1.15);
-      }
-    }
 
     @include mobile-only {
       left: var(--spacing-md);

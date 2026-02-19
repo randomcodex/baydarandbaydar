@@ -1,6 +1,3 @@
-@import "../../styles/base/variables";
-@import "../../styles/base/mixins";
-
 .social-media-icons {
   display: flex;
   align-items: center;
@@ -12,7 +9,8 @@
 
   &--spacious {
     gap: var(--spacing-md);
-  }  &__link {
+  }
+  &__link {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,7 +27,7 @@
         height: 16px;
       }
     }
-      &--small img {
+    &--small img {
       width: 16px;
       height: 16px;
 
@@ -48,15 +46,17 @@
         height: 20px;
       }
     }
-      &:hover {
+    &:hover {
       transform: translateY(-1px);
 
       img {
         transform: scale(1.1);
       }
-    }    &:active {
+    }
+    &:active {
       transform: translateY(0);
-    }    &--facebook,
+    }
+    &--facebook,
     &--instagram,
     &--twitter {
       @include hide-below-lg;

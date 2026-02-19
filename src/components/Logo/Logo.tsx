@@ -12,11 +12,9 @@ const Logo: React.FC<LogoProps> = ({ className = '', size = 'large' }) => {
   const [isAnimating, setIsAnimating] = useState(false)
 
   const handleLogoClick = () => {
-    // Trigger pulse animation on mobile and tablet (below 1024px)
-    if (window.innerWidth < 1024) {
-      setIsAnimating(true)
-      setTimeout(() => setIsAnimating(false), 1500)
-    }
+    // Trigger pulse animation on all screen sizes
+    setIsAnimating(true)
+    setTimeout(() => setIsAnimating(false), 1500)
 
     navigate('/')
 

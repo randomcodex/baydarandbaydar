@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => {
         .map(c => `<link rel="modulepreload" href="/${c.fileName}" crossorigin>`)
         .join('')
       html.source = html.source.replace('</head>', `${tags}</head>`)
-    }
+    },
   })
 
   return {
@@ -34,132 +34,140 @@ export default defineConfig(({ mode }) => {
       compression({ algorithm: 'brotliCompress', ext: '.br', deleteOriginFile: false }),
       compression({ algorithm: 'gzip', ext: '.gz', deleteOriginFile: false }),
       injectModulePreload(),
-      VitePWA({
-        registerType: 'autoUpdate',
-        injectRegister: 'auto',
-        includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
-        manifest: {
-          name: 'Baydar & Baydar',
-          short_name: 'Baydar & Baydar',
-          description: 'Italia. Qualità. Vino.',
-          start_url: '/',
-          scope: '/',
-          display: 'standalone',
-          background_color: '#000000',
-          theme_color: '#8B0000',
-          icons: [
-            { src: '/AppImages/ios/180.png', sizes: '180x180', type: 'image/png' },
-            { src: '/AppImages/android/android-launchericon-192-192.png', sizes: '192x192', type: 'image/png' },
-            { src: '/AppImages/android/android-launchericon-512-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
-          ]
-        },
-        workbox: {
-          navigateFallback: '/index.html',
-          runtimeCaching: [
-            {
-              urlPattern: ({ request }) => request.destination === 'document',
-              handler: 'NetworkFirst',
-              options: { cacheName: 'html-cache' }
-            },
-            {
-              urlPattern: ({ request }) => request.destination === 'script' || request.destination === 'style',
-              handler: 'StaleWhileRevalidate',
-              options: { cacheName: 'asset-cache' }
-            },
-            {
-              urlPattern: ({ request, url }) => {
-                if (url.pathname.includes('og.png') || url.pathname.includes('og.jpg')) {
-                  return false;
-                }
-                return request.destination === 'image';
+      isProd &&
+        VitePWA({
+          registerType: 'autoUpdate',
+          injectRegister: 'auto',
+          includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+          manifest: {
+            name: 'Baydar & Baydar',
+            short_name: 'Baydar & Baydar',
+            description: 'Italia. Qualità. Vino.',
+            start_url: '/',
+            scope: '/',
+            display: 'standalone',
+            background_color: '#000000',
+            theme_color: '#8B0000',
+            icons: [
+              { src: '/AppImages/ios/180.png', sizes: '180x180', type: 'image/png' },
+              {
+                src: '/AppImages/android/android-launchericon-192-192.png',
+                sizes: '192x192',
+                type: 'image/png',
               },
-              handler: 'CacheFirst',
-              options: { cacheName: 'image-cache', expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 } }
-            }
-          ]
-        }
-      })
+              {
+                src: '/AppImages/android/android-launchericon-512-512.png',
+                sizes: '512x512',
+                type: 'image/png',
+                purpose: 'any maskable',
+              },
+            ],
+          },
+          workbox: {
+            navigateFallback: '/index.html',
+            runtimeCaching: [
+              {
+                urlPattern: ({ request }) => request.destination === 'document',
+                handler: 'NetworkFirst',
+                options: { cacheName: 'html-cache' },
+              },
+              {
+                urlPattern: ({ request }) =>
+                  request.destination === 'script' || request.destination === 'style',
+                handler: 'StaleWhileRevalidate',
+                options: { cacheName: 'asset-cache' },
+              },
+              {
+                urlPattern: ({ request, url }) => {
+                  if (url.pathname.includes('og.png') || url.pathname.includes('og.jpg')) {
+                    return false
+                  }
+                  return request.destination === 'image'
+                },
+                handler: 'CacheFirst',
+                options: {
+                  cacheName: 'image-cache',
+                  expiration: { maxEntries: 100, maxAgeSeconds: 60 * 60 * 24 * 30 },
+                },
+              },
+            ],
+          },
+        }),
     ],
     base: '/',
-    esbuild: isProd ? { drop: ['console','debugger'] } : { drop: ['debugger'] },
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src'),
-      '@components': resolve(__dirname, './src/components'),
-      '@ui': resolve(__dirname, './src/ui'),
-      '@pages': resolve(__dirname, './src/pages'),
-      '@hooks': resolve(__dirname, './src/hooks'),
-      '@utils': resolve(__dirname, './src/utils'),
-      '@styles': resolve(__dirname, './src/styles'),
-      '@animations': resolve(__dirname, './src/animations'),
-      '@store': resolve(__dirname, './src/store'),
-      '@lib': resolve(__dirname, './src/lib'),
-      '@config': resolve(__dirname, './src/config'),
-      '@router': resolve(__dirname, './src/router'),
-      '@assets': resolve(__dirname, './src/assets'),
-    },
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern-compiler',
-        silenceDeprecations: ['legacy-js-api', 'import', 'mixed-decls'],
-        additionalData: `@import "@/styles/base/_variables.scss"; @import "@/styles/base/_mixins.scss";`,
+    esbuild: isProd ? { drop: ['console', 'debugger'] } : { drop: ['debugger'] },
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, './src'),
+        '@components': resolve(__dirname, './src/components'),
+        '@ui': resolve(__dirname, './src/ui'),
+        '@pages': resolve(__dirname, './src/pages'),
+        '@hooks': resolve(__dirname, './src/hooks'),
+        '@utils': resolve(__dirname, './src/utils'),
+        '@styles': resolve(__dirname, './src/styles'),
+        '@animations': resolve(__dirname, './src/animations'),
+        '@store': resolve(__dirname, './src/store'),
+        '@lib': resolve(__dirname, './src/lib'),
+        '@config': resolve(__dirname, './src/config'),
+        '@router': resolve(__dirname, './src/router'),
+        '@assets': resolve(__dirname, './src/assets'),
       },
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
-    devSourcemap: false,
-    postcss: {
-      plugins: []
-    },
-  },
-  server: {
-    port: 3000,
-    host: true,
-    open: true,
-    hmr: {
-      port: 3000,
-      overlay: true,
-    },
-    watch: {
-      usePolling: false,
-      ignored: ['**/node_modules/**', '**/.git/**'],
-    },
-    strictPort: false,
-    headers: {
-      'Cache-Control': 'no-cache, no-store, must-revalidate',
-      'Pragma': 'no-cache',
-      'Expires': '0',
-    },
-    middlewareMode: false,
-  },
-  build: {
-    outDir: 'dist',
-    sourcemap: false,
-    rollupOptions: {
-      output: {
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]',
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          motion: ['framer-motion'],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          silenceDeprecations: ['import'],
+          additionalData: `@use "@/styles/base/_mixins.scss" as *;`,
         },
       },
-      treeshake: {
-        preset: 'smallest',
-        moduleSideEffects: 'no-external',
-        propertyReadSideEffects: false,
-        tryCatchDeoptimization: false,
+      devSourcemap: false,
+      postcss: {
+        plugins: [],
       },
     },
-    minify: 'esbuild',
-    target: 'es2020',
-    chunkSizeWarningLimit: 500,
-    cssCodeSplit: true,
-    cssMinify: 'esbuild',
-    assetsInlineLimit: 4096,
-    emptyOutDir: true,
-  },
+    server: {
+      port: 3000,
+      host: true,
+      open: true,
+      hmr: {
+        overlay: true,
+      },
+      watch: {
+        usePolling: false,
+        ignored: ['**/node_modules/**', '**/.git/**'],
+      },
+      strictPort: false,
+      middlewareMode: false,
+    },
+    build: {
+      outDir: 'dist',
+      sourcemap: false,
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/[name]-[hash].js',
+          chunkFileNames: 'assets/[name]-[hash].js',
+          assetFileNames: 'assets/[name]-[hash].[ext]',
+          manualChunks: {
+            vendor: ['react', 'react-dom'],
+            motion: ['framer-motion'],
+          },
+        },
+        treeshake: {
+          preset: 'smallest',
+          moduleSideEffects: 'no-external',
+          propertyReadSideEffects: false,
+          tryCatchDeoptimization: false,
+        },
+      },
+      minify: 'esbuild',
+      target: 'es2020',
+      chunkSizeWarningLimit: 500,
+      cssCodeSplit: true,
+      cssMinify: 'esbuild',
+      assetsInlineLimit: 4096,
+      emptyOutDir: true,
+    },
   }
 })
