@@ -7,17 +7,22 @@
   overflow: hidden;
   padding: var(--spacing-2xl) 0;
 
-  &__content {
+  // Use descendant selector (.portfolio .portfolio__content) for specificity (0,2,0)
+  // to reliably override .container / .container--2xl styles (0,1,0)
+  // regardless of CSS injection order in Vite dev mode.
+  .portfolio__content {
     position: relative;
     z-index: 2;
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
 
     @media (max-width: 639px) {
       margin: 0 var(--spacing-lg);
     }
 
-    @include tablet-up {
+    @media (min-width: 640px) {
       margin: 0 var(--spacing-xl);
     }
   }
@@ -66,12 +71,12 @@
       padding: 0 var(--spacing-sm);
     }
 
-    @include tablet-up {
+    @media (min-width: 640px) {
       grid-template-columns: repeat(2, 1fr);
       gap: var(--spacing-xl);
     }
 
-    @include large-up {
+    @media (min-width: 1024px) {
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 32px;
     }
