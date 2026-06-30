@@ -4,7 +4,7 @@ import {
   heroSubtitle,
   heroDescription,
   heroButton,
-  heroTextContainer
+  heroTextContainer,
 } from '../../animations'
 import { Container } from '@ui/Container'
 import { Button } from '@ui/Button'
@@ -39,7 +39,7 @@ export const Hero = ({
   buttonText,
   buttonVariant = 'secondary',
   buttonSize = 'sm',
-  onButtonClick
+  onButtonClick,
 }: HeroProps) => {
   const [resolvedBg, setResolvedBg] = useState(backgroundPlaceholder || backgroundImage)
 
@@ -80,43 +80,44 @@ export const Hero = ({
     backgroundImage: resolvedBg,
     containerId,
     backgroundAttachment: 'parallax',
-    parallaxSpeed: 0.2
+    parallaxSpeed: 0.2,
   })
 
   return (
-    <section
-      id={containerId}
-      className='hero'
-    >
-      <Container className="hero__content">
+    <section id={containerId} className='hero'>
+      <Container className='hero__content'>
         <motion.div
-          className="hero__text"
+          className='hero__text'
           variants={heroTextContainer}
-          initial="initial"
-          animate="animate"
+          initial='initial'
+          animate='animate'
         >
-          <motion.h1 variants={heroTitle} className="hero__title">
+          <motion.h1 variants={heroTitle} className='hero__title'>
             {title}
           </motion.h1>
-          <motion.p variants={heroSubtitle} className="hero__subtitle">
+          <motion.p variants={heroSubtitle} className='hero__subtitle'>
             {subtitle}
           </motion.p>
           {description && (
-            <motion.p variants={heroDescription} className="hero__description">
+            <motion.p variants={heroDescription} className='hero__description'>
               {description}
             </motion.p>
-          )}          {buttonText && (
-            <motion.div variants={heroButton} className="hero__actions">
-              <Button
-                variant={buttonVariant}
-                size={buttonSize}
-                onClick={onButtonClick}
-              >
+          )}{' '}
+          {buttonText && (
+            <motion.div variants={heroButton} className='hero__actions'>
+              <Button variant={buttonVariant} size={buttonSize} onClick={onButtonClick}>
                 {buttonText}
               </Button>
             </motion.div>
-          )}        </motion.div>
+          )}{' '}
+        </motion.div>
       </Container>
+
+      <div className='hero__image-attribution' aria-label='Painting attribution'>
+        <span>Decadence of the Romans</span>
+        <span>Édouard Debat-Ponsan</span>
+        <span>Musée d'Orsay</span>
+      </div>
     </section>
   )
 }

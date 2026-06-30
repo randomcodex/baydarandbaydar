@@ -1,4 +1,5 @@
 @import "../../styles/base/background-sections";
+@import "../../styles/utils/text-effects";
 
 .portfolio {
   @extend %background-section;
@@ -6,10 +7,8 @@
   justify-content: center;
   overflow: hidden;
   padding: var(--spacing-2xl) 0;
+  position: relative;
 
-  // Use descendant selector (.portfolio .portfolio__content) for specificity (0,2,0)
-  // to reliably override .container / .container--2xl styles (0,1,0)
-  // regardless of CSS injection order in Vite dev mode.
   .portfolio__content {
     position: relative;
     z-index: 2;
@@ -27,9 +26,15 @@
     }
   }
 
+  &__content-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+  }
+
   &__header {
     text-align: center;
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-sm);
   }
 
   &__title {
@@ -58,6 +63,63 @@
       font-size: var(--font-size-xl);
     }
   }
+  &__featured-section {
+    margin-top: var(--spacing-sm);
+    margin-bottom: 0;
+    padding-top: var(--spacing-sm);
+  }
+
+  &__featured-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+  }
+
+  &__featured-title {
+    @include heading-text;
+    font-size: var(--font-size-4xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--secondary-color);
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+
+    @include tablet-up {
+      font-size: var(--font-size-3xl);
+    }
+  }
+
+  &__featured-description {
+    @include body-text;
+    font-size: var(--font-size-base);
+    color: var(--secondary-color);
+    max-width: 720px;
+    margin: 0 auto;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    opacity: 0.95;
+  }
+
+  &__featured-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    align-items: stretch;
+    justify-items: center;
+
+    @media (max-width: 639px) {
+      gap: var(--spacing-lg);
+      margin: 0 var(--spacing-sm);
+      padding: 0 var(--spacing-sm);
+    }
+
+    @media (min-width: 640px) {
+      grid-template-columns: minmax(0, 340px);
+      gap: var(--spacing-xl);
+    }
+  }
+
+  &__featured-card {
+    width: min(100%, 340px);
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -81,9 +143,53 @@
       gap: 32px;
     }
   }
+
   &__card {
     height: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  &__card-tag {
+    @include body-text;
+    font-size: 12px;
+    color: var(--dark-gray);
+    margin: 0 0 8px 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  &__image-attribution {
+    position: absolute;
+    right: var(--spacing-md);
+    bottom: 0;
+    z-index: 3;
+    max-width: min(520px, calc(100% - 2rem));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.35rem 0.6rem;
+    text-align: right;
+    pointer-events: none;
+    @include small-text;
+    font-size: 0.65rem;
+    line-height: 1.35;
+    color: var(--secondary-color);
+    font-weight: 600;
+    opacity: 1;
+    text-shadow: none;
+
+    @include tablet-up {
+      right: var(--spacing-lg);
+      bottom: 0;
+      font-size: 0.7rem;
+    }
+
+    span {
+      display: inline-block;
+      white-space: nowrap;
+    }
   }
 }

@@ -19,6 +19,24 @@ interface Winery {
   website: string
 }
 
+interface FeaturedPremiumGood {
+  id: string
+  name: string
+  region: string
+  image: string
+  website: string
+}
+
+const featuredPremiumGoods: FeaturedPremiumGood[] = [
+  {
+    id: 'featured-theresianer',
+    name: 'Birra Theresianer',
+    region: 'Treviso, Veneto',
+    image: 'https://www.theresianer.it/wp-content/uploads/THERESIANER-LOGO.svg',
+    website: 'https://www.theresianer.it',
+  },
+]
+
 const wineries: Winery[] = [
   {
     id: '1',
@@ -180,48 +198,147 @@ export const Portfolio = ({
           initial='hidden'
           animate='visible'
           variants={containerVariants}
-          className='portfolio__header'
+          className='portfolio__content-stack'
         >
-          <motion.h1 variants={cardVariants} className='portfolio__title'>
-            Our Wineries
-          </motion.h1>
-          <motion.p variants={cardVariants} className='portfolio__description'>
-            Select Italian estates and family-owned wineries.
-          </motion.p>
-        </motion.div>
+          <motion.div
+            initial='hidden'
+            whileInView='visible'
+            viewport={{ once: true, amount: 0.25 }}
+            variants={containerVariants}
+            className='portfolio__header'
+          >
+            <motion.h1
+              initial='hidden'
+              whileInView='visible'
+              viewport={{ once: true, amount: 0.25 }}
+              variants={cardVariants}
+              className='portfolio__title'
+            >
+              Our Wineries
+            </motion.h1>
+            <motion.p
+              initial='hidden'
+              whileInView='visible'
+              viewport={{ once: true, amount: 0.25 }}
+              variants={cardVariants}
+              className='portfolio__description'
+            >
+              Select Italian estates and family-owned wineries.
+            </motion.p>
+          </motion.div>
 
-        <motion.div
-          initial='hidden'
-          animate='visible'
-          variants={containerVariants}
-          className='portfolio__grid'
-        >
-          {sortedWineries.map(winery => (
-            <motion.div key={winery.id} variants={cardVariants}>
-              <Card
-                variant='wine'
-                className='portfolio__card'
-                onClick={() => window.open(winery.website, '_blank', 'noopener,noreferrer')}
-                style={{ cursor: 'pointer' }}
+          <motion.div
+            initial='hidden'
+            animate='visible'
+            variants={containerVariants}
+            className='portfolio__grid'
+          >
+            {sortedWineries.map(winery => (
+              <motion.div key={winery.id} variants={cardVariants}>
+                <Card
+                  variant='wine'
+                  className='portfolio__card'
+                  onClick={() => window.open(winery.website, '_blank', 'noopener,noreferrer')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <div className='portfolio__card-image'>
+                    <img
+                      src={winery.image}
+                      alt={winery.name}
+                      onError={e => {
+                        e.currentTarget.src = '/assets/images/placeholder-winery.webp'
+                      }}
+                    />
+                  </div>
+                  <CardHeader>
+                    <h3 className='portfolio__card-title'>{winery.name}</h3>
+                    <p className='portfolio__card-region'>{winery.region}</p>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial='hidden'
+            animate='visible'
+            variants={cardVariants}
+            className='portfolio__featured-section'
+          >
+            <motion.div
+              initial='hidden'
+              whileInView='visible'
+              viewport={{ once: true, amount: 0.25 }}
+              variants={containerVariants}
+              className='portfolio__featured-header'
+            >
+              <motion.h2
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true, amount: 0.25 }}
+                variants={cardVariants}
+                className='portfolio__featured-title'
               >
-                <div className='portfolio__card-image'>
-                  <img
-                    src={winery.image}
-                    alt={winery.name}
-                    onError={e => {
-                      e.currentTarget.src = '/assets/images/placeholder-winery.webp'
-                    }}
-                  />
-                </div>
-                <CardHeader>
-                  <h3 className='portfolio__card-title'>{winery.name}</h3>
-                  <p className='portfolio__card-region'>{winery.region}</p>
-                </CardHeader>
-              </Card>
+                Beyond Wine
+              </motion.h2>
+              <motion.p
+                initial='hidden'
+                whileInView='visible'
+                viewport={{ once: true, amount: 0.25 }}
+                variants={cardVariants}
+                className='portfolio__featured-description'
+              >
+                We also celebrate exceptional Italian craftsmanship in beer and other premium goods,
+                presented with the same attention to quality and storytelling.
+              </motion.p>
             </motion.div>
-          ))}
+
+            <motion.div
+              initial='hidden'
+              animate='visible'
+              variants={containerVariants}
+              className='portfolio__featured-grid'
+            >
+              {featuredPremiumGoods.map(item => (
+                <motion.div
+                  key={item.id}
+                  initial='hidden'
+                  animate='visible'
+                  variants={cardVariants}
+                  className='portfolio__featured-card'
+                >
+                  <Card
+                    variant='wine'
+                    className='portfolio__card'
+                    onClick={() => window.open(item.website, '_blank', 'noopener,noreferrer')}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div className='portfolio__card-image'>
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        onError={e => {
+                          e.currentTarget.src = '/assets/images/placeholder-winery.webp'
+                        }}
+                      />
+                    </div>
+                    <CardHeader>
+                      <h3 className='portfolio__card-title'>{item.name}</h3>
+                      <p className='portfolio__card-region'>{item.region}</p>
+                    </CardHeader>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
         </motion.div>
       </Container>
+
+      <div className='portfolio__image-attribution' aria-label='Painting attribution'>
+        <span>The Bacchanal of the Andrians</span>
+        <span>Titian</span>
+        <span>Museo del Prado</span>
+      </div>
     </section>
   )
 }

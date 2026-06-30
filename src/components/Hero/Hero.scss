@@ -1,9 +1,11 @@
 @import "../../styles/base/background-sections";
+@import "../../styles/utils/text-effects";
 
 .hero {
   @extend %background-section;
   @extend %overlay-gradient;
   overflow: hidden;
+  position: relative;
 
   &__content {
     position: relative;
@@ -95,6 +97,38 @@
       &:hover {
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
       }
+    }
+  }
+
+  &__image-attribution {
+    position: absolute;
+    right: var(--spacing-md);
+    bottom: 0;
+    z-index: 3;
+    max-width: min(520px, calc(100% - 2rem));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.35rem 0.6rem;
+    text-align: right;
+    pointer-events: none;
+    @include small-text;
+    font-size: 0.65rem;
+    line-height: 1.35;
+    color: var(--secondary-color);
+    font-weight: 600;
+    opacity: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+
+    @include tablet-up {
+      right: var(--spacing-lg);
+      bottom: 0;
+      font-size: 0.7rem;
+    }
+
+    span {
+      display: inline-block;
+      white-space: nowrap;
     }
   }
 }
